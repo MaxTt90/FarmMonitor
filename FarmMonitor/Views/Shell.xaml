@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FarmMonitor"
-        xmlns:regions="http://prismlibrary.com/"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:inf="clr-namespace:FarmMonitor.Infrastructure;assembly=FarmMonitor.Infrastructure"
         mc:Ignorable="d"
         Title="FarmMonitor" Height="350" Width="525">
-    <ItemsControl Name="MainRegion" regions:RegionManager.RegionName="{StaticResource RegionNames.MainRegion}" >
-    </ItemsControl>
+    <Grid>
+        <ContentControl Name="DashboardRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.DashboardRegion}" />
+    </Grid>
 </Window>

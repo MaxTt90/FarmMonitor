@@ -87,7 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\Shell.xaml">
+    <Page Include="Views\Shell.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -95,8 +95,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="RegionNames.cs" />
-    <Compile Include="View\Shell.xaml.cs">
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -128,6 +128,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DashboardModule\DashboardModule.csproj">
+      <Project>{cc886b79-3cc6-4583-aabe-a31a9e87b11f}</Project>
+      <Name>DashboardModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarmMonitor.Infrastructure\FarmMonitor.Infrastructure.csproj">
+      <Project>{8af0dd1f-c302-4a5b-892c-9e93b42ad227}</Project>
+      <Name>FarmMonitor.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
