@@ -1,4 +1,5 @@
-﻿using DashboardModule.Views;
+﻿using DashboardModule.ViewModels;
+using DashboardModule.Views;
 using FarmMonitor.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
@@ -25,7 +26,7 @@ namespace DashboardModule
 
         public void Initialize()
         {
-            MessageBox.Show("Dashboard module loaded.");
+            _container.RegisterType<IDashboardViewModel, DashboardViewModel>();
             _regionManager.RegisterViewWithRegion(RegionNames.DashboardRegion, typeof(DashboardView));
         }
     }

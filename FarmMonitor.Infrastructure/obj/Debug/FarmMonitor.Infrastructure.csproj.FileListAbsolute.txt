@@ -1,4 +1,0 @@
-D:\myGithub\FarmMonitor\FarmMonitor.Infrastructure\bin\Debug\FarmMonitor.Infrastructure.dll
-D:\myGithub\FarmMonitor\FarmMonitor.Infrastructure\bin\Debug\FarmMonitor.Infrastructure.pdb
-D:\myGithub\FarmMonitor\FarmMonitor.Infrastructure\obj\Debug\FarmMonitor.Infrastructure.dll
-D:\myGithub\FarmMonitor\FarmMonitor.Infrastructure\obj\Debug\FarmMonitor.Infrastructure.pdb

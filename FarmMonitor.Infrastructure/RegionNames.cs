@@ -9,5 +9,7 @@ namespace FarmMonitor.Infrastructure
     public static class RegionNames
     {
         public const string DashboardRegion = "DashboardRegion";
+
+        public const string TimeLineRegion = "TimeLineRegion";
     }
 }
