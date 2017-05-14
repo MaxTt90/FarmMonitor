@@ -21,6 +21,7 @@
             <MenuItem Header="Agro"/>
             <MenuItem Header="Maps"/>
             <MenuItem Header="Fields"/>
+            <MenuItem Header="Account"/>
         </Menu>
         <ContentControl DockPanel.Dock="Left" Width="250"  Name="NavigationRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.NavigationRegion}"/>
         <ContentControl DockPanel.Dock="Right" Name="WorkspaceRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.WorkspaceRegion}"/>
