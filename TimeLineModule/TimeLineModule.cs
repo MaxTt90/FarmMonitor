@@ -26,7 +26,6 @@ namespace TimeLineModule
         public void Initialize()
         {
             _container.RegisterType<ITimeLineViewModel, TimeLineViewModel>();
-            _regionManager.RegisterViewWithRegion(RegionNames.TimeLineRegion, typeof(TimeLineView));
         }
     }
 }

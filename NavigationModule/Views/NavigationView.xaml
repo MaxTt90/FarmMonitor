@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="NavigationModule.Views.NavigationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NavigationModule.Views"
+             xmlns:inf="clr-namespace:FarmMonitor.Infrastructure;assembly=FarmMonitor.Infrastructure"
+             xmlns:dashboardviews="clr-namespace:DashboardModule.Views;assembly=DashboardModule"
+             xmlns:timelineviews="clr-namespace:TimeLineModule.Views;assembly=TimeLineModule"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <GroupBox Margin="2" Header="Farm Info.">
+            <!--<Image Source="/"/>-->
+            <RichTextBox Margin="2"
+                        Padding="5"
+                        IsDocumentEnabled="True"
+                        IsReadOnly="True">
+                <FlowDocument>
+                    <Paragraph>
+                        <Hyperlink NavigateUri="https://github.com/MahApps/MahApps.Metro">
+                            <Run Text="ReadOnly" />
+                        </Hyperlink>
+                        <LineBreak />
+                        <Run>Bacon ipsum dolor sit amet venison drumstick meatball ham hock corned beef. Strip steak bacon andouille pig beef short ribs.</Run>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </GroupBox>
+
+        <Button Margin="2" Content="Dashboard" Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type dashboardviews:DashboardView}" Background="AntiqueWhite"/>
+        <Button Margin="2" Content="TimeLine"  Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type timelineviews:TimeLineView}" Background="AntiqueWhite"/>
+        <Button Margin="2" Content="Argo Operations"/>
+        <Button Margin="2" Content="Scout Reports"/>
+        <Button Margin="2" Content="Notes"/>
+        <Button Margin="2" Content="Alerts"/>
+        <Button Margin="2" Content="Field History"/>
+        <Button Margin="2" Content="Area/Shapes"/>
+        <Button Margin="2" Content="Analytics"/>
+        <Button Margin="2" Content="Productivity Estimation"/>
+        <Button Margin="2" Content="Download"/>
+    </StackPanel>
+</UserControl>

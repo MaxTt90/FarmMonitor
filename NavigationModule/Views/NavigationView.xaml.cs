@@ -1,5 +1,4 @@
-﻿using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FarmMonitor.View
+namespace NavigationModule.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NavigationView.xaml
     /// </summary>
-    public partial class Shell : MetroWindow
+    public partial class NavigationView : UserControl
     {
-        public Shell()
+        public NavigationView()
         {
             InitializeComponent();
         }

@@ -27,7 +27,6 @@ namespace DashboardModule
         public void Initialize()
         {
             _container.RegisterType<IDashboardViewModel, DashboardViewModel>();
-            _regionManager.RegisterViewWithRegion(RegionNames.DashboardRegion, typeof(DashboardView));
         }
     }
 }
