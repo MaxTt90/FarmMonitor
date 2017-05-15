@@ -10,7 +10,6 @@ namespace FarmMonitor.ViewModels
     {
         public ShellViewModel()
         {
-
         }
     }
 }
