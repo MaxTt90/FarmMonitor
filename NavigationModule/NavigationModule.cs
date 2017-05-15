@@ -10,14 +10,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DashboardModule.ViewModels;
+using TimeLineModule.ViewModels;
 using TimeLineModule.Views;
 
 namespace NavigationModule
 {
     public class NavigationModule : IModule
     {
-        private IRegionManager _regionManager;
-        private IUnityContainer _container;
+        private readonly IRegionManager _regionManager;
+        private readonly IUnityContainer _container;
 
         public NavigationModule(IRegionManager regionManager, IUnityContainer container)
         {
@@ -28,6 +30,7 @@ namespace NavigationModule
         public void Initialize()
         {
             _container.RegisterType<INavigationViewModel, NavigationViewModel>();
+
             _container.RegisterType<object, DashboardView>(typeof(DashboardView).FullName);
             _container.RegisterType<object, TimeLineView>(typeof(TimeLineView).FullName);
             _regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(NavigationView));

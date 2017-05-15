@@ -11,17 +11,19 @@
         Width="960"
         Height="600" 
         WindowStartupLocation="CenterScreen">
-    <!--<StackPanel>
-        <ContentControl Name="DashboardRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.DashboardRegion}" />
-        <ContentControl Name="TimeLineRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.TimeLineRegion}"/>
-    </StackPanel>-->
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top" Margin="5">
             <MenuItem Header="Monitoring Center"/>
             <MenuItem Header="Agro"/>
             <MenuItem Header="Maps"/>
             <MenuItem Header="Fields"/>
-            <MenuItem Header="Account"/>
+            <MenuItem Header="Options">
+                <MenuItem Header="Account"></MenuItem>
+                <Separator />
+                <MenuItem Header="View Help"></MenuItem>
+                <MenuItem Header="About"></MenuItem>
+                <!--<MenuItem Click="ShowLoginDialogOnlyPassword" Header="ShowLoginDialogOnlyPassword"/>-->
+            </MenuItem>
         </Menu>
         <ContentControl DockPanel.Dock="Left" Width="250"  Name="NavigationRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.NavigationRegion}"/>
         <ContentControl DockPanel.Dock="Right" Name="WorkspaceRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.WorkspaceRegion}"/>

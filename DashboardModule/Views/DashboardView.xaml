@@ -3,15 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DashboardModule"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:mahapp="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:views="clr-namespace:DashboardModule.Views"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <TabControl mahapp:TabControlHelper.Underlined="SelectedTabItem" TabStripPlacement="Top">
         <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="Monitoring">
-            <TextBlock FontSize="30" Text="Monitoring" />
+            <TextBlock FontSize="30" Text="{Binding Message}" />
         </TabItem>
         <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="Machinery tasks">
             <TextBlock FontSize="30" Text="Machinery tasks" />
@@ -20,7 +20,10 @@
             <TextBlock FontSize="30" Text="Field records" />
         </TabItem>
         <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="Satellite images">
-            <TextBlock FontSize="30" Text="Satellite images" />
+            <StackPanel>
+                <TextBlock FontSize="30" Text="Satellite images" />
+                <views:SatalliteMapView/>
+            </StackPanel>
         </TabItem>
         <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="More ...">
             <TextBlock FontSize="30" Text="More ..." />

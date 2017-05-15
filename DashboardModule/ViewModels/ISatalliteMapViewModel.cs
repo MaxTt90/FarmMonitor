@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace DashboardModule.ViewModels
 {
-    public interface IDashboardViewModel
+    public interface ISatalliteMapViewModel
     {
-        string Message { get; set; }
-
-        ISatalliteMapViewModel SatalliteMapViewModel { get; }
     }
 }

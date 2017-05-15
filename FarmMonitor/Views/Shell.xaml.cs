@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace FarmMonitor.View
 {
@@ -24,6 +25,19 @@ namespace FarmMonitor.View
         public Shell()
         {
             InitializeComponent();
+        }
+
+        private async void ShowLoginDialogOnlyPassword(object sender, RoutedEventArgs e)
+        {
+            LoginDialogData result = await this.ShowLoginAsync("Authentication", "Enter your password", new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme, ShouldHideUsername = true });
+            if (result == null)
+            {
+                //User pressed cancel
+            }
+            else
+            {
+                MessageDialogResult messageResult = await this.ShowMessageAsync("Authentication Information", String.Format("Password: {0}", result.Password));
+            }
         }
     }
 }

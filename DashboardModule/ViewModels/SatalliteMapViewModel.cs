@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Prism.Mvvm;
 
 namespace DashboardModule.ViewModels
 {
-    public interface IDashboardViewModel
+    public class SatalliteMapViewModel : BindableBase, ISatalliteMapViewModel
     {
-        string Message { get; set; }
-
-        ISatalliteMapViewModel SatalliteMapViewModel { get; }
+        public SatalliteMapViewModel()
+        {
+            
+        }
     }
 }
