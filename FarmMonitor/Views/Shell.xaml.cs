@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using FarmMonitor.BLL;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,9 @@ namespace FarmMonitor.View
     {
         public Shell()
         {
+            SysUserInfoMan uiMan = new SysUserInfoMan();
+            var users = uiMan.GetAllUsers().ToList();
+
             InitializeComponent();
         }
 
