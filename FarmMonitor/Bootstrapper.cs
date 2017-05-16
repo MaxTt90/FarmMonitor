@@ -21,8 +21,8 @@ namespace FarmMonitor
         {
             base.InitializeShell();
 
-            App.Current.MainWindow = (Window)Shell;
-            App.Current.MainWindow.Show();
+            Application.Current.MainWindow = (Window)Shell;
+            Application.Current.MainWindow.Show();
         }
 
         protected override IModuleCatalog CreateModuleCatalog()

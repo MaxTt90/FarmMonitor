@@ -15,8 +15,8 @@ namespace DashboardModule
 {
     public class DashboardModule : IModule
     {
-        IUnityContainer _container;
-        IRegionManager _regionManager;
+        private readonly IUnityContainer _container;
+        private readonly IRegionManager _regionManager;
 
         public DashboardModule(IUnityContainer container, IRegionManager regionManager)
         {
@@ -27,7 +27,7 @@ namespace DashboardModule
         public void Initialize()
         {
             _container.RegisterType<IDashboardViewModel, DashboardViewModel>();
-            _regionManager.RegisterViewWithRegion(RegionNames.DashboardRegion, typeof(DashboardView));
+            _container.RegisterType<ISatalliteMapViewModel, SatalliteMapViewModel>();
         }
     }
 }

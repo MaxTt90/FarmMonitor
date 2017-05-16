@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
@@ -55,6 +63,13 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.8\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
     <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
@@ -68,6 +83,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Wpf.6.3.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -100,6 +116,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -138,15 +155,28 @@
       <Project>{cc886b79-3cc6-4583-aabe-a31a9e87b11f}</Project>
       <Name>DashboardModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Data\FarmMonitor.BLL\FarmMonitor.BLL.csproj">
+      <Project>{2642A126-7438-4875-840C-FC8F3F48D32B}</Project>
+      <Name>FarmMonitor.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\FarmMonitor.Model\FarmMonitor.Model.csproj">
+      <Project>{bdf37282-9ced-454e-9314-20fc74aa6cf6}</Project>
+      <Name>FarmMonitor.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FarmMonitor.Infrastructure\FarmMonitor.Infrastructure.csproj">
       <Project>{8af0dd1f-c302-4a5b-892c-9e93b42ad227}</Project>
       <Name>FarmMonitor.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NavigationModule\NavigationModule.csproj">
+      <Project>{2b4a802f-78c2-49ce-8841-d758918e91c7}</Project>
+      <Name>NavigationModule</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimeLineModule\TimeLineModule.csproj">
       <Project>{553a5aee-f4fb-47c1-a2bb-7c6621d1e023}</Project>
       <Name>TimeLineModule</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

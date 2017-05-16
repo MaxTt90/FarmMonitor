@@ -330,3 +330,4 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+.vs/FarmMonitor/v14/.suo

@@ -1,14 +1,31 @@
-﻿<Window x:Class="FarmMonitor.View.Shell"
+﻿<mahApp:MetroWindow x:Class="FarmMonitor.View.Shell"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:mahApp="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:inf="clr-namespace:FarmMonitor.Infrastructure;assembly=FarmMonitor.Infrastructure"
         mc:Ignorable="d"
-        Title="FarmMonitor" Height="350" Width="525">
-    <StackPanel>
-        <ContentControl Name="DashboardRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.DashboardRegion}" />
-        <ContentControl Name="TimeLineRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.TimeLineRegion}"/>
-    </StackPanel>
-</Window>
+        Title="Farm Monitor" 
+        Width="960"
+        Height="600" 
+        WindowStartupLocation="CenterScreen">
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top" Margin="5">
+            <MenuItem Header="Monitoring Center"/>
+            <MenuItem Header="Agro"/>
+            <MenuItem Header="Maps"/>
+            <MenuItem Header="Fields"/>
+            <MenuItem Header="Options">
+                <MenuItem Header="Account"></MenuItem>
+                <Separator />
+                <MenuItem Header="View Help"></MenuItem>
+                <MenuItem Header="About"></MenuItem>
+                <!--<MenuItem Click="ShowLoginDialogOnlyPassword" Header="ShowLoginDialogOnlyPassword"/>-->
+            </MenuItem>
+        </Menu>
+        <ContentControl DockPanel.Dock="Left" Width="250"  Name="NavigationRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.NavigationRegion}"/>
+        <ContentControl DockPanel.Dock="Right" Name="WorkspaceRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.WorkspaceRegion}"/>
+    </DockPanel>
+</mahApp:MetroWindow>

@@ -9,5 +9,7 @@ namespace DashboardModule.ViewModels
     public interface IDashboardViewModel
     {
         string Message { get; set; }
+
+        ISatalliteMapViewModel SatalliteMapViewModel { get; }
     }
 }
