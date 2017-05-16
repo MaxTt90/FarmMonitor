@@ -60,8 +60,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XINHUI.Model\FarmMonitor.Model.csproj">
-      <Project>{bdf37282-9ced-454e-9314-20fc74aa6cf6}</Project>
+    <ProjectReference Include="..\FarmMonitor.Model\FarmMonitor.Model.csproj">
+      <Project>{BDF37282-9CED-454E-9314-20FC74AA6CF6}</Project>
       <Name>FarmMonitor.Model</Name>
     </ProjectReference>
   </ItemGroup>

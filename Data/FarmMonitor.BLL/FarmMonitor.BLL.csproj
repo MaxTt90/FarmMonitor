@@ -88,11 +88,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XINHUI.DAL\FarmMonitor.DAL.csproj">
+    <ProjectReference Include="..\FarmMonitor.DAL\FarmMonitor.DAL.csproj">
       <Project>{c7be71a4-33fe-408a-8c34-7e001b14ddcf}</Project>
       <Name>FarmMonitor.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XINHUI.Model\FarmMonitor.Model.csproj">
+    <ProjectReference Include="..\FarmMonitor.Model\FarmMonitor.Model.csproj">
       <Project>{bdf37282-9ced-454e-9314-20fc74aa6cf6}</Project>
       <Name>FarmMonitor.Model</Name>
     </ProjectReference>

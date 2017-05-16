@@ -5,7 +5,6 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using FarmMonitor.DAL;
-using FarmMonitor.Model;
 
 namespace FarmMonitor.BLL
 {       

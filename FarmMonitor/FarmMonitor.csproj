@@ -155,11 +155,11 @@
       <Project>{cc886b79-3cc6-4583-aabe-a31a9e87b11f}</Project>
       <Name>DashboardModule</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Data\XINHUI.BLL\FarmMonitor.BLL.csproj">
-      <Project>{2642a126-7438-4875-840c-fc8f3f48d32b}</Project>
+    <ProjectReference Include="..\Data\FarmMonitor.BLL\FarmMonitor.BLL.csproj">
+      <Project>{2642A126-7438-4875-840C-FC8F3F48D32B}</Project>
       <Name>FarmMonitor.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Data\XINHUI.Model\FarmMonitor.Model.csproj">
+    <ProjectReference Include="..\Data\FarmMonitor.Model\FarmMonitor.Model.csproj">
       <Project>{bdf37282-9ced-454e-9314-20fc74aa6cf6}</Project>
       <Name>FarmMonitor.Model</Name>
     </ProjectReference>

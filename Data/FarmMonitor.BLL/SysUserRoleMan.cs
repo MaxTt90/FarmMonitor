@@ -12,7 +12,7 @@ namespace FarmMonitor.BLL
 	 	//SysUserRole
 	public class SysUserRoleMan
 	{
-	      private string dbContextType = "";
+        private string dbContextType = "";
         private CustomDbContext _db = null;
         /// <summary>
         /// 构造函数,同一线程中使用相同的DBContext

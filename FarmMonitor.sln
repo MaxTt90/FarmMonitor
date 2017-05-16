@@ -19,11 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavigationModule", "Navigat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{705F296A-1B83-4B42-84C3-0DE0914F1C14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmMonitor.BLL", "Data\XINHUI.BLL\FarmMonitor.BLL.csproj", "{2642A126-7438-4875-840C-FC8F3F48D32B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmMonitor.BLL", "Data\FarmMonitor.BLL\FarmMonitor.BLL.csproj", "{2642A126-7438-4875-840C-FC8F3F48D32B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmMonitor.DAL", "Data\XINHUI.DAL\FarmMonitor.DAL.csproj", "{C7BE71A4-33FE-408A-8C34-7E001B14DDCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmMonitor.DAL", "Data\FarmMonitor.DAL\FarmMonitor.DAL.csproj", "{C7BE71A4-33FE-408A-8C34-7E001B14DDCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmMonitor.Model", "Data\XINHUI.Model\FarmMonitor.Model.csproj", "{BDF37282-9CED-454E-9314-20FC74AA6CF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmMonitor.Model", "Data\FarmMonitor.Model\FarmMonitor.Model.csproj", "{BDF37282-9CED-454E-9314-20FC74AA6CF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
