@@ -17,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls.Dialogs;
 
-namespace FarmMonitor.View
+namespace FarmMonitor.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -26,9 +26,6 @@ namespace FarmMonitor.View
     {
         public Shell()
         {
-            SysUserInfoMan uiMan = new SysUserInfoMan();
-            var users = uiMan.GetAllUsers().ToList();
-
             InitializeComponent();
         }
 
