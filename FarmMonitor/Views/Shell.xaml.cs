@@ -26,9 +26,6 @@ namespace FarmMonitor.View
     {
         public Shell()
         {
-            SysUserInfoMan uiMan = new SysUserInfoMan();
-            var users = uiMan.GetAllUsers().ToList();
-
             InitializeComponent();
         }
 
