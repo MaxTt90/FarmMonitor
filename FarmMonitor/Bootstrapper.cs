@@ -1,4 +1,4 @@
-﻿using FarmMonitor.View;
+﻿using FarmMonitor.Views;
 using Prism.Unity;
 using System;
 using System.Collections.Generic;
