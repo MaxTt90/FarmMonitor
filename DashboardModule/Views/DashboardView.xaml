@@ -11,7 +11,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <TabControl mahapp:TabControlHelper.Underlined="SelectedTabItem" TabStripPlacement="Top">
         <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="Monitoring">
-            <TextBlock FontSize="30" Text="{Binding Message}" />
+            <views:MonitorView/>
         </TabItem>
         <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="Machinery tasks">
             <TextBlock FontSize="30" Text="Machinery tasks" />
