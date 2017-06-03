@@ -13,11 +13,8 @@ namespace DashboardModule.ViewModels
         public DashboardViewModel(IUnityContainer container)
         {
             Message = "Hello Dashboard.";
-            SatalliteMapViewModel = container.Resolve<ISatalliteMapViewModel>();
         }
          
         public string Message { get; set; }
-
-        public ISatalliteMapViewModel SatalliteMapViewModel { get; private set; }
     }
 }

@@ -105,34 +105,16 @@
     <Compile Include="DashboardModule.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\IDashboardViewModel.cs" />
-    <Compile Include="ViewModels\IMonitorViewModel.cs" />
-    <Compile Include="ViewModels\ISatalliteMapViewModel.cs" />
-    <Compile Include="ViewModels\MonitorViewModel.cs" />
-    <Compile Include="ViewModels\SatalliteMapViewModel.cs" />
     <Compile Include="Views\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\MonitorView.xaml.cs">
-      <DependentUpon>MonitorView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SatalliteMapView.xaml.cs">
-      <DependentUpon>SatalliteMapView.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\DashboardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MonitorView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SatalliteMapView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
