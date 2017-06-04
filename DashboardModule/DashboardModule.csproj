@@ -52,10 +52,6 @@
       <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Bing Maps WPF Control\V1\Libraries\Microsoft.Maps.MapControl.WPF.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -120,6 +116,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\FarmMonitor.BLL\FarmMonitor.BLL.csproj">
+      <Project>{2642a126-7438-4875-840c-fc8f3f48d32b}</Project>
+      <Name>FarmMonitor.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\FarmMonitor.Model\FarmMonitor.Model.csproj">
+      <Project>{bdf37282-9ced-454e-9314-20fc74aa6cf6}</Project>
+      <Name>FarmMonitor.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FarmMonitor.Infrastructure\FarmMonitor.Infrastructure.csproj">
       <Project>{8af0dd1f-c302-4a5b-892c-9e93b42ad227}</Project>
       <Name>FarmMonitor.Infrastructure</Name>

@@ -13,6 +13,9 @@ namespace DashboardModule.ViewModels
         public DashboardViewModel(IUnityContainer container)
         {
             Message = "Hello Dashboard.";
+
+            var sysUserInfoMan = new FarmMonitor.BLL.SysUserInfoMan();
+            var users = sysUserInfoMan.GetAllUsers().ToList();
         }
          
         public string Message { get; set; }

@@ -25,13 +25,10 @@
             <MenuItem Header="View">
                 <MenuItem Header="Navigation" IsCheckable="True" IsChecked="{Binding IsNavigationChecked}"/>
             </MenuItem>
-            <MenuItem>
-                
-            </MenuItem>
             <MenuItem Header="Options">
-                <MenuItem Header="Account"></MenuItem>
+                <MenuItem Click="OnAccountClicked" Header="Account"/>
                 <Separator />
-                <MenuItem Header="View Help"></MenuItem>
+                <MenuItem Header="Help"></MenuItem>
                 <MenuItem Header="About"></MenuItem>
                 <!--<MenuItem Click="ShowLoginDialogOnlyPassword" Header="ShowLoginDialogOnlyPassword"/>-->
             </MenuItem>
