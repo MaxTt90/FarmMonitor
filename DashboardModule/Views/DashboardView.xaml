@@ -9,24 +9,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <TabControl mahapp:TabControlHelper.Underlined="SelectedTabItem" TabStripPlacement="Top">
-        <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="Monitoring">
-            <views:MonitorView/>
-        </TabItem>
-        <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="Machinery tasks">
-            <TextBlock FontSize="30" Text="Machinery tasks" />
-        </TabItem>
-        <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="Field records">
-            <TextBlock FontSize="30" Text="Field records" />
-        </TabItem>
-        <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="Satellite images">
-            <StackPanel>
-                <TextBlock FontSize="30" Text="Satellite images" />
-                <views:SatalliteMapView/>
-            </StackPanel>
-        </TabItem>
-        <TabItem mahapp:ControlsHelper.HeaderFontSize="18" Header="More ...">
-            <TextBlock FontSize="30" Text="More ..." />
-        </TabItem>
-    </TabControl>
+    <Grid>
+        
+    </Grid>
 </UserControl>

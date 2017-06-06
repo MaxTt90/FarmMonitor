@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls.Dialogs;
+using FarmMonitor.Services;
 
 namespace FarmMonitor.Views
 {
@@ -24,22 +25,57 @@ namespace FarmMonitor.Views
     /// </summary>
     public partial class Shell : MetroWindow
     {
-        public Shell()
+        private ILoginService _loginService;
+
+        public Shell(ILoginService loginService)
         {
             InitializeComponent();
+            _loginService = loginService;
         }
 
-        private async void ShowLoginDialogOnlyPassword(object sender, RoutedEventArgs e)
+        private async void OnAccountClicked(object sender, RoutedEventArgs e)
         {
-            LoginDialogData result = await this.ShowLoginAsync("Authentication", "Enter your password", new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme, ShouldHideUsername = true });
-            if (result == null)
+            if(_loginService == null)
             {
-                //User pressed cancel
+                return;
             }
+
+            // Do not have a user
+            if (_loginService.CurrentUser == null)
+            {
+                LoginDialogData result = await this.ShowLoginAsync("Authentication", "Enter your credentials", new LoginDialogSettings { ColorScheme = MetroDialogOptions.ColorScheme, InitialUsername = "Xinhui", EnablePasswordPreview = true });
+                if (result == null)
+                {
+                    //User pressed cancel
+                }
+                else
+                {
+                    if (_loginService != null)
+                    {
+                        var loginUser = _loginService.Login(result.Username, result.Password);
+                        if (loginUser != null)
+                        {
+                            await this.ShowMessageAsync("Authentication Information", "Login successfully!", MessageDialogStyle.Affirmative);
+                        }
+                        else
+                        {
+                            await this.ShowMessageAsync("Authentication Information", "Error: Invalid user name and password!", MessageDialogStyle.Affirmative);
+                        }
+                    }
+                }
+            }
+            // Already has a user.
             else
             {
-                MessageDialogResult messageResult = await this.ShowMessageAsync("Authentication Information", String.Format("Password: {0}", result.Password));
+                var result = await this.ShowMessageAsync("Authentication Information", string.Format("{0} has already logged in. Do you want to log out?", _loginService.CurrentUser.Name), MessageDialogStyle.AffirmativeAndNegative);
+
+                if(result == MessageDialogResult.Affirmative)
+                {
+                    _loginService.Logout();
+                    await this.ShowMessageAsync("Authentication Information", "Logout successfully!", MessageDialogStyle.Affirmative);
+                }
             }
+
         }
     }
 }

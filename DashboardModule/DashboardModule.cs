@@ -27,7 +27,6 @@ namespace DashboardModule
         public void Initialize()
         {
             _container.RegisterType<IDashboardViewModel, DashboardViewModel>();
-            _container.RegisterType<ISatalliteMapViewModel, SatalliteMapViewModel>();
         }
     }
 }

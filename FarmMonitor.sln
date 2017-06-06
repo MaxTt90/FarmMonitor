@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmMonitor.DAL", "Data\Far
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmMonitor.Model", "Data\FarmMonitor.Model\FarmMonitor.Model.csproj", "{BDF37282-9CED-454E-9314-20FC74AA6CF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{34F8234F-4180-43D7-BDA5-3DCD561DDD4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{BDF37282-9CED-454E-9314-20FC74AA6CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDF37282-9CED-454E-9314-20FC74AA6CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDF37282-9CED-454E-9314-20FC74AA6CF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34F8234F-4180-43D7-BDA5-3DCD561DDD4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F8234F-4180-43D7-BDA5-3DCD561DDD4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F8234F-4180-43D7-BDA5-3DCD561DDD4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F8234F-4180-43D7-BDA5-3DCD561DDD4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,5 +80,6 @@ Global
 		{2642A126-7438-4875-840C-FC8F3F48D32B} = {705F296A-1B83-4B42-84C3-0DE0914F1C14}
 		{C7BE71A4-33FE-408A-8C34-7E001B14DDCF} = {705F296A-1B83-4B42-84C3-0DE0914F1C14}
 		{BDF37282-9CED-454E-9314-20FC74AA6CF6} = {705F296A-1B83-4B42-84C3-0DE0914F1C14}
+		{34F8234F-4180-43D7-BDA5-3DCD561DDD4E} = {B75C6573-C96E-4064-9CE3-E78A53B59886}
 	EndGlobalSection
 EndGlobal
