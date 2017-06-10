@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DashboardModule.ViewModels
+namespace PresentationModule.ViewModels
 {
-    public interface IDashboardViewModel
+    public interface IChartViewModel
     {
     }
 }

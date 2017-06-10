@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FarmMonitor.Services
+namespace PresentationModule.Services
 {
     public interface ILoginService
     {

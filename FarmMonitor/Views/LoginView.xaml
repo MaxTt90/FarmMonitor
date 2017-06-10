@@ -25,7 +25,9 @@
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Username:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Name="UserNameTextBox" Margin="5" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="10"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Password:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Name="PasswordTextBox" Margin="5" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Height="10"/>
+        <PasswordBox Name="PasswordTextBox" Margin="5" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Height="10" 
+                     mahApp:TextBoxHelper.UseFloatingWatermark="True" 
+                     Style="{StaticResource MetroButtonRevealedPasswordBox}"/>
         <Button Margin="5" Grid.Row="3" Grid.Column="1" Content="Ok" Click="OnOkayClicked"/>
         <Button Margin="5" Grid.Row="3" Grid.Column="2" Content="Cancel" Click="OnCancelClicked"/>
     </Grid>

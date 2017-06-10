@@ -7,7 +7,7 @@ using FarmMonitor.Model;
 using FarmMonitor.BLL;
 using FarmMonitor.Infrastructure.Utilities;
 
-namespace FarmMonitor.Services
+namespace PresentationModule.Services
 {
     public class LoginService : ILoginService
     {

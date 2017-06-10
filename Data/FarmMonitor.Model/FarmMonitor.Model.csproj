@@ -61,6 +61,7 @@
     <Compile Include="Orchard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sensor.cs" />
+    <Compile Include="SensorDataModel.cs" />
     <Compile Include="SysCity.cs" />
     <Compile Include="SysRightInfo.cs" />
     <Compile Include="SysRoleInfo.cs" />

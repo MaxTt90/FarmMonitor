@@ -121,8 +121,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Services\ILoginService.cs" />
-    <Compile Include="Services\LoginService.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -180,6 +178,10 @@
     <ProjectReference Include="..\NavigationModule\NavigationModule.csproj">
       <Project>{2b4a802f-78c2-49ce-8841-d758918e91c7}</Project>
       <Name>NavigationModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PresentationModule\PresentationModule.csproj">
+      <Project>{0bdd0125-80d0-44a9-b751-7dd00229dd47}</Project>
+      <Name>PresentationModule</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimeLineModule\TimeLineModule.csproj">
       <Project>{553a5aee-f4fb-47c1-a2bb-7c6621d1e023}</Project>

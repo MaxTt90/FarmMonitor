@@ -60,8 +60,11 @@ namespace FarmMonitor.Model
         {
             get{ return _data; }
             set{ _data = value; }
-        }    
-        
-		#endregion
-	}
+        }
+
+        #endregion
+
+        //[ForeignKey("DataId")]
+        //public virtual DataHeader DataHeader { get; set; }
+    }
 }

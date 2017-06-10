@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DashboardModule.ViewModels
+namespace DashboardModule.Services
 {
-    public interface IDashboardViewModel
+    public class SensorDataProvider
     {
+
     }
 }

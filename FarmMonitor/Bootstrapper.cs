@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Prism.Modularity;
-using FarmMonitor.Services;
 using Microsoft.Practices.Unity;
 using FarmMonitor.ViewModels;
+using PresentationModule.Services;
 
 namespace FarmMonitor
 {
