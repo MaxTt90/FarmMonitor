@@ -1,7 +1,7 @@
-﻿using FarmMonitor.Services;
-using MahApps.Metro.Controls;
+﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Practices.Unity;
+using PresentationModule.Services;
 using System.Windows;
 
 namespace FarmMonitor.Views
@@ -35,7 +35,7 @@ namespace FarmMonitor.Views
         {
             if (_loginService != null)
             {
-                var loginUser = _loginService.Login(UserNameTextBox.Text.Trim(), PasswordTextBox.Text.Trim());
+                var loginUser = _loginService.Login(UserNameTextBox.Text.Trim(), PasswordTextBox.Password.Trim());
                 if (loginUser != null)
                 {
                     DialogResult = true;

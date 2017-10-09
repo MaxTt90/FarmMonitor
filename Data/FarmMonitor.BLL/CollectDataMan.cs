@@ -82,13 +82,17 @@ namespace FarmMonitor.BLL
             {
             strSql.Append(" and collect_data.sensor_id=" + sensor);
             }
-            strSql.Append(" order by data_header.time desc limit 1000");
+            strSql.Append(" order by data_header.time desc limit 100000");
             var ds = DbHelperMySQL.Query(strSql.ToString());
             return ds;
         }
+        public List<SensorDataModel> SearchList(int userId, DateTime timeStart, DateTime timeEnd, int collector = 0, int sensor = 0)
+        {
+            var dataset = SearchAllByUserId(userId, timeStart, timeEnd, collector, sensor);
+            return DbHelperMySQL.DataSetToIList<SensorDataModel>(dataset, 0).ToList();
+        }
 
-       
-	    public List<CollectData> ConvertToList(DataSet ds)
+        public List<CollectData> ConvertToList(DataSet ds)
 	    {
 	        List<CollectData> list = DbHelperMySQL.DataSetToIList<CollectData>(ds, 0).ToList();
 	        return list;

@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls.Dialogs;
-using FarmMonitor.Services;
+using PresentationModule.Services;
 
 namespace FarmMonitor.Views
 {

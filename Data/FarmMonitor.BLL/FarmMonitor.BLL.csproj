@@ -72,6 +72,7 @@
     <Compile Include="CollectorMan.cs" />
     <Compile Include="CollectDataMan.cs" />
     <Compile Include="DataHeaderMan.cs" />
+    <Compile Include="Interfaces\ISysUserInfoMan.cs" />
     <Compile Include="LogTrackMan.cs" />
     <Compile Include="OrchardMan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

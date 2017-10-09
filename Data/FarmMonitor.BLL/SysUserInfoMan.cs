@@ -8,13 +8,14 @@ using System.Data.SqlClient;
 using FarmMonitor.DAL;
 using FarmMonitor.Model;
 using System.Linq.Expressions;
+using FarmMonitor.BLL.Interfaces;
 
 namespace FarmMonitor.BLL
 {
     //SysUserInfo
-    public class SysUserInfoMan
+    public class SysUserInfoMan : ISysUserInfoMan
     {
-        	    private string dbContextType = "";
+        private string dbContextType = "";
         private CustomDbContext _db = null;
         /// <summary>
         /// 构造函数,同一线程中使用相同的DBContext
@@ -82,13 +83,11 @@ namespace FarmMonitor.BLL
             return db.SysUserInfos.Find(id);
         }
 
-        
-
         /// <summary>
         /// 获得所有用户
         /// </summary>
         /// created:dxh 2015-10-29 09:36:14
-        public IQueryable<SysUserInfo> GetAllUsers()
+        public IQueryable<SysUserInfo> GetAllValidUsers()
         {
             return db.SysUserInfos.Where(c => c.UserState !=UserStateEnum.删除);
         }
@@ -97,11 +96,10 @@ namespace FarmMonitor.BLL
         /// </summary>
         /// <param name="name">用户名</param>
         /// <returns></returns>
-        public SysUserInfo GetModelByUsername(string name)
+        public SysUserInfo GetModelByUserName(string name)
         {
             return db.SysUserInfos.FirstOrDefault(c => c.Name == name);
         }
-
 
         /// <summary>
         /// 分页获取数据
@@ -164,55 +162,17 @@ namespace FarmMonitor.BLL
             return n;
         }
 
-        public IQueryable<SysUserInfo> GetList()
+        public IQueryable<SysUserInfo> GetAllUsers()
         {
             return db.SysUserInfos;
         }
 
-
-        /// <summary>
-        /// 分页和根据条件查询的结果
-        /// </summary>   
-        /// Author zhangbo update fredJiang update zhangsonghe
-        /// CreateTime 2016-01-27 16:55
-        public List<SysUserInfo> GetListByPage(string name,string mobile, int pageSize, int pageIndex, out int sum, out int totalCount)
-        {
-            sum = 0;
-            totalCount=0;
-            return new List<SysUserInfo>();
-            //var predicate =  PredicateBuilder.True<SysUserInfo>();
-            //predicate = predicate.And(w => w.UserState == UserStateEnum.在职);
-          
-            //if (!string.IsNullOrEmpty(name))
-            //{
-            //    predicate = predicate.And(w => w.Name.Contains(name));                
-            //}
-            //if (!string.IsNullOrEmpty(mobile))
-            //{
-            //    predicate = predicate.And(w => w.Mobile.Contains(mobile));
-            //}
-
-            //var tempList = db.SysUserInfos.Where(predicate);
-
-            //totalCount = tempList.Count();
-            //if (totalCount % pageSize == 0)
-            //{
-            //    sum = totalCount / pageSize;
-            //}
-            //else
-            //{
-            //    sum = totalCount / pageSize + 1;
-            //}
-            //tempList = tempList.OrderByDescending(m => m.ID).Skip((pageIndex - 1) * pageSize).Take(pageSize);
-            //return tempList.ToList();
-
-        }
         /// <summary>
         /// 返回该角色Id所有的用户
         /// </summary>
         /// <param name="roleId"></param>
         /// <returns></returns>
-        public List<SysUserInfo> GetByRole(List<int> roleId)
+        public List<SysUserInfo> GetUsersByRole(List<int> roleId)
         {
             var users = db.SysUserRoles.Where(x => roleId.Contains(x.RoleId)).Select(x=>x.SysUserInfo).ToList();
             return users;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DashboardModule.ViewModels;
+using FarmMonitor.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,24 @@ namespace DashboardModule.Views
         public DashboardView()
         {
             InitializeComponent();
+        }
+
+        public DashboardViewModel ViewModel
+        {
+            get
+            {
+                return DataContext as DashboardViewModel;
+            }
+        }
+
+        private void DataGrid_Selected(object sender, RoutedEventArgs e)
+        {
+            if(ViewModel != null)
+            {
+                ViewModel.SelectedSensorDataModel = (SensorDataModel)((DataGrid)sender).SelectedItem;
+            }
+
+            e.Handled = true;
         }
     }
 }
