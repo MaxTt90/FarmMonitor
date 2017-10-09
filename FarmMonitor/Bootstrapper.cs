@@ -6,12 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using FarmMonitor.BLL;
+using FarmMonitor.BLL.Interfaces;
 using Prism.Modularity;
 using Microsoft.Practices.Unity;
 using FarmMonitor.ViewModels;
 using PresentationModule.Services;
 
-namespace FarmMonitor
+namespace FarmMonitor.Desktop
 {
     public class Bootstrapper : UnityBootstrapper
     {
@@ -40,6 +42,7 @@ namespace FarmMonitor
         {
             base.ConfigureContainer();
             Container.RegisterType<ILoginService, LoginService>(new ContainerControlledLifetimeManager());
+            //Container.RegisterType<ISysUserInfoMan, SysUserInfoMan>(new ContainerControlledLifetimeManager());
         }
     }
 }

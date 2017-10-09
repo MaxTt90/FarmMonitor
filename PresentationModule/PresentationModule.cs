@@ -1,4 +1,7 @@
-﻿using Microsoft.Practices.Unity;
+﻿using FarmMonitor.BLL;
+using FarmMonitor.BLL.Interfaces;
+using FarmMonitor.Model;
+using Microsoft.Practices.Unity;
 using PresentationModule.ViewModels;
 using Prism.Modularity;
 using Prism.Regions;
@@ -19,6 +22,7 @@ namespace PresentationModule
         public void Initialize()
         {
             _container.RegisterType<IChartViewModel, ChartViewModel>();
+            _container.RegisterType<ISysUserInfoMan, SysUserInfoMan>();
         }
     }
 }
