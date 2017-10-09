@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FarmMonitor.ViewModels
+namespace FarmMonitor.Desktop.ViewModels
 {
     public class ShellViewModel : BindableBase
     {

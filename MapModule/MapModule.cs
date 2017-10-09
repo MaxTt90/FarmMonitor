@@ -1,18 +1,21 @@
-﻿using FarmMonitor.BLL;
-using FarmMonitor.Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FarmMonitor.Infrastructure;
 using Microsoft.Practices.Unity;
-using PresentationModule.ViewModels;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace PresentationModule
+namespace MapModule
 {
-    public class PresentationModule : IModule
+    public class MapModule : IModule
     {
         private readonly IUnityContainer _container;
         private readonly IRegionManager _regionManager;
 
-        public PresentationModule(IUnityContainer container, IRegionManager regionManager)
+        public MapModule(IUnityContainer container, IRegionManager regionManager)
         {
             _container = container;
             _regionManager = regionManager;
@@ -20,7 +23,6 @@ namespace PresentationModule
 
         public void Initialize()
         {
-            _container.RegisterType<IChartViewModel, ChartViewModel>();
         }
     }
 }

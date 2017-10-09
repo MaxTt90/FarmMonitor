@@ -7,6 +7,7 @@
              xmlns:inf="clr-namespace:FarmMonitor.Infrastructure;assembly=FarmMonitor.Infrastructure"
              xmlns:dashboardviews="clr-namespace:DashboardModule.Views;assembly=DashboardModule"
              xmlns:timelineviews="clr-namespace:TimeLineModule.Views;assembly=TimeLineModule"
+             xmlns:mapviews="clr-namespace:MapModule.Views;assembly=MapModule"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
@@ -30,6 +31,7 @@
             </RichTextBox>
 
             <Button Margin="2" Content="Dashboard" Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type dashboardviews:DashboardView}" Background="AntiqueWhite"/>
+            <Button Margin="2" Content="Map" Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type mapviews:MapView}" Background="AntiqueWhite"/>
             <Button Margin="2" Content="TimeLine"  Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type timelineviews:TimeLineView}" Background="AntiqueWhite"/>
             <Button Margin="2" Content="Argo Operations"/>
             <Button Margin="2" Content="Scout Reports"/>

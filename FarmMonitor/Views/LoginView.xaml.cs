@@ -3,13 +3,14 @@ using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Practices.Unity;
 using PresentationModule.Services;
 using System.Windows;
+using Elekta.Desktop.GuiComponents.Controls;
 
-namespace FarmMonitor.Views
+namespace FarmMonitor.Desktop.Views
 {
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : MetroWindow
+    public partial class LoginView : ApplicationWindow
     {
         private ILoginService _loginService;
 
@@ -43,14 +44,15 @@ namespace FarmMonitor.Views
                 }
                 else
                 {
-                    var metroDialogSettings = new MetroDialogSettings
-                            {
-                                MaximumBodyHeight = 70,
-                                DialogMessageFontSize = 12,
-                                DialogTitleFontSize = 20
-                            };
+                    //TODO handle invalid login
+                    //var metroDialogSettings = new MetroDialogSettings
+                    //        {
+                    //            MaximumBodyHeight = 70,
+                    //            DialogMessageFontSize = 12,
+                    //            DialogTitleFontSize = 20
+                    //        };
 
-                    await this.ShowMessageAsync("Error", "Invalid user name and password!", MessageDialogStyle.Affirmative, metroDialogSettings);
+                    //await this.ShowMessageAsync("Error", "Invalid user name and password!", MessageDialogStyle.Affirmative, metroDialogSettings);
                 }
             }
         }

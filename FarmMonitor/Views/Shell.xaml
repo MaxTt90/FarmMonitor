@@ -1,18 +1,21 @@
-﻿<mahApp:MetroWindow x:Class="FarmMonitor.Views.Shell"
+﻿<controls:ApplicationWindow x:Class="FarmMonitor.Desktop.Views.Shell"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:prism="http://prismlibrary.com/"
-        xmlns:mahApp="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:inf="clr-namespace:FarmMonitor.Infrastructure;assembly=FarmMonitor.Infrastructure"
         xmlns:converter="clr-namespace:FarmMonitor.Infrastructure.Converters;assembly=FarmMonitor.Infrastructure"
+        xmlns:controls="clr-namespace:Elekta.Desktop.GuiComponents.Controls;assembly=Elekta.Desktop.GuiComponents"
         mc:Ignorable="d"
         Title="Farm Monitor" 
+        ApplicationWindowIcon="{DynamicResource ApplicationIcon}"
         Width="960"
         Height="600" 
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
+        WindowTitleForegroundBrush="Azure"
+        IsClinicallyReleased="True"
         prism:ViewModelLocator.AutoWireViewModel="True">
 
     <Window.Resources>
@@ -26,7 +29,7 @@
                 <MenuItem Header="Navigation" IsCheckable="True" IsChecked="{Binding IsNavigationChecked}"/>
             </MenuItem>
             <MenuItem Header="Options">
-                <MenuItem Click="OnAccountClicked" Header="Account"/>
+                <MenuItem Header="Account"/>
                 <Separator />
                 <MenuItem Header="Help"></MenuItem>
                 <MenuItem Header="About"></MenuItem>
@@ -36,4 +39,4 @@
         <ContentControl DockPanel.Dock="Left" Width="250" Name="NavigationRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.NavigationRegion}" Visibility="{Binding IsNavigationChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         <ContentControl DockPanel.Dock="Right" Name="WorkspaceRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.WorkspaceRegion}"/>
     </DockPanel>
-</mahApp:MetroWindow>
+</controls:ApplicationWindow>

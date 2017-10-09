@@ -43,7 +43,7 @@ namespace DashboardModule.ViewModels
                 MarkerType = MarkerType.Circle,
                 MarkerFill = OxyColors.DarkRed,
                 MarkerSize = 3,
-                Color = OxyColors.Red,
+                Color = OxyColors.Green,
                 TrackerFormatString = "{0}\n{1}: {2:F}\n{3}: {4:0.####}"
             };
 
@@ -67,8 +67,8 @@ namespace DashboardModule.ViewModels
 
         public void UpdateChart()
         {
-            this.PlotModel.InvalidatePlot(true);
-            this.PlotModel.ResetAllAxes();
+            PlotModel.InvalidatePlot(true);
+            PlotModel.ResetAllAxes();
         }
 
         public bool IsMatchedWithSensorDataModel(SensorDataModel sensorDataModel)

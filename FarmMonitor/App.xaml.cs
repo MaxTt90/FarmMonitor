@@ -1,5 +1,4 @@
-﻿using FarmMonitor.ViewModels;
-using FarmMonitor.Views;
+﻿using FarmMonitor.Desktop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Elekta.Desktop.GuiComponents.Controls;
+using FarmMonitor.Desktop.Views;
 
 namespace FarmMonitor.Desktop
 {
@@ -23,6 +24,7 @@ namespace FarmMonitor.Desktop
 
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
+#if !DEBUG
             // attempt to log in.
             var loginWindow = new LoginView(bootstrapper.Container);
             bool? logonResult = loginWindow.ShowDialog();
@@ -31,7 +33,9 @@ namespace FarmMonitor.Desktop
             {
                 bootstrapper.Show();
             }
-
+#else
+            bootstrapper.Show();
+#endif
             ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
     }

@@ -1,5 +1,4 @@
-﻿using FarmMonitor.Views;
-using Prism.Unity;
+﻿using Prism.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using FarmMonitor.BLL;
-using FarmMonitor.BLL.Interfaces;
+using FarmMonitor.Desktop.Views;
 using Prism.Modularity;
 using Microsoft.Practices.Unity;
-using FarmMonitor.ViewModels;
+using FarmMonitor.Desktop.ViewModels;
 using PresentationModule.Services;
 
 namespace FarmMonitor.Desktop
@@ -42,7 +41,6 @@ namespace FarmMonitor.Desktop
         {
             base.ConfigureContainer();
             Container.RegisterType<ILoginService, LoginService>(new ContainerControlledLifetimeManager());
-            //Container.RegisterType<ISysUserInfoMan, SysUserInfoMan>(new ContainerControlledLifetimeManager());
         }
     }
 }
