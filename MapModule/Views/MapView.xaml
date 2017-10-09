@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="MapModule.Views.MapView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MapModule.Views"
+             xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+             xmlns:localControls="clr-namespace:MapModule.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <TextBlock Text="HelloMap"></TextBlock>
+        <GroupBox Header="Map" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <gmap:GMapControl x:Name="MapControl" Zoom="13" MaxZoom="24" MinZoom="1" />
+        </GroupBox>
+    </StackPanel>
+</UserControl>

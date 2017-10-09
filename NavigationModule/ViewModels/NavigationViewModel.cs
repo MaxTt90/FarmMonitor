@@ -17,6 +17,7 @@ namespace NavigationModule.ViewModels
         {
             _regionManager = regionManager;
             DashboardNavigateCommand = new DelegateCommand<object>(Navigate);
+            MapNavigateCommand = new DelegateCommand<object>(Navigate);
             TimeLineNavigateCommand = new DelegateCommand<object>(Navigate);
             ApplicationCommands.NavigatieCommand.RegisterCommand(DashboardNavigateCommand);
         }
@@ -24,6 +25,8 @@ namespace NavigationModule.ViewModels
         public DelegateCommand<object> DashboardNavigateCommand { get; private set; }
 
         public DelegateCommand<object> TimeLineNavigateCommand { get; private set; }
+
+        public DelegateCommand<object> MapNavigateCommand { get; private set; }
 
         private void Navigate(object navigatePath)
         {

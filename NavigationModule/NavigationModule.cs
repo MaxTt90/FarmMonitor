@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DashboardModule.ViewModels;
+using MapModule.Views;
 using TimeLineModule.ViewModels;
 using TimeLineModule.Views;
 
@@ -33,6 +34,7 @@ namespace NavigationModule
 
             _container.RegisterType<object, DashboardView>(typeof(DashboardView).FullName);
             _container.RegisterType<object, TimeLineView>(typeof(TimeLineView).FullName);
+            _container.RegisterType<object, MapView>(typeof (MapView).FullName);
             _regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(NavigationView));
         }
     }

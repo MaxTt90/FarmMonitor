@@ -8,12 +8,11 @@ using System.Data.SqlClient;
 using FarmMonitor.DAL;
 using FarmMonitor.Model;
 using System.Linq.Expressions;
-using FarmMonitor.BLL.Interfaces;
 
 namespace FarmMonitor.BLL
 {
     //SysUserInfo
-    public class SysUserInfoMan : ISysUserInfoMan
+    public class SysUserInfoMan
     {
         private string dbContextType = "";
         private CustomDbContext _db = null;
