@@ -9,9 +9,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
-        <TextBlock Text="HelloMap"></TextBlock>
-        <GroupBox Header="Map" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <gmap:GMapControl x:Name="MapControl" Zoom="13" MaxZoom="24" MinZoom="1" />
-        </GroupBox>
+        <TextBlock Text="HelloMap"/>
+        <TabControl>
+            <TabItem Header="AMap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <gmap:GMapControl x:Name="MapControl" Zoom="13" MaxZoom="24" MinZoom="1" Height="800" Width="1200"/>
+            </TabItem>
+        </TabControl>
     </StackPanel>
 </UserControl>

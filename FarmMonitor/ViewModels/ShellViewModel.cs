@@ -13,7 +13,7 @@ namespace FarmMonitor.Desktop.ViewModels
 
         public ShellViewModel()
         {
-            _isNavigationChecked = false;
+            _isNavigationChecked = true;
         }
 
         public bool IsNavigationChecked

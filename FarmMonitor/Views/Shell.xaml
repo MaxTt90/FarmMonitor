@@ -31,6 +31,8 @@
             <MenuItem Header="Options">
                 <MenuItem Header="Account"/>
                 <Separator />
+                <MenuItem Header="Sensor Configurations"/>
+                <Separator />
                 <MenuItem Header="Help"></MenuItem>
                 <MenuItem Header="About"></MenuItem>
                 <!--<MenuItem Click="ShowLoginDialogOnlyPassword" Header="ShowLoginDialogOnlyPassword"/>-->
