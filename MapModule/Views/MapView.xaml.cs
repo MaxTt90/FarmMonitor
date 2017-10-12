@@ -31,9 +31,7 @@ namespace MapModule.Views
         {
             InitializeComponent();
             MapControl.Manager.Mode = AccessMode.ServerAndCache;
-            //MessageBox.Show("No internet connection avaible, going to CacheOnly mode.", "GMap.NET Demo",
-            //    MessageBoxButton.OK, MessageBoxImage.Warning);
-            //MapControl.MapProvider = AMapProvider.Instance; //高德地图
+
             MapControl.MapProvider = AMapProvider.Instance;
             MapControl.MinZoom = 2; //最小缩放
             MapControl.MaxZoom = 17; //最大缩放
