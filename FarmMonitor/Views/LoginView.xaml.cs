@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using System;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Practices.Unity;
 using PresentationModule.Services;
@@ -10,9 +11,9 @@ namespace FarmMonitor.Desktop.Views
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : ApplicationWindow
+    public partial class LoginView : DialogWindow
     {
-        private ILoginService _loginService;
+        private readonly ILoginService _loginService;
 
         public LoginView(IUnityContainer container)
         {
@@ -32,7 +33,7 @@ namespace FarmMonitor.Desktop.Views
             e.Handled = true;
         }
 
-        private async void ValidateUser()
+        private void ValidateUser()
         {
             if (_loginService != null)
             {
@@ -45,14 +46,7 @@ namespace FarmMonitor.Desktop.Views
                 else
                 {
                     //TODO handle invalid login
-                    //var metroDialogSettings = new MetroDialogSettings
-                    //        {
-                    //            MaximumBodyHeight = 70,
-                    //            DialogMessageFontSize = 12,
-                    //            DialogTitleFontSize = 20
-                    //        };
-
-                    //await this.ShowMessageAsync("Error", "Invalid user name and password!", MessageDialogStyle.Affirmative, metroDialogSettings);
+                    throw new Exception("Invalid login.");
                 }
             }
         }

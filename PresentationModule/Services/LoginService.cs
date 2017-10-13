@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using FarmMonitor.Model;
 using FarmMonitor.BLL;
 using FarmMonitor.Infrastructure.Utilities;
+using FarmMonitor.DAL;
 
 namespace PresentationModule.Services
 {

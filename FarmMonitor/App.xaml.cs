@@ -27,9 +27,9 @@ namespace FarmMonitor.Desktop
 #if !DEBUG
             // attempt to log in.
             var loginWindow = new LoginView(bootstrapper.Container);
-            bool? logonResult = loginWindow.ShowDialog();
+            bool? loginResult = loginWindow.ShowDialog();
 
-            if (logonResult.HasValue && logonResult.Value)
+            if (loginResult.HasValue && loginResult.Value)
             {
                 bootstrapper.Show();
             }
