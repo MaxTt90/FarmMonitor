@@ -39,6 +39,8 @@ namespace FarmMonitor.Desktop.ViewModels
 
         private void Initialize()
         {
+            StaffName = _loginService?.CurrentUser == null ?
+                "No User Logged in." :
                 _loginService.CurrentUser.Name;
         }
     }
