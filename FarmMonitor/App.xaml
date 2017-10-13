@@ -13,6 +13,7 @@
                     Source="pack://application:,,,/Elekta.Desktop.GuiComponents;component/Colors/Colors.xaml" />
                 <ResourceDictionary
                     Source="pack://application:,,,/Elekta.Desktop.GuiComponents;component/Colors/ColorThemes/ColorThemeLight.xaml" />
+                <ResourceDictionary Source="/PresentationModule;component/AppResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="ApplicationIcon"

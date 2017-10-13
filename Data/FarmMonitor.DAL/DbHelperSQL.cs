@@ -120,7 +120,7 @@ namespace FarmMonitor.DAL
                     catch (MySql.Data.MySqlClient.MySqlException e)
                     {
                         connection.Close();
-                        throw e;
+                        throw;
                     }
                 }
             }
