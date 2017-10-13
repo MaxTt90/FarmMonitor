@@ -16,6 +16,9 @@
         WindowState="Maximized"
         WindowTitleForegroundBrush="Azure"
         IsClinicallyReleased="True"
+        DisplayStaffName="True"
+        StaffName="{Binding StaffName}" 
+        WinStateButtonsMode="MinMaxClose"
         prism:ViewModelLocator.AutoWireViewModel="True">
 
     <Window.Resources>
@@ -32,6 +35,7 @@
                 <MenuItem Header="Account"/>
                 <Separator />
                 <MenuItem Header="Sensor Configurations"/>
+                <MenuItem Header="DataBase Configurations"/>
                 <Separator />
                 <MenuItem Header="Help"></MenuItem>
                 <MenuItem Header="About"></MenuItem>

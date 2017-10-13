@@ -136,6 +136,10 @@
       <Project>{2642A126-7438-4875-840C-FC8F3F48D32B}</Project>
       <Name>FarmMonitor.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Data\FarmMonitor.DAL\FarmMonitor.DAL.csproj">
+      <Project>{C7BE71A4-33FE-408A-8C34-7E001B14DDCF}</Project>
+      <Name>FarmMonitor.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\FarmMonitor.Model\FarmMonitor.Model.csproj">
       <Project>{BDF37282-9CED-454E-9314-20FC74AA6CF6}</Project>
       <Name>FarmMonitor.Model</Name>

@@ -6,6 +6,7 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data.Common;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using MySql.Data.MySqlClient;
@@ -23,6 +24,24 @@ namespace FarmMonitor.DAL
         public DbHelperMySQL()
         {
         }
+
+        public static bool CheckDbConnection()
+        {
+            try
+            {
+                using (var connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    return true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
         #region 公用方法
         /// <summary>
         /// 得到最大值
