@@ -331,3 +331,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 .vs/FarmMonitor/v14/.suo
+*.suo
