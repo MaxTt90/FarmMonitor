@@ -9,6 +9,7 @@
              xmlns:timelineviews="clr-namespace:TimeLineModule.Views;assembly=TimeLineModule"
              xmlns:mapviews="clr-namespace:MapModule.Views;assembly=MapModule"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:monitorsviews="clr-namespace:MonitorsModule.Views;assembly=MonitorsModule"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -21,18 +22,18 @@
                         IsReadOnly="True">
                 <FlowDocument>
                     <Paragraph>
-                        <Hyperlink NavigateUri="https://www.baidu.com">
-                            <Run Text="Baidu" />
+                        <Hyperlink Name="Hyperlink1" NavigateUri="http://xinhuiedu.com/" RequestNavigate="Hyperlink_OnRequestNavigate">
+                            <Run Text="保定市心慧教育技术装备有限公司" />
                         </Hyperlink>
-                        <LineBreak />
-                        <Run>Bacon ipsum dolor sit amet venison drumstick meatball ham hock corned beef. Strip steak bacon andouille pig beef short ribs.</Run>
+                        <Run>, 中国物理学会、中国教育科学院、中国教育报刊社、人民教育出版社和教育科学出版社联合授权。</Run>
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
 
             <Button Margin="2" Content="Dashboard" Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type dashboardviews:DashboardView}" Background="AntiqueWhite"/>
             <Button Margin="2" Content="Map" Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type mapviews:MapView}" Background="AntiqueWhite"/>
-            <Button Margin="2" Content="TimeLine"  Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type timelineviews:TimeLineView}" Background="AntiqueWhite"/>
+            <Button Margin="2" Content="Timeline"  Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type timelineviews:TimeLineView}" Background="AntiqueWhite"/>
+            <Button Margin="2" Content="Monitors" Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type monitorsviews:MonitorsView}" Background="AntiqueWhite"/>
             <Button Margin="2" Content="Argo Operations"/>
             <Button Margin="2" Content="Scout Reports"/>
             <Button Margin="2" Content="Notes"/>

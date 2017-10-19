@@ -14,6 +14,7 @@ using DashboardModule.ViewModels;
 using MapModule.Views;
 using TimeLineModule.ViewModels;
 using TimeLineModule.Views;
+using MonitorsModule.Views;
 
 namespace NavigationModule
 {
@@ -35,6 +36,7 @@ namespace NavigationModule
             _container.RegisterType<object, DashboardView>(typeof(DashboardView).FullName);
             _container.RegisterType<object, TimeLineView>(typeof(TimeLineView).FullName);
             _container.RegisterType<object, MapView>(typeof (MapView).FullName);
+            _container.RegisterType<object, MonitorsView>(typeof (MonitorsView).FullName);
             _regionManager.RegisterViewWithRegion(RegionNames.NavigationRegion, typeof(NavigationView));
         }
     }

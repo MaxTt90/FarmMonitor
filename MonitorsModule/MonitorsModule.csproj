@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2B4A802F-78C2-49CE-8841-D758918E91C7}</ProjectGuid>
+    <ProjectGuid>{59819293-9590-435E-A15B-26E2A99118DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NavigationModule</RootNamespace>
-    <AssemblyName>NavigationModule</AssemblyName>
+    <RootNamespace>MonitorsModule</RootNamespace>
+    <AssemblyName>MonitorsModule</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,30 +29,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elekta.Desktop.GuiComponents, Version=0.32.9.516, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Elekta.DesktopStyleLibrary.develop.0.32.9.516\lib\net452\Elekta.Desktop.GuiComponents.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -95,45 +72,28 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NavigationModule.cs" />
+    <Compile Include="MonitorsModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\INavigationViewModel.cs" />
-    <Compile Include="ViewModels\NavigationViewModel.cs" />
-    <Compile Include="Views\NavigationView.xaml.cs">
-      <DependentUpon>NavigationView.xaml</DependentUpon>
+    <Compile Include="ViewModels\MonitorsViewModel.cs" />
+    <Compile Include="Views\MonitorsDisplayView.xaml.cs">
+      <DependentUpon>MonitorsDisplayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MonitorsView.xaml.cs">
+      <DependentUpon>MonitorsView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\NavigationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DashboardModule\DashboardModule.csproj">
-      <Project>{cc886b79-3cc6-4583-aabe-a31a9e87b11f}</Project>
-      <Name>DashboardModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FarmMonitor.Infrastructure\FarmMonitor.Infrastructure.csproj">
-      <Project>{8AF0DD1F-C302-4A5B-892C-9E93B42AD227}</Project>
-      <Name>FarmMonitor.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MapModule\MapModule.csproj">
-      <Project>{077b4c6c-af61-4151-885c-7500c0faf8c7}</Project>
-      <Name>MapModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MonitorsModule\MonitorsModule.csproj">
-      <Project>{59819293-9590-435E-A15B-26E2A99118DE}</Project>
-      <Name>MonitorsModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TimeLineModule\TimeLineModule.csproj">
-      <Project>{553a5aee-f4fb-47c1-a2bb-7c6621d1e023}</Project>
-      <Name>TimeLineModule</Name>
-    </ProjectReference>
+    <Page Include="Views\MonitorsDisplayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MonitorsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
