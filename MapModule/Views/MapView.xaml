@@ -5,15 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MapModule.Views"
              xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+             xmlns:prism="http://prismlibrary.com/"
              xmlns:localControls="clr-namespace:MapModule.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <TextBlock Text="HelloMap"/>
+             d:DesignHeight="300" d:DesignWidth="300" 
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel Orientation="Horizontal">
         <TabControl>
-            <TabItem Header="AMap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <gmap:GMapControl x:Name="MapControl" Zoom="13" MaxZoom="24" MinZoom="1" Height="800" Width="1200"/>
+            <TabItem Header="MapView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <gmap:GMapControl x:Name="MapControl" Zoom="13" MaxZoom="24" MinZoom="1" Height="800" Width="1200" MouseDown="MapControl_OnMouseDoubleClick"/>
             </TabItem>
         </TabControl>
+        <Slider x:Name="Slider" Orientation="Vertical"/>
     </StackPanel>
 </UserControl>
