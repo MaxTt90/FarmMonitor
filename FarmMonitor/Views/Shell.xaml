@@ -7,6 +7,9 @@
         xmlns:inf="clr-namespace:FarmMonitor.Infrastructure;assembly=FarmMonitor.Infrastructure"
         xmlns:converter="clr-namespace:FarmMonitor.Infrastructure.Converters;assembly=FarmMonitor.Infrastructure"
         xmlns:controls="clr-namespace:Elekta.Desktop.GuiComponents.Controls;assembly=Elekta.Desktop.GuiComponents"
+        xmlns:views="clr-namespace:FarmMonitor.Desktop.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:popupActions="clr-namespace:Elekta.Desktop.GuiComponents.PopupActions;assembly=Elekta.Desktop.GuiComponents"
         mc:Ignorable="d"
         Title="Farm Monitor" 
         ApplicationWindowIcon="{DynamicResource ApplicationIcon}"
@@ -25,7 +28,17 @@
         <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
 
-    <DockPanel LastChildFill="True">
+    <i:Interaction.Triggers>
+        <prism:InteractionRequestTrigger SourceObject="{Binding ShowAboutFarmMonitorRequest}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True">
+                <prism:PopupWindowAction.WindowContent>
+                    <views:AboutFarmMonitorView />
+                </prism:PopupWindowAction.WindowContent>
+            </prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
+     </i:Interaction.Triggers>
+
+        <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top" Margin="5">
             <MenuItem Header="Monitoring Center"/>
             <MenuItem Header="View">
@@ -38,12 +51,10 @@
                 <MenuItem Header="DataBase Configurations"/>
                 <Separator />
                 <MenuItem Header="Help"></MenuItem>
-                <MenuItem Header="About"></MenuItem>
+                <MenuItem Header="About" Command="{Binding ShowAboutFarmMonitorCommand}"></MenuItem>
                 <!--<MenuItem Click="ShowLoginDialogOnlyPassword" Header="ShowLoginDialogOnlyPassword"/>-->
             </MenuItem>
         </Menu>
-        <ContentControl DockPanel.Dock="Left" Width="250" Name="NavigationRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.NavigationRegion}" Visibility="{Binding IsNavigationChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <ContentControl DockPanel.Dock="Right" Name="WorkspaceRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.WorkspaceRegion}"/>
         <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
             <StatusBarItem>
                 <TextBlock>Ready</TextBlock>
@@ -52,5 +63,7 @@
                 <Separator />
             </StatusBarItem>
         </StatusBar>
+        <ContentControl DockPanel.Dock="Left" Width="250" Name="NavigationRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.NavigationRegion}" Visibility="{Binding IsNavigationChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <ContentControl DockPanel.Dock="Right" Name="WorkspaceRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.WorkspaceRegion}"/>
     </DockPanel>
 </controls:ApplicationWindow>

@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationCommands.cs" />
+    <Compile Include="ApplicationConstants.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\EqualsParameterConverter.cs" />
     <Compile Include="Converters\OneWayConverter.cs" />
