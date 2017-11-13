@@ -14,13 +14,14 @@
                 <ResourceDictionary
                     Source="pack://application:,,,/Elekta.Desktop.GuiComponents;component/Colors/ColorThemes/ColorThemeLight.xaml" />
                 <ResourceDictionary Source="/PresentationModule;component/AppResources.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="ApplicationIcon"
                    TargetType="{x:Type ContentControl}">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <ControlTemplate TargetType="{x:Type ContentControl}"> 
                             <Image Source="/Resources/FarmIcon.png" />
                         </ControlTemplate>
                     </Setter.Value>

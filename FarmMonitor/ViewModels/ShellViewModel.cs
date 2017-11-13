@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using PresentationModule.Services;
 using FarmMonitor.DAL;
+using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
+using System.Windows.Input;
 
 namespace FarmMonitor.Desktop.ViewModels
 {
@@ -21,7 +24,9 @@ namespace FarmMonitor.Desktop.ViewModels
         {
             _loginService = loginService;
             _isNavigationChecked = true;
-            
+
+            ShowAboutFarmMonitorRequest = new InteractionRequest<INotification>();
+
             Initialize();
         }
 
@@ -29,6 +34,13 @@ namespace FarmMonitor.Desktop.ViewModels
         {
             get { return _isNavigationChecked; }
             set { SetProperty(ref _isNavigationChecked, value); }
+        }
+
+        public InteractionRequest<INotification> ShowAboutFarmMonitorRequest { get; private set; }
+
+        public ICommand ShowAboutFarmMonitorCommand
+        {
+            get { return new DelegateCommand(ShowAboutFarmMonitorView); }
         }
 
         public string StaffName
@@ -42,6 +54,14 @@ namespace FarmMonitor.Desktop.ViewModels
             StaffName = _loginService?.CurrentUser == null ?
                 "No User Logged in." :
                 _loginService.CurrentUser.Name;
+        }
+
+        private void ShowAboutFarmMonitorView()
+        {
+            ShowAboutFarmMonitorRequest.Raise(new Notification
+            {
+                Title = "About"
+            });
         }
     }
 }

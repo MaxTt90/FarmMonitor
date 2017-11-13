@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using Elekta.Desktop.GuiComponents.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using PresentationModule.Services;
+using Microsoft.Practices.Unity;
 
 namespace FarmMonitor.Desktop.Views
 {
@@ -27,13 +28,16 @@ namespace FarmMonitor.Desktop.Views
     public partial class Shell : ApplicationWindow
     {
         private ILoginService _loginService;
+        private IUnityContainer _unityContainer;
 
-        public Shell()
+        public Shell(IUnityContainer unityContaintor, ILoginService loginService)
         {
             InitializeComponent();
+            _unityContainer = unityContaintor;
+            _loginService = loginService;
         }
 
-        private async void OnAccountClicked(object sender, RoutedEventArgs e)
+        private void OnAccountClicked(object sender, RoutedEventArgs e)
         {
             if (_loginService == null)
             {
@@ -43,12 +47,22 @@ namespace FarmMonitor.Desktop.Views
             // Do not have a user
             if (_loginService.CurrentUser == null)
             {
-                
-
+                // attempt to log in.
+                var loginWindow = new LoginView(_unityContainer);
+                bool? loginResult = loginWindow.ShowDialog();
             }
-            // Already has a user.
+            // Already has a user, display messagebox.
             else
             {
+                var result = MessageBox.Show("Do you want to log out?", "Account", MessageBoxButton.OKCancel);
+                if(result == MessageBoxResult.OK)
+                {
+                    _loginService.Logout();
+                }
+                else
+                {
+                    return;
+                }
             }
 
         }
