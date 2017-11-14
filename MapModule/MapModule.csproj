@@ -141,6 +141,7 @@
     <Compile Include="Controls\AMapControl.cs" />
     <Compile Include="Controls\AMapProvider.cs" />
     <Compile Include="Controls\AMapProviderBase.cs" />
+    <Compile Include="Controls\AMapSateliteProvider.cs" />
     <Compile Include="MapModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MapViewModel.cs" />
