@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,9 +30,9 @@ namespace MapModule.Views
         public MapView()
         {
             InitializeComponent();
-            MapControl.Manager.Mode = AccessMode.ServerAndCache;
+            MapControl.Manager.Mode = AccessMode.ServerOnly;
 
-            MapControl.MapProvider = AMapProvider.Instance;
+            MapControl.MapProvider = AMapSateliteProvider.Instance;
             MapControl.MinZoom = 2; //最小缩放
             MapControl.MaxZoom = 17; //最大缩放
             MapControl.Zoom = 12; //当前缩放
@@ -70,6 +71,29 @@ namespace MapModule.Views
                     }
                 };
                 MapControl.Markers.Add(marker);
+            }
+        }
+
+        private void BtnNormalMode_OnClick(object sender, RoutedEventArgs e)
+        {
+            MapControl.MapProvider = AMapProvider.Instance;
+        }
+
+        private void BtnSateliteMode_OnClick(object sender, RoutedEventArgs e)
+        {
+            MapControl.MapProvider = AMapSateliteProvider.Instance;
+        }
+
+        private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MapControl.SetPositionByKeywords(TxtSearch.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid input address.");
+                Debug.WriteLine(ex.Message);
             }
         }
     }
