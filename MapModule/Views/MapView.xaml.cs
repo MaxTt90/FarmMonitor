@@ -33,8 +33,6 @@ namespace MapModule.Views
             MapControl.Manager.Mode = AccessMode.ServerOnly;
 
             MapControl.MapProvider = AMapSateliteProvider.Instance;
-            MapControl.MinZoom = 2; //最小缩放
-            MapControl.MaxZoom = 17; //最大缩放
             MapControl.Zoom = 12; //当前缩放
             MapControl.ShowCenter = false; //不显示中心十字点
             MapControl.DragButton = MouseButton.Left; //左键拖拽地图
@@ -84,7 +82,7 @@ namespace MapModule.Views
             MapControl.MapProvider = AMapSateliteProvider.Instance;
         }
 
-        private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
+        private void BtnGo_OnClick(object sender, RoutedEventArgs e)
         {
             try
             {
