@@ -62,7 +62,15 @@
             <StatusBarItem>
                 <Separator />
             </StatusBarItem>
+            <StatusBarItem x:Uid="StatusBarItem_2">
+                <!--  The ProgressBar should not have any margin here. To use the full height of the StatusBar  -->
+                <ProgressBar     Width="200" Height="15"
+                                 Margin="0"
+                                 IsIndeterminate="False" Maximum="100"
+                                 Value="33" />
+            </StatusBarItem>
         </StatusBar>
+            
         <ContentControl DockPanel.Dock="Left" Width="250" Name="NavigationRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.NavigationRegion}" Visibility="{Binding IsNavigationChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         <ContentControl DockPanel.Dock="Right" Name="WorkspaceRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.WorkspaceRegion}"/>
     </DockPanel>
