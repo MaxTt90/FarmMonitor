@@ -139,15 +139,7 @@ namespace FarmMonitor.BLL
             return db.SysUserInfos.FirstOrDefault(c => c.UserCode == userCode);
         }
 
-        /// <summary>
-        /// 根据openId查找用户
-        /// </summary> 
-        /// <returns></returns>
-        /// author:duanxianghai 2015-12-16 18:20:30
-        public SysUserInfo GetUserByOpenId(string openId)
-        {
-            return db.SysUserInfos.FirstOrDefault(c => c.OpenId == openId);
-        }
+        
 
         /// <summary>
         /// 获得一个可用的成员Id

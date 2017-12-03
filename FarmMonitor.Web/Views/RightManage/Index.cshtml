@@ -1,0 +1,537 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Scripts/ztree3.0/css/metroStyle/metroStyle.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="RM-header">
+            <div class="RM-left">
+                <div class="RM-left-text">权限管理</div>
+                <div class="dropdown">
+                    <a class="icon icon-add2" onclick="addNode(null)" title="新增顶级成员">+</a>
+                </div>
+                <a class="icon icon-search"></a>
+            </div>
+            <div class="Account-nav-text" style="margin-left: 20px;">
+                <a href="javascript:history.go(-1);location.reload();" class="carte-nav-btn btn-back" title="返回"></a>
+            </div>
+            <div class="RM-right">
+                <!--全部成员-->
+                <h2 class="page-title">全部成员</h2>
+            </div>
+        </div>
+        <div class="contact-box">
+            <div class="col-md-4">
+                <ul id="tree" class="ztree"></ul>
+            </div>
+            <div class="col-md-8" id="panel">
+                <div class="table-bordered">
+                    <div id="tr_add" class="table-tr">
+                        <div class="table-td">上级菜单</div>
+                        <div class="table-td"><input class="form-control" type="text" id="upMenu"></div>
+                    </div>
+                    <div id="tr_edit" class="table-tr" style="display: none" onclick="choseParent();">
+                        <div class="table-td">上级菜单</div>
+                        <div class="table-td"><span id="cc"></span></div>
+                    </div>
+                    <div class="table-tr">
+                        @*权限类型:1=菜单,2=权限*@
+                        <div class="table-td">权限类型</div>
+                        <div class="table-td">
+                            <select class="form-control" id="rightType">
+                                <option value="1">菜单</option>
+                                <option value="2">权限</option>
+                            </select>
+                        </div>
+                    </div>
+                    @*<div>
+                            <div>显示菜单</div>
+                            <div><input name="showMenu" type="checkbox" id="showMenu"></div>
+                        </div>*@
+                    <div class="table-tr">
+                        <div class="table-td">权限ID</div>
+                        <div class="table-td"><input class="form-control" type="text" disabled="disabled" id="roleroleid"></div>
+                    </div>
+
+                    <div class="table-tr">
+                        <div class="table-td">权限名称</div>
+                        <div class="table-td"><input class="form-control" type="text" id="rightName"></div>
+                    </div>
+                    <div class="table-tr">
+                        <div class="table-td">访问路径</div>
+                        <div class="table-td"><input class="form-control" type="text" id="rightPath"></div>
+                    </div>
+                    <div class="table-tr">
+                        <div class="table-td">权限说明</div>
+                        <div class="table-td"><input class="form-control" type="text" id="rightdesc"></div>
+                    </div>
+                    <div class="table-tr">
+                        <div class="table-td">权限图标</div>
+                        <div class="table-td"><input class="form-control" type="text" id="rightPic">
+                        </div>
+                    </div>
+                    <div class="table-tr">
+                        <div class="table-td">权限图标(选中状态)</div>
+                        <div class="table-td"><input class="form-control" type="text" id="rightPic2"></div>
+                    </div>
+                    <div class="table-tr">
+                        <div class="table-td">共用权限</div>
+                        <div class="table-td">
+                            <select class="form-control" id="commonRight">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                        @*<div class="table-td"><input class="form-control" name="commonRight" type="checkbox" id="commonRight"></div>*@
+                    </div>
+                    <div class="table-tr">
+                        <div class="table-td">允许重复</div>
+                        <div class="table-td">
+                            <select class="form-control" id="chongfu">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                        @*<div class="table-td"><input name="chongfu" class="form-control" type="checkbox" id="chongfu"></div>*@
+                    </div>
+                    <div class="UD-btn">
+                        <a class="c-btn btn-blue" id="btn_add" onclick="submitData()" style="display: block;">确定</a>
+                        <a class="c-btn btn-blue" onclick="updateData()" style="display: none;" id="btn_edit">修改</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/ztree3.0/js/jquery.ztree.all-3.5.min.js"></script>
+<script src="~/Scripts/MySelf/Custom.js"></script>
+<script src="~/Scripts/artDialog4/plugins/iframeTools.js"></script>
+
+<script>
+    var zTree;
+    var demoIframe;
+    var zNodes = @Html.Raw(ViewBag.TreeData.ToString());
+
+    function addHoverDom(treeId, treeNode) {
+        var sObj = $("#" + treeNode.tId + "_span");
+        if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0 ) {
+            return;
+        } else {
+            var addStr = "<span class='button add bs7a' title='新增' id='addBtn_" + treeNode.tId + "'></span>";;
+
+            addStr += "<span class='button remove bs7a' id='delBtn_" + treeNode.tId
+        + "' title='删除' '></span>";
+
+
+            addStr += "<span class='button edit bs7a' title='编辑' id='editBtn_" + treeNode.tId + "'></span>";
+            addStr += "<span class='small-icon i-up bs7a' title='上移' id='upBtn_" + treeNode.tId + "'></span>";
+            addStr += "<span class='small-icon i-down bs7a' title='下移' id='downBtn_" + treeNode.tId + "'></span>";
+
+
+            sObj.after(addStr);
+        }
+
+
+        var btnAdd = $("#addBtn_" + treeNode.tId);
+        if (btnAdd)
+            btnAdd.bind("click", function() {
+                // event.stopPropagation();
+                // zTree.addNodes(treeNode, { id: (1000 + Math.random()), pId: treeNode.id, name: "new node" + (1000 + Math.random()) });
+                addNode(treeNode);
+                return false;
+            });
+        var btnDel = $("#delBtn_" + treeNode.tId);
+        if (btnDel)
+            btnDel.bind("click", function() {
+
+                delNode(treeNode);
+                return false;
+            });
+        var btnEdit = $("#editBtn_" + treeNode.tId);
+        if (btnEdit)
+            btnEdit.bind("click", function() {
+
+                editNode(treeNode);
+                return false;
+            });
+        var btnUp = $("#upBtn_" + treeNode.tId);
+        if (btnUp)
+            btnUp.bind("click", function() {
+
+                upNode(treeNode);
+                return false;
+            });
+        var btnDown = $("#downBtn_" + treeNode.tId);
+        if (btnDown)
+            btnDown.bind("click", function(event) {
+                event.stopPropagation();
+                downNode(treeNode);
+            });
+    };
+
+    var optionNode = null;
+
+    function addNode(treeNode) {
+        initDiv();
+        $("#tr_add").show();
+        $("#tr_edit").hide();
+        if (treeNode) {
+            $("#upMenu").val(treeNode.name);
+        } else {
+            $("#upMenu").val('顶级');
+        }
+
+        $("#upMenu").attr("readonly", "readonly");
+        $("#panel").show();
+        $("#btn_add").show();
+        $("#btn_edit").hide();
+        optionNode = treeNode;
+    }
+
+    function delNode(treeNode) {
+        if (confirm("确定删除该节点？")) {
+            $.post("/rightmanage/DelRight", { id: treeNode.Id }, function(data) {
+                if (data.code == '1') {
+                    var treeObj = $.fn.zTree.getZTreeObj("tree");
+                    treeObj.removeNode(treeNode);
+                }
+                MyAlertDialog("",data.msg);
+            }, "json");
+        }
+
+    }
+
+    var parentNode = null;
+    var choseParentId = null;
+
+    function editNode(treeNode) {
+
+        $("#tr_add").hide();
+        $("#tr_edit").show();
+        $("#panel").show();
+        $("#btn_add").hide();
+        $("#btn_edit").show();
+        optionNode = treeNode;
+        var node = treeNode;
+        var zTree = $.fn.zTree.getZTreeObj("tree");
+
+        parentNode = zTree.getNodeByTId(node.parentTId);
+        if (!parentNode) {
+            // parentNode = treeNode;
+            choseParentId = 0;//没有父级
+            $("#cc").html('顶级');
+        } else {
+            choseParentId = parentNode.Id;
+            $("#cc").html(parentNode.name);
+        }
+
+        $("#rightName").val(node.name);
+
+        $.ajax({
+            url: "/rightmanage/getrightdetail",
+            type: 'post',
+            asyns: true,
+            data: { id: node.Id },
+            success: function(data) {
+                if (data.msg) {
+                    MyAlertDialog("",data.msg);
+                } else {
+                    $('#roleroleid').val(data.Id);
+                    $("#rightPath").val(data.FilePath);
+                    $("#rightdesc").val(data.Description);
+                    //$("#rightDesc").val(data.Description);
+                    if (data.IsPublic == true) {
+                        $("#commonRight option[value='1']").prop("selected", 'true');
+                    }
+                    $("#rightPic").val(data.PicPath);
+                    $("#rightType option[value='" + data.RightType + "']").attr("selected", true);
+                }
+
+            }
+        });
+    }
+
+    function upNode(node) {
+        $.post("/rightmanage/sort", { type: "up", id: node.Id, pid: node.ParentId }, function(data) {
+            if (data.code == "1") {
+                var li = $("#" + node.tId);
+                var liPre = li.prev();
+                li.after(liPre);
+
+            } else {
+                MyAlertDialog("",data.msg);
+            }
+        }, "json");
+
+    }
+
+    function downNode(node) {
+        $.post("/rightmanage/sort", { type: "down", id: node.Id, pid: node.ParentId }, function(data) {
+            if (data.code == "1") {
+                var li = $("#" + node.tId);
+                var liPre = li.next();
+                liPre.after(li);
+            } else {
+                MyAlertDialog("",data.msg);
+            }
+        }, "json");
+    }
+
+    function removeHoverDom(treeId, treeNode) {
+        //  $('.bs7a').unbind();
+        // $('.bs7a').remove();
+        $("#addBtn_" + treeNode.tId).unbind().remove();
+        $("#delBtn_" + treeNode.tId).unbind().remove();
+        $("#editBtn_" + treeNode.tId).unbind().remove();
+        $("#upBtn_" + treeNode.tId).unbind().remove();
+        $("#downBtn_" + treeNode.tId).unbind().remove();
+    };
+
+    function choseParent() {
+        var pid;
+        if (parentNode) {
+            pid = parentNode.Id;
+        } else {
+            pid = 0;
+        }
+        console.log(parentNode);
+        var cid = optionNode.Id;
+        var d = art.dialog.open(
+            '/rightmanage/initchoserighttree/' + cid, {
+                width: '400px',
+                height: '600px',
+                lock: true,
+                close: function() {
+                    // art.dialog.tips('close');
+                    var name = art.dialog.data('pName');
+                    pid = art.dialog.data('pId');
+                    //alert(pid);
+
+
+                    if (pid!=null||typeof (pid)!='undefined') {
+                        $("#cc").html(name);
+                        choseParentId = pid;
+                    }
+                }
+            });
+
+    }
+
+
+
+    var setting = {
+        check: {
+            enable: true
+        },
+
+        view: {
+            addHoverDom: addHoverDom,
+            removeHoverDom: removeHoverDom,
+            dblClickExpand: false,
+            showLine: true,
+            selectedMulti: false
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "Id",
+                pIdKey: "ParentId",
+                rootPId: "0"
+            }
+        },
+        callback: {
+            beforeClick: function(treeId, treeNode) {
+                var zTree = $.fn.zTree.getZTreeObj("tree");
+                if (treeNode.isParent) {
+                    zTree.expandNode(treeNode);
+                    return false;
+                } else {
+                    //demoIframe.attr("src", treeNode.file + ".html");
+                    return true;
+                }
+            },
+            beforeExpand: beforeExpand
+        }
+    };
+    function beforeExpand(treeId, treeNode)
+    {
+        singlePath(treeNode);
+    }
+    function singlePath(currNode)
+    { var treeObj = $.fn.zTree.getZTreeObj("tree");
+        var cLevel = currNode.level;
+        var cId = currNode.id;
+        var expandedNodes = treeObj.getNodesByParam("open", true, currNode.getParentNode());
+        for(var i = expandedNodes.length - 1; i >= 0; i--)
+        {
+            var node = expandedNodes[i];
+            var level = node.level;
+            var id = node.id;
+            if (cId != id && level == cLevel)
+            {
+                treeObj.expandNode(node, false);
+            }
+        }
+    }
+    $(document).ready(function() {
+        var t = $("#tree");
+        t = $.fn.zTree.init(t, setting, zNodes);
+
+        //var zTree = $.fn.zTree.getZTreeObj("tree");
+        //zTree.expandNode(zTree.getNodeByParam("Id", 10001), true, false, false, false);
+
+    });
+
+    function submitData() {
+        var node = optionNode;
+        var id;
+        if (!node)
+        {
+            id=0;
+        } else
+        {
+            id = node.Id;
+        }
+
+        var rightName = $("#rightName").val();
+        if (rightName == "") {
+            MyAlertDialog("","权限名字不能为空");
+            return;
+        }
+        var rightPath = $("#rightPath").val();
+        //if (rightPath == "") {
+        //    $.messager.alert('', '权限路径不能空');
+        //    return;
+        //}
+        var rightType = $("#rightType option:checked").val();
+        if (!rightType) {
+            MyAlertDialog("","请选择权限类型");
+            return;
+        }
+        var rightDesc = $("#rightdesc").val();
+        //var showMenu = $("#showMenu").is(":checked") ? 1 : 0;
+        var commonRight = $("#commonRight").val();
+        var chongfu = $("#chongfu").val();
+        var pic = $("#rightPic").val();
+        var pic2 = $("#rightPic2").val();
+        $("#btn_add").attr("disabled", "disabled");//阻止二次提交
+        $.post('/rightmanage/addright', { id: id, rightName: rightName, rightPath: rightPath, rightDesc: rightDesc, commonRight: commonRight, chongfu: chongfu, rightType: rightType, pathPic: pic,pathPic2:pic2 }, function(data) {
+            $("#btn_add").removeAttr("disabled");//取消阻止二次提交
+            if (data.code == '1') {
+                var treeObj = $.fn.zTree.getZTreeObj("tree");
+                var newNode = { name: rightName, ParentId: id, Id: data.id };
+                newNode = treeObj.addNodes(node, newNode);
+            }
+            MyAlertDialog("",data.msg);
+            initDiv();
+
+        }, "json");
+
+    }
+
+    function updateData() {
+        var node = optionNode;
+        var id = node.Id;
+
+
+        var parentId = choseParentId;
+        //alert(choseParentId);
+
+        if (parentId==null) {
+            MyAlertDialog("","请选择上级菜单");
+            return;
+        }
+        var rightName = $("#rightName").val();
+        if (rightName == "") {
+            MyAlertDialog("","权限名字不能为空");
+            return;
+        }
+        var rightPath = $("#rightPath").val();
+        //if (rightPath == "") {
+        //    MyAlertDialog("","权限路径不能为空");
+        //    return;
+        //}
+        var rightType = $("#rightType option:checked").val();
+        if (!rightType) {
+            MyAlertDialog("","请选择权限类型");
+            return;
+        }
+        var rightDesc = $("#rightdesc").val();
+        //var showMenu = $("#showMenu").is(":checked") ? 1 : 0;
+        var commonRight = $("#commonRight").val();
+        var chongfu = $("#chongfu").val();
+        var pic = $("#rightPic").val();
+        var pic2 = $("#rightPic2").val();
+        $("#btn_edit").removeAttr("disabled");//阻止二次提交
+        $.post('/rightmanage/editright', {
+            id: id,
+            rightName: rightName,
+            rightPath: rightPath,
+            rightDesc: rightDesc,
+            commonRight: commonRight,
+            chongfu: chongfu,
+            rightType: rightType,
+            parentId: parentId,
+            pathPic: pic,
+            pathPic2:pic2
+
+        }, function(data) {
+            $("#btn_edit").removeAttr("disabled");//取消二次提交
+            if (data.code == '1') {
+                var treeObj = $.fn.zTree.getZTreeObj("tree");
+                optionNode.name = rightName;
+                if (optionNode.ParentId == parentId) {
+                    treeObj.updateNode(optionNode);
+                } else {
+                    optionNode.ParentId = parentId;
+                    treeObj.updateNode(optionNode);
+
+                    var liPre = treeObj.getNodesByParam("Id",parentId,null)[0];
+                    var newNode = { name: rightName, ParentId: parentId, Id: optionNode.Id };
+                    if (data.data) {
+                        treeObj.removeChildNodes(optionNode);
+                        treeObj.removeNode(optionNode);
+                        newNode = treeObj.addNodes(liPre, newNode);
+                        console.log(data.data);
+
+                        var newLi = treeObj.getNodesByParam("Id",optionNode.Id,null)[0];
+
+                        treeObj.addNodes(newLi, data.data);
+                    } else {
+                        treeObj.removeNode(optionNode);
+                        newNode = treeObj.addNodes(liPre, newNode);
+                    }
+
+                }}
+
+            showMsg(data.msg);
+            initDiv();
+        }, "json");
+
+    }
+
+    function initDiv() {
+        $("#panel").hide();
+        optionNode = null;
+        choseParentId = null;
+        $("#rightName").val('');
+        $("#rightPath").val('');
+        $("#rightdesc").val('');
+        $("#rightPic").val('');
+        $("#rightPic2").val('');
+        $("#roleroleid").val('');
+        $("#commonRight").attr("checked", false);
+        //$("#showMenu").attr("checked",false);
+        $("#rightType option[value='1']").attr("selected", true);
+    }
+
+    function showMsg(msg) {
+        art.dialog.tips(msg);
+    }
+</script>

@@ -1,0 +1,92 @@
+﻿@using FarmMonitor.Model;
+@model FarmMonitor.Web.Models.RequestTestModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>模拟微信请求</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr><td>FromUserName：</td><td><input type="text" value="@Model.FromUserName" name="FromUserName" /></td></tr>
+            <tr><td>ToUserName：</td><td><input type="text" value="@Model.ToUserName" name="ToUserName" /></td></tr>
+            <tr>
+                <td>MsgType：</td>
+                <td>
+                    @{
+        List<SelectListItem> msgTypeList = new List<SelectListItem>(){
+                            new SelectListItem(){Text="text",Value="text"},
+                            new SelectListItem(){Text="event",Value="event"},
+                             new SelectListItem(){Text="image",Value="image"},
+                             new SelectListItem(){Text="video",Value="video"},
+                             new SelectListItem(){Text="shortvideo",Value="shortvideo"},
+                             new SelectListItem(){Text="location",Value="location"},
+                              new SelectListItem(){Text="link",Value="link"},
+                              new SelectListItem(){Text="voice",Value="voice"}
+                        };
+
+                        <select name="MsgType">
+                            @foreach (SelectListItem li in msgTypeList)
+                            {
+                                if (li.Value == Model.MsgType)
+                                {
+                                    <option value="@li.Value" selected="selected">@li.Text</option>
+                                }
+                                else
+                                {
+                                    <option value="@li.Value">@li.Text</option>
+                                }
+                            }
+                        </select>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>Event：</td>
+                <td>
+                    @{
+        List<SelectListItem> eventList = new List<SelectListItem>(){
+                            new SelectListItem(){Text=WeChatEnumList.EvenType.CLICK.ToString(),Value=WeChatEnumList.EvenType.CLICK.ToString()},
+                            new SelectListItem(){Text=WeChatEnumList.EvenType.VIEW.ToString(),Value=WeChatEnumList.EvenType.VIEW.ToString()},
+                            new SelectListItem(){Text=WeChatEnumList.EvenType.SCAN.ToString(),Value=WeChatEnumList.EvenType.SCAN.ToString()},
+                            new SelectListItem(){Text=WeChatEnumList.EvenType.subscribe.ToString(),Value=WeChatEnumList.EvenType.subscribe.ToString()},
+                            new SelectListItem(){Text=WeChatEnumList.EvenType.unsubscribe.ToString(),Value=WeChatEnumList.EvenType.unsubscribe.ToString()}
+                        };
+
+                        <select name="Event">
+                            @foreach (SelectListItem li in eventList)
+                            {
+                                if (li.Value == Model.Event)
+                                {
+                                    <option value="@li.Value" selected="selected">@li.Text</option>
+                                }
+                                else
+                                {
+                                    <option value="@li.Value">@li.Text</option>
+                                }
+                            }
+                        </select>
+                    }
+                </td>
+            </tr>
+            <tr><td>EventKey：</td><td><input type="text" value="@Model.EventKey" name="EventKey" /></td></tr>
+            <tr><td>Contents：</td><td><input type="text" value="@Model.Contents" name="Contents" /></td></tr>
+            <tr><td>Ticket：</td><td><input type="text" value="@Model.Ticket" name="Ticket" /></td></tr>
+            <tr><td>MediaId：</td><td><input type="text" value="@Model.MediaId" name="MediaId" /></td></tr>
+            <tr><td>PicUrl：</td><td><input type="text" value="@Model.PicUrl" name="PicUrl" /></td></tr>
+            <tr><td>ThumbMediaId：</td><td><input type="text" value="@Model.ThumbMediaId" name="ThumbMediaId" /></td></tr>
+            <tr><td></td><td><input type="submit" value="提交" /></td></tr>
+            <tr><td>结果：</td><td>@ViewBag.desc</td></tr>
+
+        </table>
+
+    }
+</body>
+</html>

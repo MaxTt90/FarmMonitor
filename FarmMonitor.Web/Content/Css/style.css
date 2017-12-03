@@ -1,0 +1,1047 @@
+* {
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, "Hiragino Sans GB", sans-serif;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	list-style-type: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+html {
+	min-height: 100%;
+	border: none;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+body {
+	word-wrap: break-word;
+	word-break: break-all;
+}
+ul, ol {
+	list-style-type: none;
+}
+button, submit, input, select, textarea {
+	outline: none;
+}
+button, submit, input, select {
+	vertical-align: middle;
+}
+button, submit, input[type="button"], input[type="submit"] {
+	cursor: pointer;
+	-webkit-appearance: none;
+}
+textarea {
+	resize: none;
+	outline: none;
+}
+button::-moz-focus-inner, submit::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner {
+padding:0;
+border:none;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+th, td {
+	text-align: left;
+}
+address, cite, dfn, em, var {
+	font-style: normal;
+}
+img {
+	border: none;
+	vertical-align: middle;
+}
+a {
+	outline: none;
+}
+a:link, a:visited {
+	text-decoration: none;
+	outline: none;
+}
+a:hover, a:active {
+	outline: none;
+}
+iframe {
+	vertical-align: top;
+}
+*html {
+zoom:expression(function(ele) {
+ele.style.zoom = "1";
+document.execCommand("BackgroundImageCache", false, true)
+}
+(this))
+}
+.clearfix {
+*zoom:1
+}
+.clearfix:after {
+	content: '\20';
+	display: block;
+	clear: both;
+	height: 0;
+	overflow: hidden;
+}
+.hide {
+	display: none;
+}
+/*浮动*/
+.l {
+	float: left;
+}
+.r {
+	float: right;
+}
+html {
+	position: relative;
+}
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	max-width: 750px;
+	margin: 0 auto;
+	background: #fff;
+}
+.gg-img {
+	font-size: 0px;
+	line-height: 0px;
+}
+.gg-img img {
+	width: 100%;
+}
+.ta-c {
+	text-align: center;
+}
+.swiper-container {
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	z-index: 9;
+	width: 100%;
+	height: 100%;
+}
+.swiper-scroll {
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	z-index: 9;
+	width: 100%;
+	height: 100%;
+}
+.my-slide {
+	height: auto;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.swiper-infeed {
+	height: 387px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	z-index: 9
+}
+.swiper-infeed2 {
+	height: 441px;
+	width: 644px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	z-index: 9
+}
+.swiper-container-no-flexbox .swiper-slide {
+	float: left
+}
+.swiper-container-vertical>.swiper-wrapper, .my-wrapper {
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	-ms-flex-direction: column;
+	-webkit-flex-direction: column;
+	flex-direction: column
+}
+.swiper-wrapper, .my-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-transition-property: -webkit-transform;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	-ms-transition-property: -ms-transform;
+	transition-property: transform;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box
+}
+.swiper-container-android .swiper-slide, .swiper-wrapper, .my-wrapper {
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-o-transform: translate(0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0)
+}
+.swiper-container-multirow>.swiper-wrapper, .my-wrapper {
+	-webkit-box-lines: multiple;
+	-moz-box-lines: multiple;
+	-ms-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap
+}
+.swiper-container-free-mode>.swiper-wrapper, .my-wrapper {
+	-webkit-transition-timing-function: ease-out;
+	-moz-transition-timing-function: ease-out;
+	-ms-transition-timing-function: ease-out;
+	-o-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+	margin: 0 auto
+}
+.swiper-slide {
+	-webkit-flex-shrink: 0;
+	-ms-flex: 0 0 auto;
+	flex-shrink: 0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.swiper-scroll {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+.swiper-container-autoheight, .swiper-container-autoheight .swiper-slide {
+	height: auto
+}
+.swiper-container-autoheight .swiper-wrapper, .my-wrapper {
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	-webkit-align-items: flex-start;
+	align-items: flex-start;
+	-webkit-transition-property: -webkit-transform, height;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	-ms-transition-property: -ms-transform;
+	transition-property: transform, height
+}
+.swiper-container .swiper-notification {
+	position: absolute;
+	left: 0;
+	top: 0;
+	pointer-events: none;
+	opacity: 0;
+	z-index: -1000
+}
+.swiper-pagination {
+	position: absolute;
+	bottom: 10px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+	-webkit-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	z-index: 90
+}
+.swiper-pagination-bullet {
+	width: 16px;
+	height: 16px;
+	margin: 0 6px;
+	border: 2px solid #fff;
+	display: inline-block;
+	border-radius: 100%;
+}
+.swiper-pagination-bullet-active {
+	background: #fff;
+}
+.swiper-scrollbar {
+	border-radius: 10px;
+	position: relative;
+	-ms-touch-action: none;
+	background: rgba(0,0,0,.1)
+}
+.swiper-container-horizontal>.swiper-scrollbar {
+	position: absolute;
+	left: 1%;
+	bottom: 3px;
+	z-index: 50;
+	height: 5px;
+	width: 98%
+}
+.swiper-container-vertical>.swiper-scrollbar {
+	position: absolute;
+	right: 3px;
+	top: 1%;
+	z-index: 50;
+	width: 5px;
+	height: 98%
+}
+.swiper-scrollbar-drag {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	background: rgba(0,0,0,.5);
+	border-radius: 10px;
+	left: 0;
+	top: 0
+}
+.swiper-scrollbar-cursor-drag {
+	cursor: move
+}
+.swiper-lazy-preloader {
+	width: 42px;
+	height: 42px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -21px;
+	margin-top: -21px;
+	z-index: 90;
+	-webkit-transform-origin: 50%;
+	-moz-transform-origin: 50%;
+	transform-origin: 50%;
+	-webkit-animation: swiper-preloader-spin 1s steps(12, end) infinite;
+	-moz-animation: swiper-preloader-spin 1s steps(12, end) infinite;
+	animation: swiper-preloader-spin 1s steps(12, end) infinite
+}
+.swiper-button-next, .swiper-button-prev {
+	position: absolute;
+	top: 50%;
+	width: 50px;
+	height: 58px;
+	margin-top: -29px;
+	z-index: 10;
+	cursor: pointer;
+	-moz-background-size: 27px 44px;
+	-webkit-background-size: 27px 44px;
+	background-size: 27px 44px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+	background-image: url(../Images/volvo-62.png);
+	right: 10px;
+	left: auto;
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+	background-image: url(../Images/volvo-61.png);
+	left: 10px;
+	right: auto;
+}
+.coverview1, .coverview2 {
+	background: url(../Images/volvo-09.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.coverview3 {
+	background: url(../Images/volvo-15.png) no-repeat center bottom;
+}
+.seat-bottom {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+}
+.seat-top {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.logo {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+.music-wrap {
+	position: absolute;
+	top: 120px;
+	right: 35px;
+	z-index: 999;
+	transform: scale(.6);
+	-webkit-transform: scale(.6);
+}
+.music-inner {
+	height: 34px;
+	overflow: hidden;
+	cursor: pointer;
+}
+.play-music > div:nth-child(1) {
+	-webkit-animation-delay: 0.77s;
+	animation-delay: 0.77s;
+	-webkit-animation-duration: 2s;
+	animation-duration: 2s;
+}
+.play-music > div:nth-child(2) {
+	-webkit-animation-delay: 0.29s;
+	animation-delay: 0.29s;
+	-webkit-animation-duration: 1.86s;
+	animation-duration: 1.86s;
+}
+.play-music > div:nth-child(3) {
+	-webkit-animation-delay: 0.28s;
+	animation-delay: 0.28s;
+	-webkit-animation-duration: 1.01s;
+	animation-duration: 1.01s;
+}
+.play-music > div:nth-child(4) {
+	-webkit-animation-delay: 0.74s;
+	animation-delay: 0.74s;
+	-webkit-animation-duration: 0.73s;
+	animation-duration: 0.73s;
+}
+.play-music > div:nth-child(5) {
+	-webkit-animation-delay: 0.28s;
+	animation-delay: 0.28s;
+	-webkit-animation-duration: 1.01s;
+	animation-duration: 1.01s;
+}
+.play-music > div {
+	background-color: #013158;
+	width: 4px;
+	height: 34px;
+	margin: 0 2px;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	display: inline-block;
+	-webkit-animation-name: line-music;
+	animation-name: line-music;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-delay: 0;
+	animation-delay: 0;
+	transition: all 2s;
+}
+.music-inner > div {
+	background-color: #013158;
+	width: 4px;
+	height: 34px;
+	margin: 0 2px;
+	display: inline-block;
+	transition: all 2s;
+}
+.music-inner > div:nth-child(1) {
+	-webkit-transform: translate(0, 25px);
+	transform: translate(0, 25px);
+}
+.music-inner > div:nth-child(2) {
+	-webkit-transform: translate(0, 16px);
+	transform: translate(0, 16px);
+}
+.music-inner > div:nth-child(3) {
+	-webkit-transform: translate(0, 0px);
+	transform: translate(0, 0px);
+}
+.music-inner > div:nth-child(4) {
+	-webkit-transform: translate(0, 8px);
+	transform: translate(0, 8px);
+}
+.music-inner > div:nth-child(5) {
+	-webkit-transform: translate(0, 0px);
+	transform: translate(0, 0px);
+}
+.catalog-wrap {
+	margin-top: 100px;
+	padding: 150px 0 0 74px;
+	background: url(../Images/volvo-16.png) no-repeat;
+}
+.car-hint {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 98;
+	width: 100%;
+	height: 100%;
+	background: url(../Images/volvo-26.png) repeat;
+	overflow: hidden;
+}
+.car-hint img {
+	margin-top: 346px;
+}
+.swiper-slide-active .car-hint {
+	-webkit-animation: hide 3s both;
+	-moz-animation: hide 3s both;
+}
+.swiper-slide-active .car-cue {
+	display: block;
+	-webkit-animation: show 3s both;
+	-moz-animation: show 3s both;
+}
+.car-cue a {
+	display: inline-block;
+	z-index: 9999;
+}
+.car-cue a:nth-child(1) {
+	position: absolute;
+	top: 274px;
+	left: 62px;
+}
+.car-cue a:nth-child(2) {
+	position: absolute;
+	top: 274px;
+	left: 228px;
+}
+.car-cue a:nth-child(3) {
+	position: absolute;
+	top: 274px;
+	left: 435px;
+}
+.car-cue a:nth-child(4) {
+	position: absolute;
+	top: 384px;
+	left: 280px;
+}
+.car-cue a:nth-child(5) {
+	position: absolute;
+	top: 274px;
+	left: 314px;
+}
+.shoot-wrap {
+	background: #fff;
+}
+.shoot-box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+}
+.shoot-end {
+	width: 200px;
+	margin: 50px auto 85px;
+}
+.author {
+	position: relative;
+	font-size: 26px;
+	color: #333132;
+	line-height: 30px;
+	text-align: center;
+	margin-bottom: 26px;
+}
+.author:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 14px;
+	height: 1px;
+	width: 20px;
+	background: #3f3e3e;
+}
+.author:after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 14px;
+	height: 1px;
+	width: 20px;
+	background: #3f3e3e;
+}
+.shoot-next {
+	display: block;
+	width: 196px;
+	height: 52px;
+	border: 2px solid #333132;
+	font-size: 26px;
+	color: #333132;
+	line-height: 52px;
+	text-align: center;
+}
+.shoot-next.disabled {
+	border: 2px solid #ccc;
+	color: #ccc;
+	cursor: text;
+}
+.pinch-zoom {
+	position: relative;
+}
+.pinch-zoom, .pinch-zoom img {
+	width: 100%;
+	-webkit-user-drag: none;
+}
+.mt-400 {
+	margin-top: 400px;
+}
+.pattern-wrap {
+	position: relative;
+	z-index: 999;
+	text-align: center;
+}
+.pattern-dw {
+	padding: 36px 0 85px;
+}
+.pattern-top {
+	position: absolute;
+	top: 0;
+	right: 0px;
+	z-index: 998;
+}
+.pattern-bottom {
+	position: absolute;
+	bottom: 77px;
+	left: 0px;
+	z-index: 998;
+}
+.pattern-hint {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	background: url(../Images/volvo-26.png) repeat;
+}
+.pattern-hint a {
+	position: absolute;
+	top: 118px;
+	right: 75px;
+}
+.pattern-ts {
+	margin-top: 190px;
+	text-align: center;
+}
+.wallpaper-hint {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(../Images/volvo-26.png) repeat;
+	-webkit-animation: hide 2.5s both;
+	-moz-animation: hide 2.5s both;
+}
+.jt {
+	position: absolute;
+	left: 50%;
+	bottom: 77px;
+	width: 64px;
+	margin-left: -32px;
+	opacity: 0;
+	transition: all 1s;
+	z-index: 999;
+}
+.swiper-slide .jt {
+	-webkit-animation: start 1.5s infinite ease-in-out;
+	-moz-animation: start 1.5s infinite ease-in-out;
+}
+.swiper-container .swiper-button-prev {
+	-webkit-animation: left 1.5s infinite ease-in-out;
+	-moz-animation: left 1.5s infinite ease-in-out;
+}
+.swiper-container .swiper-button-next {
+	-webkit-animation: right 1.5s infinite ease-in-out;
+	-moz-animation: right 1.5s infinite ease-in-out;
+}
+@-webkit-keyframes start {
+ 0%, 30% {
+opacity: 0;
+-webkit-transform: translate(0, 10px);
+}
+ 60% {
+opacity: 1;
+-webkit-transform: translate(0, 0);
+}
+ 100% {
+opacity: 0;
+-webkit-transform: translate(0, -8px);
+}
+}
+@keyframes start {
+ 0%, 30% {
+opacity: 0;
+transform: translate(0, 10px);
+}
+ 60% {
+opacity: 1;
+transform: translate(0, 0);
+}
+ 100% {
+opacity: 0;
+transform: translate(0, -8px);
+}
+}
+@-webkit-keyframes left {
+ 0%, 30% {
+opacity: 0;
+-webkit-transform: translate(10px, 0);
+}
+ 60% {
+opacity: 1;
+-webkit-transform: translate(0, 0);
+}
+ 100% {
+opacity: 0;
+-webkit-transform: translate(-8px, 0);
+}
+}
+@keyframes left {
+ 0%, 30% {
+opacity: 0;
+-webkit-transform: translate(10px, 0);
+}
+ 60% {
+opacity: 1;
+-webkit-transform: translate(0, 0);
+}
+ 100% {
+opacity: 0;
+-webkit-transform: translate(-8px, 0);
+}
+}
+@-webkit-keyframes right {
+ 0%, 30% {
+opacity: 0;
+-webkit-transform: translate(-8px, 0);
+}
+ 60% {
+opacity: 1;
+-webkit-transform: translate(0, 0);
+}
+ 100% {
+opacity: 0;
+-webkit-transform: translate(10px, 0);
+}
+}
+@keyframes right {
+ 0%, 30% {
+opacity: 0;
+-webkit-transform: translate(-8px, 0);
+}
+ 60% {
+opacity: 1;
+-webkit-transform: translate(0, 0);
+}
+ 100% {
+opacity: 0;
+-webkit-transform: translate(10px, 0);
+}
+}
+ @-webkit-keyframes line-music {
+ 0% {
+-webkit-transform: translate(0, auto);
+}
+ 50% {
+-webkit-transform: translate(0, 25px);
+}
+ 100% {
+-webkit-transform: translate(0, auto);
+}
+}
+ @keyframes line-music {
+ 0% {
+transform: translate(0, auto);
+}
+ 50% {
+transform: translate(0, 25px);
+}
+ 100% {
+transform: translate(0, auto);
+}
+}
+ @-webkit-keyframes show {
+ 0% {
+opacity: 0;
+z-index:1;
+}
+90% {
+opacity: 0;
+z-index:1;
+}
+ 100% {
+opacity: 1;
+z-index:9999;
+}
+}
+ @keyframes show {
+ 0% {
+opacity: 0;
+z-index:1;
+}
+90% {
+opacity: 0;
+z-index:1;
+}
+ 100% {
+opacity: 1;
+z-index:9999;
+}
+}
+ @-webkit-keyframes hide {
+ 0% {
+opacity: 1;
+z-index:9999;
+height:100%;
+}
+99% {
+opacity: 1;
+z-index:9999;
+height:100%;
+}
+ 100% {
+opacity: 0;
+z-index:1;
+height:0;
+}
+}
+ @keyframes hide {
+ 0% {
+opacity: 1;
+z-index:9999;
+height:100%;
+}
+99% {
+opacity: 1;
+z-index:9999;
+height:100%;
+}
+ 100% {
+opacity: 0;
+z-index:1;
+height:0;
+}
+}
+/*底部菜单*/
+.nav {
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	z-index: 9998;
+	width: 750px;
+	margin-left: -375px;
+}
+.nav > ul {
+	border-top: 1px solid #b5b4b5;
+	background: #fafafa;
+}
+.nav > ul > li {
+	position: relative;
+	float: left;
+	height: 76px;
+	border-right: 1px solid #b5b4b5;
+	text-align: center;
+}
+.nav > ul > li:last-child {
+	border: 0;
+}
+.nav > ul > li > a {
+	display: block;
+	height: 76px;
+	line-height: 76px;
+	font-size: 26px;
+	color: #333132;
+}
+.list {
+	padding: 0 80px 0 115px;
+	background: url(../Images/volvo-57.png) no-repeat 72px 25px;
+}
+.drive {
+	padding: 0px 68px 0px 80px;
+	background: url(../Images/volvo-58.png) no-repeat 18px 2px;
+}
+.wallpaper {
+	padding: 0 55px 0 90px;
+	background: url(../Images/volvo-59.png) no-repeat 50px 24px;
+}
+.subnav {
+	position: absolute;
+	bottom: 90px;
+	left: 50%;
+	width: 162px;
+	margin-left: -112px;
+	padding: 10px 30px;
+	border: 1px solid #d3d3d3;
+	border-radius: 10px;
+	background: #fafafa;
+}
+.subnav::before {
+	content: "";
+	position: absolute;
+	bottom: -8px;
+	left: 50%;
+	width: 16px;
+	height: 8px;
+	margin-left: -8px;
+	background: url(../Images/volvo-60.png) no-repeat;
+}
+.subnav li {
+	border-bottom: 1px solid #d3d3d3;
+	text-align: center;
+}
+.subnav li:last-child {
+	border: 0;
+}
+.subnav li a {
+	display: block;
+	height: 72px;
+	line-height: 72px;
+	font-size: 30px;
+	color: #222;
+}
+/*底部菜单END*/
+
+.swiper-infeed3, .swiper-infeed4, .swiper-infeed5 {
+	width: 602px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	z-index: 9
+}
+.investigation-container {
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	z-index: 9;
+	width: 100%;
+	background: #fff;
+}
+.customerservice-gift {
+	padding-top: 40px;
+}
+.customerservice-button {
+	padding: 40px 0 110px;
+	margin: 0 auto;
+	text-align: center;
+}
+.pb-77 {
+	padding-bottom: 77px;
+}
+.pb-100 {
+	padding-bottom: 100px;
+}
+.investigation-account {
+	width: 624px;
+	margin: 30px auto;
+	padding: 30px 0;
+	border-top: 1px solid #cbcbcb;
+	border-bottom: 1px solid #cbcbcb;
+	overflow: hidden;
+}
+.investigation-account dd {
+	font-size: 26px;
+	line-height: 42px;
+	margin-bottom: 15px;
+	color: #333132;
+}
+.investigation-account dd:last-child {
+	margin-bottom: 0;
+}
+.investigation-answer {
+	float: left;
+	padding: 0 45px;
+	position: relative;
+	overflow: hidden;
+	line-height: 42px;
+	font-size: 25px;
+	color: #333132;
+}
+.investigation-answer:before {
+	content: '';
+	width: 30px;
+	height: 30px;
+	border: 1px solid #adadad;
+	border-radius: 16px;
+	position: absolute;
+	top: 5px;
+	left: 0;
+}
+.investigation-point:after {
+	content: '';
+	width: 16px;
+	height: 16px;
+	background: #003058;
+	border-radius: 8px;
+	position: absolute;
+	top: 13px;
+	left: 8px;
+}
+.investigation-topic {
+	width: 624px;
+	margin: 0 auto;
+	overflow: hidden;
+	border-bottom: 1px solid #cbcbcb;
+}
+.investigation-text {
+	overflow: hidden;
+	margin-bottom: 30px;
+	line-height: 42px;
+}
+.investigation-ask {
+	float: left;
+	font-size: 25px;
+	font-weight: bold;
+	color: #333132;
+}
+.investigation-text:nth-child(1) .investigation-ask {
+	margin-right: 30px;
+	width: 300px;
+	overflow: hidden;
+}
+.investigation-text:nth-child(2) .investigation-ask, .investigation-text:nth-child(3) .investigation-ask {
+	width: 185px;
+	overflow: hidden;
+}
+/*.investigation-text:last-child .investigation-answer {
+	padding-right: 10px;
+}
+.investigation-text:last-child .investigation-answer:last-child {
+	padding-right: 0;
+}
+*/
+.investigation-text:last-child .investigation-ask {
+	margin-right: 0px;
+	width: 100%;
+	overflow: hidden;
+}
+.investigation-textarea {
+	width: 600px;
+	height: 84px;
+	padding: 10px;
+	margin-top: 5px;
+	font-size:25px;
+	border: 1px solid #adadad;
+}
+.investigation-answer1 {
+	float: right;
+	color: #333132;
+}
+.investigation-textbox {
+	width: 398px;
+	height: 30px;
+	line-height: 30px;
+	padding: 2px 8px;
+	border: 1px solid #cbcbcb;
+	font-size: 25px;
+}
+.investigation-textbox1 {
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	padding: 2px 8px;
+	margin-left: 7px;
+	border: 1px solid #cbcbcb;
+	font-size: 25px;
+}
+.investigation-text:nth-child(8) .investigation-answer:last-child {
+	padding-right: 0px;
+}
+.investigation-footer {
+	width: 100%;
+	padding: 35px 0 50px;
+	margin: 0 auto;
+}
+.investigation-button {
+	margin: 0 auto;
+	text-align: center;
+	padding-bottom: 30px;
+}
+.investigation-button:last-child {
+	padding-bottom: 0;
+}

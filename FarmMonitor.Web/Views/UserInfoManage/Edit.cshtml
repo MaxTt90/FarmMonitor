@@ -1,0 +1,216 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model FarmMonitor.Model.SysUserInfo
+@{
+    var provinceList = ViewBag.province as List<FarmMonitor.Model.SysCity>;
+    var cityList = ViewBag.city as List<FarmMonitor.Model.SysCity>;
+}
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Scripts/MySelf/Custom.js"></script>
+<script>
+    $(function () {
+        if ('@Model.Sex' == '男') {
+            $("#genderMan").prop("checked", true);
+        } else if ('@Model.Sex' == '女') {
+            $("#genderWoman").prop("checked", true);
+        }
+
+
+        if ('@Model.UserState' == '在职') {
+            $("#userinfoUserState option[value='1']").prop("selected", true);
+        } else if ('@Model.UserState' == '禁用') {
+            $("#userinfoUserState option[value='2']").prop("selected", true);
+        } else if ('@Model.UserState' == '删除') {
+            $("#userinfoUserState option[value='3']").prop("selected", true);
+        } else if ('@Model.UserState' == '离职') {
+            $("#userinfoUserState option[value='4']").prop("selected", true);
+        }
+
+        $.getJSON("/LoadData/ProvinceLoad", {}, function (provList) {
+            for (var i = 0; i < provList.length; i++) {
+                $("#proSelect").append("<option value='" + provList[i].Id + "'>" + provList[i].Name + "</option>");
+            }
+        });
+
+        $("#proSelect").change(function () {
+            $.getJSON("/LoadData/CityLoad", { provId: $("#proSelect").val() }, function (cityList) {
+                $("#citySelect").empty();
+
+                for (var i = 0; i < cityList.length; i++) {
+                    $("#citySelect").append("<option value='" + cityList[i].Id + "'>" + cityList[i].Name + "</option>");
+                }
+            });
+            //}
+        });
+    });
+
+    function fSubmit() {
+        var name = $("#userinfoName").val();
+        if (name == "") {
+            MyAlertDialog("", "请输入名字");
+            return false;
+        }
+        //var password = $("#userinfoPassword").val();
+        //if (password == "") {
+        //    MyAlertDialog("", "请输入密码");
+        //    return false;
+        //}
+        var tel = $("#userinfoTel").val();
+        var mobile = $("#userinfoMobile").val();
+        if (tel == "" && mobile == "") {
+            MyAlertDialog("", "电话和手机不能同时为空");
+            return false;
+        }
+
+        var provinceSelect = $("#proSelect").val();
+        var citySelect = $("#citySelect").val();
+        if (provinceSelect == "" || citySelect == "") {
+            MyAlertDialog("", "省市不能为空");
+            return false;
+        }
+    }
+</script>
+<div class="c-bar clearfix">
+    <div class="Account-nav-text">
+        <a href="javascript:history.go(-1);" class="carte-nav-btn btn-back"></a>
+    </div>
+    <div class="c-group">编辑用户</div>
+</div>
+<form action="/UserInfoManage/Edit/" method="post">
+    <div class="UIM-box">
+        <div class="UIM-content">
+            <div class="UIM-text">
+                <div class="UIM-tp1">姓名:</div>
+                <div class="UIM-tp"><input type="text" class="UIM-thp" name="Name" id="userinfoName" value="@Model.Name" /><input type="hidden" name="ID" value="@Model.ID" /></div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">密码:</div>
+                <div class="UIM-tp"><input type="password" class="UIM-thp" name="Password" id="userinfoPassword" value="" /> </div>
+            </div>
+
+            <div class="UIM-text">
+                <div class="UIM-tp1">生日:</div>
+                <div class="UIM-tp"><input class="UIM-thp" type="text" name="Birthday" onclick="WdatePicker({ readOnly: true, dateFmt: 'yyyy-MM-dd' })" onfocus="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})" value="@Model.Birthday" /></div>
+            </div>
+
+            <div class="UIM-text">
+                <div class="UIM-tp1">
+                    性别：
+                </div>
+                <div class="UIM-tp">
+                    <input type="radio" name="Sex" value="1" checked="checked" id="genderMan" /><span style="color:#000;">男</span>
+                    <input type="radio" name="Sex" value="2" id="genderWoman" /><span style="color:#000">女</span>
+                </div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">电话:</div>
+                <div class="UIM-tp"><input class="UIM-thp" type="text" name="Tel" id="userinfoTel" value="@Model.Tel" /> </div>
+            </div>
+
+            <div class="UIM-text">
+                <div class="UIM-tp1">手机:</div>
+                <div class="UIM-tp"><input class="UIM-thp" type="text" name="Mobile" id="userinfoMobile" maxlength="11" value="@Model.Mobile" /></div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">邮箱:</div>
+                <div class="UIM-tp"><input class="UIM-thp" type="text" name="Email" id="userinfoEmail" value="@Model.Email" /> </div>
+            </div>
+
+            <div class="UIM-text">
+                <div class="UIM-tp1">用户状态:</div>
+                <div class="UIM-tp">
+                    <select class="UIM-thp" id="userinfoUserState" name="UserState" style="width:127px;">
+                        <option value="1" selected="selected">在职</option>
+                        <option value="2">禁用</option>
+                        <option value="3">删除</option>
+                        <option value="4">离职</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="UIM-text">
+                <div class="UIM-tp1">省份:</div>
+                <div class="UIM-tp">
+                    <select class="UIM-thp" id="proSelect" name="Province" style="width:127px;">
+                        @{
+                            foreach (var item in provinceList)
+                            {
+                                if (item.Id == Model.Province)
+                                {
+                                    <option value="@item.Id" selected="selected">@item.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">城市:</div>
+                <div class="UIM-tp">
+                    <select class="UIM-thp" id="citySelect" name="City" style="width:127px;">
+                        @{
+                            foreach (var item in cityList)
+                            {
+                                if (item.Id == Model.City)
+                                {
+                                    <option value="@item.Id" selected="selected">@item.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="UIM-text">
+                <div class="UIM-tp1">角色：</div>
+                <div class="UIM-tp">
+                    <select class="vin-right-pull vin-select1 UIM-tp" name="roleInfoName" style="width:127px;">
+                        @{
+                            var userrole = ViewBag.UserRole as FarmMonitor.Model.SysUserRole;
+                            var roleinfoList = ViewBag.RoleInfoList as List<FarmMonitor.Model.SysRoleInfo>;
+                            {
+                                foreach (var item in roleinfoList)
+                                {
+                                    if (userrole.RoleId == item.Id)
+                                    {
+                                        <option value="@item.Id" selected="selected">@item.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">备注:</div>
+                <div class="UIM-tp"><textarea class="UIM-thp" cols="10" rows="5" name="Remark" id="userinfoRemark">@Model.Remark</textarea></div>
+            </div>
+
+
+            <div class="UIM-text1">
+                <input class="c-btn btn-blue" type="submit" value="提交" id="subAdd" onclick="return fSubmit()" />
+            </div>
+
+
+            <div style="clear:both;"></div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</form>
+
+

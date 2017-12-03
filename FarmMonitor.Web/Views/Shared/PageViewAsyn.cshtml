@@ -1,0 +1,189 @@
+﻿@using FarmMonitor.Web.Models
+@{
+    Layout = null;
+    int pageNumber = 10;//每页显示5个页码条
+}
+@*<style>
+    .page_notCurrent {
+        padding: 2px 7px;
+        border: 1px solid #adadad;
+        float: left;
+        margin: 15px 0 30px;
+        text-align: center;
+        color: #000000;
+    }
+
+    .page_Current {
+        padding: 2px 7px;
+        border: 1px solid #adadad;
+        float: left;
+        color: #ffffff;
+        margin: 15px 0 30px;
+        text-align: center;
+        background: #3789d4;
+    }
+</style>*@
+@{
+    var pageModel = TempData["PageModel"] as PagedViewModel;
+    if (pageModel != null)
+    {
+        //pageNumber = pageModel.ViewCount;
+        <div class="pagination">
+            <ul class="clearfix l">
+                @{
+        if (pageModel.PageCount <= 1)
+        {
+            <li><a href="javascript:void(0)"><i class="icon-backward"></i></a></li>
+        }
+        else
+        {
+            <li><a href="javascript:void(0)" onclick="chosePage('@GetRuquestUrl( pageModel.RequestUrl ,1)')"><i class="icon-backward"></i></a></li>
+        }
+        int start = pageModel.PageIndex - (pageNumber / 2);
+        int end = pageModel.PageIndex + (pageNumber / 2);
+        if (start < 1)
+        {
+            start = 1;
+            end = pageModel.PageCount < pageNumber ? pageModel.PageCount : pageNumber;
+        }
+        else
+        {
+            end = end > pageModel.PageCount ? pageModel.PageCount : end;
+            if (end - start < (pageNumber - 1))
+            {
+                start = end - (pageNumber - 1) <= 0 ? start : end - (pageNumber - 1);
+            }
+        }
+
+        if (start == 2)
+        {
+
+
+            <li><a href="javascript:void(0)" onclick="chosePage('@GetRuquestUrl( pageModel .RequestUrl ,1)')">1</a></li>
+
+        }
+        else if (start > 2)
+        {
+            <li><a href="javascript:void(0)" onclick="chosePage('@GetRuquestUrl( pageModel .RequestUrl ,1)')">1</a></li>
+                    <li><a href="javascript:void(0)" onclick="chosePage('@GetRuquestUrl( pageModel .RequestUrl ,2)')">2</a></li>
+            if (start > 3)
+            {
+                <li><a href="javascript:void();">…</a></li>
+            }
+
+        }
+        for (int i = start; i <= end; i++)
+        {
+            if (i == pageModel.PageIndex)
+            {
+                <li class="active"><a href="javascript:void(0)" onclick="chosePage('@GetRuquestUrl( pageModel .RequestUrl ,i)')">@i</a></li>
+
+            }
+            else
+            {
+                <li><a href="javascript:void(0)" onclick="chosePage('@GetRuquestUrl( pageModel.RequestUrl ,i)')">@i</a></li>
+            }
+        }
+        if (end < pageModel.PageCount)
+        {
+            <li><a href="javascript:void();">…</a></li>
+        }
+        if (pageModel.PageCount <= 1)
+        {
+            <li><a href="javascript:void(0)"><i class="icon-forward"></i></a></li>
+        }
+        else
+        {
+            <li><a href="javascript:void(0)" onclick="chosePage('@GetRuquestUrl( pageModel.RequestUrl ,pageModel.PageCount )')"><i class="icon-forward"></i></a></li>
+        }
+                }
+            </ul>
+            <div class="status l">
+                <span>@("共" + pageModel.PageSum.ToString() + "条，")</span>
+                @if (pageModel.PageSum == 0)
+                {
+                    pageModel.PageIndex = 0;
+                }
+                <span>@("当前" + pageModel.PageIndex + "/" + pageModel.PageCount)</span>
+            </div>
+        </div>
+
+
+
+        @*<div style="overflow:hidden;padding-left:20px;">
+
+
+                        @if (!pageModel.IsFirstPage)
+                        {
+                            <div class="page_notCurrent" onclick="chosePage('@GetRuquestUrl( pageModel .RequestUrl ,1)')">
+                                <a href="javascript:void(0)">首页</a>
+                            </div>
+                        }
+
+
+
+
+                        @{
+                        int start = pageModel.PageIndex - (pageNumber / 2);
+                        int end = pageModel.PageIndex + (pageNumber / 2);
+                        if (start < 1)
+                        {
+                            start = 1;
+                            end = pageModel.PageCount < pageNumber ? pageModel.PageCount : pageNumber;
+                        }
+                        else
+                        {
+                            end = end > pageModel.PageCount ? pageModel.PageCount : end;
+                            if (end - start < 4)
+                            {
+                                start = end - 4 <= 0 ? start : end - 4;
+                            }
+                        }
+
+
+                        for (int i = start; i <= end; i++)
+                        {
+                            if (i == pageModel.PageIndex)
+                            {
+                                <div class="page_Current">@i</div>
+                            }
+                            else
+                            {
+                                <div class="page_notCurrent" onclick="chosePage('@GetRuquestUrl( pageModel .RequestUrl ,i)')">
+                                    <a href="javascript:void(0)">@i</a>
+                                </div>
+                            }
+                        }
+
+            }
+
+
+                        @if (!pageModel.IsLastPage && pageModel.PageCount != 0)
+                        {
+                            <div class="page_notCurrent" onclick="chosePage('@GetRuquestUrl( pageModel .RequestUrl ,pageModel .PageCount)')">
+                                <a href="javascript:void(0)">末页</a>
+                            </div>
+                        }
+
+                    </div>*@
+    }
+
+}
+
+
+
+@functions
+{
+
+    public static string GetRuquestUrl(string orginalUrl, int index)
+    {
+        if (orginalUrl.EndsWith("/"))
+        {
+            return orginalUrl + "?pageIndex=" + index;
+        }
+        return orginalUrl + "&pageIndex=" + index;
+    }
+
+
+}
+

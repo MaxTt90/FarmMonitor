@@ -1,0 +1,42 @@
+.header{height: 70px;line-height: 70px;background: #000;}
+.header img{width: 50px;}
+.content{width: 660px;padding: 55px 0 70px;padding-left: 24%;}
+.title{font-size: 36.5px;color: #333132;font-weight: bold;}
+.text{padding-top: 12px;color: #333132;font-size: 16px}
+.module{padding-top: 20px;}
+.input{width: 464px;height: 43px;padding: 0 10px;border: 1px solid #a4a4a4;font-size: 16px;}
+.property{padding-bottom: 15px;font-size: 16px;color: #3a3a3a;}
+.property b{color: #003056;}
+.carowner{/*padding:20px 0 25px;border-bottom: 1px solid #acacac;*/overflow: hidden;}
+.carowner span{display: block;float: left;padding-right: 40px;font-size: 16px;line-height: 32px;color: #3a3a3a;}
+.sct{position: relative;padding-left: 30px;}
+.sct:before{content: '';position: absolute;top:4px;left: 0;width: 22px;height: 22px;background: transparent;border: 1px solid #3a3a3a;border-radius: 12px;}
+.pitch:after{content: '';position: absolute;;top: 10px;left: 6px;width: 12px;height: 12px;background: #003056;border-radius: 6px;}
+.property1{padding-left: 35px;background: url(../images/car.png) left 3px no-repeat;}
+.property2{padding-left: 35px;background: url(../images/data.png) left 3px no-repeat;}
+.property3{padding-left: 35px;background: url(../images/photo.png) left top no-repeat;}
+.value1{position: relative;}
+.value1-bottom{margin-bottom: 20px}
+.sct-data{width: 434px;height: 43px; padding: 0 40px 0 10px;background: #fff url(../images/downarrow.png) 444px center no-repeat;border: 1px solid #a4a4a4;line-height: 43px;}
+.select{position: absolute;top: 0;bottom: 0;left: 0;width: 486px;opacity: 0; height:100%}
+.input-width{width: 314px;}
+.value{overflow: hidden;}
+.code{width: 144px;height: 45px;background: #333132;color: #fff;font-size: 16px;}
+
+.remark{padding:35px 0;font-size: 16px;}
+
+.box{position: relative;width: 32px;height: 32px;margin-right: 10px;border: 1px solid #3a3a3a;background: transparent}
+.agree:before{content: '';position: absolute;top:0px;left: 2px;width: 31px;height: 31px;background:url(../images/true.png)center no-repeat;background-size: 25px }
+.remark-text{padding-bottom: 5px;font-size: 14px;}
+.remark a{font-size: 14px;color: #003056;border-bottom: 1px solid #003056;font-size: 14px;}
+
+.btn{width: 120px;height: 45px;margin: 40px 0;background: #003056 ;background-size: 25px;font-size: 21px;color: #fff;line-height: 45px;letter-spacing: 2px;}
+.btn img{width: 25px;}
+.footer{height: 85px;background: #003057}
+
+.name-box{padding-top: 40px;}
+.sct-line{line-height: 32px;overflow: hidden;}
+.sct-line span{display: block;float: left;width: 190px;height: 32px;padding-bottom: 5px}
+
+.input-boder {border: 1px solid #191970;}
+.input-boder1 { border: 1px solid #ff0000;}

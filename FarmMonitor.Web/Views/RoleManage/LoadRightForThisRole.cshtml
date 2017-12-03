@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<link href="~/Scripts/artDialog4/skins/simple.css" rel="stylesheet" />
+<link href="~/Scripts/ztree3.0/css/metroStyle/metroStyle.css" rel="stylesheet" />
+<link href="~/Scripts/artDialog4/skins/simple.css" rel="stylesheet"/>
+<link href="/Content/css/module.css" rel="stylesheet" />
+<br/>
+<ul id="tree" class="ztree" style="width: 560px; overflow: auto;"></ul>
+<button class="c-btn btn-blue" onclick="save()">保存</button>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/ztree3.0/js/jquery.ztree.all-3.5.min.js"></script>
+<script src="~/Scripts/artDialog4/artDialog.js"></script>
+<script src="~/Scripts/artDialog4/plugins/iframeTools.js"></script>
+<script>
+    var zTree;
+
+    var zNodes = @Html.Raw(ViewBag.TreeData.ToString());
+    var  opId=@ViewBag.Id;
+    var setting = {
+        check: {
+            enable: true
+        },
+
+        view: {
+          
+            dblClickExpand: false,
+            showLine: true,
+            selectedMulti: false
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "Id",
+                pIdKey: "ParentId",
+                rootPId: "0"
+            }
+        }
+    };
+
+    $(document).ready(function() {
+        var t = $("#tree");
+        t = $.fn.zTree.init(t, setting, zNodes);
+
+        var zTree = $.fn.zTree.getZTreeObj("tree");
+        zTree.expandAll(true);
+
+    });
+
+    function save() {
+        var treeObj = $.fn.zTree.getZTreeObj("tree");
+        // var nodes = treeObj.getChangeCheckedNodes();
+        var nodes = treeObj.getCheckedNodes(true);
+        var rights = '';
+        for (var i = 0; i < nodes.length; i++) {
+            rights += nodes[i].Id+",";
+        }
+      
+
+        $.post('/rolemanage/LoadRightForThisRole', { id: opId,rights:rights }, function(data) {          
+            art.dialog({
+                content: data.msg,
+                ok: function () {
+                    art.dialog.close();
+                },
+                okVal:'确定'
+             
+            });
+        }, "json");
+
+    }
+    function showMsg(msg) {
+        art.dialog.tips(msg);
+    }
+</script>

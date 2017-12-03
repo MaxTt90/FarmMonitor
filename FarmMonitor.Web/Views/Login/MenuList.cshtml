@@ -1,0 +1,31 @@
+﻿@using FarmMonitor.Model
+@model List<SysRightInfo>
+
+@{
+    ViewBag.Title = "功能";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="c-bar clearfix">
+    <h2 class="page-title">@ViewBag.Name</h2>
+</div>
+<div class="app-view">
+    <div class="mod-fuwu ui-clearfix" style="width: 800px; margin: 40px auto;">
+        @{
+            if (Model != null)
+            {
+                foreach (SysRightInfo ri in Model)
+                {
+                    <a class="mod-fuwu-list-item" data-boss="server-click-server-chat" href="@(ri.FilePath=="" ? "#" : Url.Content(ri.FilePath))" style="text-decoration: none;">
+                        <div class="mod-fuwu-list-item-icon"><img src="@(ri.PicPath=="" ? "#" : Url.Content(ri.PicPath))" alt=""></div>
+                        <div class="mod-fuwu-list-item-main">
+                            <div class="mod-fuwu-list-item-title">@ri.RightName</div>
+                        </div>
+                    </a>
+                }
+            }
+
+        }
+    </div>
+
+</div>

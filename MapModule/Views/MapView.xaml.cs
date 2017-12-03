@@ -37,19 +37,6 @@ namespace MapModule.Views
             MapControl.ShowCenter = false; //不显示中心十字点
             MapControl.DragButton = MouseButton.Left; //左键拖拽地图
             MapControl.SetPositionByKeywords("Shanghai, China");
-
-            var marker = new GMapMarker(new PointLatLng(31.11, 121.29))
-            {
-                Shape = new Ellipse()
-                {
-                    Width = 10,
-                    Height = 10,
-                    Stroke = Brushes.Black,
-                    StrokeThickness = 1.5
-                }
-            };
-            MapControl.Markers.Add(marker);
-
         }
 
         private void MapControl_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)

@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="c-bar clearfix">
+    <div class="Account-nav-text">
+        <a href="javascript:history.go(-1);" class="carte-nav-btn btn-back"></a>
+    </div>
+    <div class="c-group">用户管理</div>
+</div>
+<div class="btn-group" style="padding-left: 20px;">
+    <button type="button" onclick="add()" class="c-btn btn-blue btn-margin">新增</button>
+</div>
+<div class="table">
+    <table class="backtable1-Informationlist">
+        @*<thead class="formth">*@
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>电话</th>
+                <th>省份</th>
+                <th>城市</th>
+                <th>手机</th>
+                <th>邮箱</th>
+                <th>备注</th>
+                <th>操作</th>
+            </tr>
+        @*</thead>*@
+        @*<tbody class="formtby">*@
+            @{
+                var userInfoList = ViewBag.UserInfoList as List<FarmMonitor.Model.SysUserInfo>;
+                if (userInfoList != null)
+                {
+                    foreach (var item in userInfoList)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Sex</td>
+                            <td>@item.Tel</td>
+                            @{FarmMonitor.BLL.SysCityMan cityman = new FarmMonitor.BLL.SysCityMan();
+                            }
+                            <td>@cityman.GetNameById(item.Province)</td>
+                            <td>@cityman.GetNameById(item.City)</td>
+                            <td>@item.Mobile</td>
+                            <td>@item.Email</td>
+                            <td>@item.Remark</td>
+                            <td><a href="/UserInfoManage/Edit/@item.ID">编辑</a>|<a href="/UserInfoManage/Delete/@item.ID">删除</a></td>
+                        </tr>
+                    }
+                }
+            }
+        @*</tbody>*@
+    </table>
+
+</div>
+<script type="text/javascript">
+    
+    function add() {
+        location.href='/UserInfoManage/Add'
+
+    }
+</script>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <CustomerAttribute>
+    <CarType>
+      <item>全新XC90</item>
+      <item>XC CLASSIC</item>
+      <item>XC60</item>
+      <item>S80L</item>
+      <item>S60L</item>
+      <item>S60L E驱混动</item>
+      <item>S60 R-DESIGN</item>
+      <item>V60</item>
+      <item>V40</item>
+      <item>V40 CROSS COUNTRY</item>
+    </CarType>
+    <CustomerLevel>
+      <item>
+        <key>1</key>
+        <value>普通会员</value>        
+      </item>
+      <item>
+        <key>2</key>
+        <value>铂金会员</value>
+      </item>
+      <item>
+        <key>3</key>
+        <value>钻石会员</value>
+      </item>
+    </CustomerLevel>
+  </CustomerAttribute>
+  <DataImport>
+    <SaleClue>
+      <Item Key="线索ID">ClueCode</Item>
+      <Item Key="大区">Zone</Item>
+      <Item Key="小区">SmallZone</Item>
+      <Item Key="省份">Province</Item>
+      <Item Key="城市">City</Item>
+      <Item Key="经销商代码">DealerCode</Item>
+      <Item Key="线索导入账号">ClueImportUser</Item>
+      <Item Key="客户登记时间">CustomerDate</Item>
+      <Item Key="线索下发日期">CluesTime</Item>
+      <Item Key="来源渠道">ChannelSmall</Item>
+      <Item Key="渠道">Channel</Item>
+      <Item Key="大渠道">ChannelBig</Item>
+      <Item Key="市场活动代码">CampaignCode</Item>
+      <Item Key="市场活动">Campaign</Item>
+      <Item Key="客户姓名">CustomerName</Item>
+      <Item Key="客户电话号码">CustomerMobile</Item>
+      <Item Key="称谓">Sex</Item>
+      <Item Key="邮箱">Email</Item>
+      <Item Key="线索意向车型">InterestCar</Item>
+      <Item Key="最新线索状态">ClueStatus</Item>
+      <Item Key="线索跟进时间">ClueFollowTime</Item>
+      <Item Key="是否增量">IsIncrement</Item>
+      <Item Key="销售顾问姓名">SalesConsultant</Item>
+      <Item Key="销售顾问手机">SalesConsultantMobile</Item>
+      <Item Key="潜客ID">PotentialCode</Item>
+      <Item Key="潜客创建日期">CustomerCreateDay</Item>
+      <Item Key="潜客意向等级">PotentialLevel</Item>
+      <Item Key="潜客意向车型">PotentialInterestCar</Item>
+      <Item Key="潜客最新状态">PotentialStatus</Item>
+      <Item Key="首次到店时间">FirstStoreTime</Item>
+      <Item Key="二次到店时间">SecondStoreTime</Item>
+      <Item Key="试驾时间">TestDriveTime</Item>
+      <Item Key="战败原因">DefeatReason</Item>
+      <Item Key="订单时间">OrderTime</Item>
+      <Item Key="线索首次下发时间">FirstClueDistributeTime</Item>
+      <Item Key="RD日期">DeliveryTime</Item>
+    </SaleClue>
+
+    <Potential>
+      <Item Key="潜客id">KOMPASS</Item>
+      <Item Key="区域">Zone</Item>
+      <Item Key="小区">SmallZone</Item>
+      <Item Key="经销商代码">DealerCode</Item>
+      <Item Key="潜客创建时间">Date</Item>
+      <Item Key="来源渠道">InfoSource</Item>
+      <Item Key="市场活动代码">CampaignCode</Item>
+      <Item Key="市场活动">Campaign</Item>
+      <Item Key="潜客姓名">CustomerName</Item>
+      <Item Key="潜客电话">CustomerMobile</Item>
+      <Item Key="潜客状态">CustomerStatus</Item>
+      <Item Key="意向等级">InterestLevel</Item>
+      <Item Key="意向车型">InterestCar</Item>
+      <Item Key="意向配置">InterestConfig</Item>
+      <Item Key="意向颜色">InterestColor</Item>
+      <Item Key="购车方式">PaymentType</Item>
+      <Item Key="销售顾问">SalesConsultant</Item>
+      <Item Key="销售顾问手机">SaleConsultantMobile</Item>
+      <Item Key="首次到店时间">FirstStoreTime</Item>
+      <Item Key="二次到店时间">SecondStoreTime</Item>
+      <Item Key="试驾时间">TestDriveTime</Item>
+      <Item Key="战败时间">DefeatTime</Item>
+      <Item Key="战败原因">DefeatReason</Item>
+      <Item Key="订单时间">OrderTime</Item>
+    </Potential>
+    
+    <FlowInfo>
+      <Item Key="区域">Zone</Item>
+      <Item Key="小区">SmallZone</Item>
+      <Item Key="经销商代码">DealerCode</Item>
+      <Item Key="创建日期">Date</Item>
+      <Item Key="展厅来店方式">ExhibitionRecepte</Item>
+      <Item Key="来源渠道">Channel</Item>
+      <Item Key="流量处理时间">FlowProcessTime</Item>
+      <Item Key="客户创建时间">CustomerCreateTime</Item>
+      <Item Key="客户姓名">CustomerName</Item>
+      <Item Key="客户电话">CustomerMobile</Item>
+      <Item Key="潜客状态">CustomerStatus</Item>
+      <Item Key="意向等级">InterestLevel</Item>
+      <Item Key="意向车型">InterestCar</Item>
+      <Item Key="销售顾问">SalesConsultant</Item>
+      <Item Key="销售顾问手机">SaleConsultantMobile</Item>
+      <Item Key="首次到店时间">FirstStoreTime</Item>
+      <Item Key="二次到店时间">SecondStoreTime</Item>
+      <Item Key="试驾时间">TestDriveTime</Item>
+    </FlowInfo>
+  </DataImport>
+</root>

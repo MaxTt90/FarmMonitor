@@ -1,0 +1,104 @@
+﻿@using FarmMonitor.Model;
+@using FarmMonitor.BLL;
+@{
+
+    List<CustomerInfo> customers = ViewBag.table;
+    List<FormField> formFields = ViewBag.fields;
+    DealerInfoMan diMan = new DealerInfoMan();
+    SysCityMan cityMan = new SysCityMan();
+}
+
+<style type="text/css">
+    .noexport {
+        max-width: 30px;
+        color: red;
+        font-size: 20px;
+    }
+</style>
+<div class="backtable1-box">
+    <table class="backtable1-Informationlist">
+        <thead>
+        <tr>
+            <th style="max-width: 30px"></th>
+            <th>活动名称</th>
+            @foreach (var field in formFields)
+            {
+
+                <th>@field.Name</th>
+                if (field.ParentId == 88)
+                {
+                    <th>经销商省份</th>
+                    <th>经销商城市</th>
+                }
+            }
+            <th>来源渠道</th>
+            <th style="min-width: 130px">数据提交时间</th>
+
+        </tr>
+        </thead>
+        @foreach (var customer in customers)
+        {
+            Type t = customer.GetType();
+            var campaignName = new CampaignInfoMan().CampaignName(customer.CampaignId);
+            <tr>
+                
+                    @if (!customer.IsExport)
+                    {
+                        <td style="max-width: 30px; color: red; font-size: 20px;">!</td>
+                    }
+                    else
+                    {
+                        <td style="max-width: 30px;"></td>
+                    }
+                <td>@campaignName</td>
+                @foreach (var f in formFields)
+                {
+                    var field = t.GetProperty(f.Code);
+                    if (field == null)
+                    {
+                        <td></td>
+                    }
+                    else
+                    {
+                        <td>@field.GetValue(customer)</td>
+                        if (f.ParentId == 88)
+                        {
+                            var dealerCode = field.GetValue(customer);
+                            var dealer = diMan.GetByCode(dealerCode.ToString()) ?? new DealerInfo();
+                            var province = "";
+                            var city = "";
+                            if (dealer.CityId != 0)
+                            {
+                                city = cityMan.GetEntity(dealer.CityId).ShortName;
+                            }
+                            if (dealer.ProvinceId != 0)
+                            {
+                                province = cityMan.GetEntity(dealer.ProvinceId).ShortName;
+                            }
+                            <td>@province</td>
+                            <td>@city</td>
+                        }
+                    }
+                }
+                @if (customer.SourceId == 0)
+                {
+                    <td></td>
+                }
+                else
+                {
+                    var source = new WXSourceMan().GetEntity(customer.SourceId);
+                    var sourceName = source == null ? "" : source.SourceName;
+                <td>@sourceName</td>
+                }
+                <td style="min-width: 130px">@customer.CreateTime.ToString("yyyy/MM/dd HH:mm")</td>
+            </tr>
+        }
+    </table>
+
+
+
+</div>
+
+<div>@RenderPage("/views/shared/PageViewasyn.cshtml")</div>
+
+

@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using FarmMonitor.BLL
+@using FarmMonitor.Model
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="/Content/css/Base.css" rel="stylesheet" />
+    <link href="/Content/css/module.css" rel="stylesheet" />
+    <link href="/Content/css/Backstage.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="c-bar clearfix">
+        <div class="Account-nav-text">
+            <a href="javascript:history.go(-1);" class="carte-nav-btn btn-back" title="返回"></a>
+        </div>
+        <div class="backtable1-head">角色管理</div>
+    </div>
+    <div class="btn-group" style="padding-left: 20px;">
+        <button type="button" onclick="add()" class="c-btn btn-blue btn-margin">新增</button>
+    </div>
+    <br />
+    <table class="backtable1-Informationlist">
+
+        <tr>
+            <th>角色名称</th>
+            <th>角色代码</th>
+                <th>缩写</th>
+            <th>角色描述</th>
+            <th>状态</th>
+            <th>创建时间</th>
+            <th>操作</th>
+
+        </tr>
+
+
+        @{
+            var roleList = ViewBag.UserList as List<SysRoleInfo>;
+            if (roleList != null)
+            {
+
+                foreach (var role in roleList)
+                {
+                    <tr>
+                        <td>@role.Name</td>
+                        <td>@role.Code</td>
+                            <td>@role.Abbreviation</td>
+                        <td>@role.Description</td>
+                        <td>@role.DataState.ToString()</td>
+
+                        <td>@role.CreateTime.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <button onclick="right(@role.Id)" class="c-btn btn-blue">权限</button>
+                            <button onclick="edit(@role.Id)" class="c-btn btn-blue">编辑</button>
+
+                        </td>
+                    </tr>
+                }
+            }
+        }
+
+    </table>
+    <div>
+        @RenderPage("/views/shared/pageview.cshtml")
+    </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/MySelf/Custom.js"></script>
+<script src="~/Scripts/artDialog4/plugins/iframeTools.js"></script>
+<script>
+    //权限分配
+    function right(roleid) {
+        var d = art.dialog.open(
+            '/rolemanage/LoadRightForThisRole/' + roleid+"", {
+                title:"权限分配",
+                width: 450,
+                height: 500,
+                lock: true,
+                close: function () {
+
+                }
+            });
+    }
+
+    //新增
+    function add() {
+        var d = art.dialog.open(
+            '/rolemanage/add', {
+                title:"新增角色",
+                id: 'add00',
+                width: 450,
+                height: 500,
+                lock: true,
+
+                close: function () {
+
+                }
+            });
+    }
+
+    //编辑
+    function edit(id) {
+        var d = art.dialog.open(
+            '/rolemanage/edit/' + id, {
+                title: '编辑角色',
+                id: 'edit00',
+                width: 450,
+                height: 500,
+                lock: true,
+                top: '20px',
+                close: function () {
+
+                }
+            });
+    }
+
+</script>
+

@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="~/Content/css/Base.css" rel="stylesheet" />
+    <link href="~/Content/css/module.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/MySelf/Custom.js?v=1"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#userName").focus();
+        });
+    </script>
+</head>
+<body>
+    <div class="login">
+        <div class="login-main">
+            <div class="login-header">
+                <em>
+                    <img style="    width: 40%; padding-bottom: 10px;" src="../../Content/images/logo.png" />
+                </em>
+                @*<h4>Xinhui Orchard System</h4>*@
+            </div>
+            <div class="login-area">
+                <div class="login-info">
+                    <input autocomplete="off" type="text" id="userName" name="userName" placeholder="帐号" class="lgn-txt" />
+                </div>
+                <div class="login-info">
+                    <input type="password" placeholder="密码" id="passWord" name="passWord" class="lgn-txt" />
+                </div>
+                <div class="login-code clearfix">
+                    <div class="l"><input autocomplete="off" type="text" placeholder="验证码" id="imgCode" name="imgCode" class="lgn-txt" /></div>
+                    <div class="r">
+                        <img src="../../VCode.ashx" onclick="changeImg(this);" />
+                    </div>
+                </div>
+                <div class="login-btn">
+                    <input class="lgn-btn" type="submit" id="btnSumit" value="立即登录" onclick="return login();" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    $(document).ready(function () {
+        $("body").keydown(function () {
+            if (event.keyCode == "13") {//keyCode=13是回车键
+                $('#btnSumit').click();
+            }
+        });
+    });
+
+    function changeImg(img) {
+        var src = $(img).attr("src");
+        $(img).attr("src", src + "?" + Math.random(4, 8));
+
+    }
+
+    function login() {
+        var userName = $("#userName").val();
+        if (userName == "") {
+            MyAlertDialog('', "请填写用户名");
+            return false;
+        }
+        var passWord = $("#passWord").val();
+        if (passWord == "") {
+            MyAlertDialog('', "请填写密码");
+            return false;
+        }
+        var imgCode = $("#imgCode").val();
+        if (imgCode == "") {
+            MyAlertDialog('', "请填写验证码");
+            return false;
+        }
+
+        $.post("login", { userName: userName, passWord: passWord, imgCode: imgCode }, function (data) {
+            if (data.code == "200") {
+                window.location.href = '/Login/Index';
+            } else if (data.code == "402") {
+                MyAlertDialog("", data.Msg);
+                var src = $("#img_code").data("src");
+                $("#img_code").attr("src", src + "?" + Math.random(4, 8));
+            } else {
+
+                MyAlertDialog("", data.Msg);
+            }
+        }, "json");
+
+    }
+</script>
+
+

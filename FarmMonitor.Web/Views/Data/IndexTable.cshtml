@@ -1,0 +1,50 @@
+﻿
+@using FarmMonitor.Web.Models
+@{
+    List<CollectDataViewModels> datas = ViewBag.table;
+}
+
+<style type="text/css">
+    .noexport { max-width: 30px; color: red; font-size: 20px; }
+</style>
+<div class="backtable1-box">
+    <table class="backtable1-Informationlist">
+        <thead>
+            <tr>
+                <th style="max-width: 30px"></th>
+                <th>果园Id</th>
+                <th>采集器Id</th>
+                <th>数据Id</th>
+                <th>采集时间</th>
+                <th>传感器</th>
+                <th>数值</th>
+                <th>分辨率</th>
+                <th>值域</th>
+
+            </tr>
+        </thead>
+        @foreach (var data in datas)
+        {
+          
+            <tr>
+
+                <td style="max-width: 30px"></td>
+                <td>@data.OrchardId</td>
+                <td>@data.CollectorId</td>
+                <td>@data.DataId</td>
+                <td>@data.Time</td>
+                <td>@data.SensorName</td>
+                <td>@(data.Data.ToString()+" "+data.Unit)</td>
+                <td>@data.Resolution</td>
+                <td>@data.Scope</td>
+            </tr>
+        }
+    </table>
+
+
+
+</div>
+
+<div>@RenderPage("/views/shared/PageViewasyn.cshtml")</div>
+
+

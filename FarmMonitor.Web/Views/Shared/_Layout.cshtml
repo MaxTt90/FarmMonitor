@@ -1,0 +1,98 @@
+﻿@using FarmMonitor.BLL
+@using FarmMonitor.Model
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>心慧果园系统</title>
+    <link href="/Content/css/Base.css" rel="stylesheet" />
+    <link href="/Content/css/module.css" rel="stylesheet" />
+    <link href="/Content/css/backstage.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        function ChangeMenuStype(self, src) {
+            var objSelf = $(self);
+            if (!objSelf.find("a").hasClass("menu_on")) {
+                objSelf.css("background-image", "url('" + src + "')");
+            }
+        }
+    </script>
+
+    @RenderSection("Header", false)
+</head>
+<body>
+    <div class="base-box">
+        <div class="base-left">
+            <div class="base-logo">
+                @*<img style="width: 78px" src="/content/images/logo.png" alt="">*@
+            </div>
+
+            @{
+                var menuInfo = Startup.GetUserRightInfoList(false).FindAll(o => o.RightType == 1 && o.ParentId == 0).OrderBy(o => o.SortId);
+                var selectMenu = Startup.CurrentSelectMenu;
+                if (menuInfo != null)
+                {
+                    foreach (var m in menuInfo)
+                    {
+                        string ms = "background: url('" + Url.Content(m.PicPath == "" ? "~/Files/MenuImage/iconfont-bumenguanli.png" : m.PicPath) + "') 15px center no-repeat; background-size: 25px 25px; ";
+                        string ams = "";
+                        if (selectMenu != null && m.Id == selectMenu.Id)
+                        {
+                            ms = "background: url('" + Url.Content(m.PicPathChange == "" ? "~/Files/MenuImage/iconfont-bumenguanli(1).png" : m.PicPathChange) + "') 15px center no-repeat; background-size: 25px 25px; ";
+                            ams = "menu_on";
+                        }
+                        <div class="base-text" style="@ms" onmouseover="ChangeMenuStype(this, '@Url.Content(m.PicPathChange == "" ? "~/Files/MenuImage/iconfont-bumenguanli(1).png" : m.PicPathChange)')" onmouseout="ChangeMenuStype(this,'@Url.Content(m.PicPath == "" ? "~/Files/MenuImage/iconfont-bumenguanli.png" : m.PicPath)')">
+                            @if (m.FilePath == "")
+                            {
+                                <a href="@Url.Content("~/Login/MenuList?mid="+m.Id.ToString())" class="@ams">@m.RightName </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Content(m.FilePath+"?mid="+m.Id.ToString())">@m.RightName </a>
+                            }
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <div class="base-right">
+            <div class="base-top-left">@*VGIC Dealer Walk-out System*@</div>
+            <div class="base-top">
+                <ul>
+                    <li><a href="@Url.Content("~/Login/LogOut")">退出</a></li>
+                    <li>|</li>
+                    <li><a href="@Url.Content("~/Login/ModifyPassword")">修改密码</a></li>
+                    <li>|</li>
+                    @{
+                        SysUserInfo ui = Startup.GetUserInfo();
+                        if (ui != null)
+                        {
+                            <li>@ui.Name</li>
+                        }
+                    }
+                    <!--<li><a href="">XXX</a>|</li>
+                    <li><a href="">XXX</a>|</li>
+                    <li><a href="">XXX</a>|</li>
+                    <li><a href="">XXX</a>|</li>-->
+                </ul>
+            </div>
+
+
+            <div class="base-content"><div class="base-main">@RenderBody()</div></div>
+
+
+        </div>
+        <div class="base-down">
+            <ul class="base-down-box">
+                <li class="base-down-box-n1">Copyright © @(DateTime.Now.Year) WEDO. All Rights Reserved.</li>
+                <li class="base-down-box-n2">保定心慧教育技术装备有限公司提供技术支持</li>
+                @*<li class="base-down-box-n"><a href="">运营规范</a></li>
+                    <li class="base-down-box-n"><a href="">服务协议</a></li>
+                    <li class="base-down-box-n"><a href="">XXXX</a></li>
+                    <li class="base-down-box-n2"><a href="">XXXX</a></li>*@
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
