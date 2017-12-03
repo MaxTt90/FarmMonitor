@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
         <TabControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
             <TabItem Header="MapView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <gmap:GMapControl x:Name="MapControl" Zoom="13" MaxZoom="17" MinZoom="2" Height="800" Width="1200" MouseDown="MapControl_OnMouseDoubleClick"/>
+                <gmap:GMapControl x:Name="MapControl" Zoom="13" MaxZoom="17" MinZoom="2" MouseDown="MapControl_OnMouseDoubleClick"/>
             </TabItem>
         </TabControl>
         <Slider Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" x:Name="Slider" Orientation="Vertical" Minimum="{Binding ElementName=MapControl, Path=MinZoom}" Maximum="{Binding ElementName=MapControl, Path=MaxZoom}" Value="{Binding ElementName=MapControl, Path=Zoom}"/>

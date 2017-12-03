@@ -1,0 +1,206 @@
+﻿@using FarmMonitor.Web.Models
+@{
+    Layout = null;
+    int pageNumber = 5;//每页显示5个页码条
+}
+@*<style>
+    .page_notCurrent {
+        padding: 2px 7px;
+        border: 1px solid #adadad;
+        float: left;
+        margin: 15px 0 30px;
+        text-align: center;
+        color: #000000;
+    }
+
+    .page_Current {
+        padding: 2px 7px;
+        border: 1px solid #adadad;
+        float: left;
+        color: #ffffff;
+        margin: 15px 0 30px;
+        text-align: center;
+        background: #3789d4;
+    }
+</style>*@
+@{
+    var pageModel = TempData["PageModel"] as PagedViewModel;
+    if (pageModel != null)
+    {
+        <div class="pagination">
+
+            <ul class="clearfix l">
+                <li><a href="@GetRuquestUrl(pageModel.RequestUrl, 1)"><i class="icon-backward"></i></a></li>
+                @{
+        int start = pageModel.PageIndex - (pageNumber / 2);
+        int end = pageModel.PageIndex + (pageNumber / 2);
+        if (start < 1)
+        {
+            start = 1;
+            end = pageModel.PageCount < pageNumber ? pageModel.PageCount : pageNumber;
+        }
+        else
+        {
+            end = end > pageModel.PageCount ? pageModel.PageCount : end;
+            if (end - start < (pageNumber - 1))
+            {
+                start = end - (pageNumber - 1) <= 0 ? start : end - (pageNumber - 1);
+            }
+        }
+        if (start == 2)
+        {
+            <li><a href="@GetRuquestUrl(pageModel.RequestUrl, 1)">1</a></li>
+        }
+        else if (start > 2)
+        {
+
+            <li ><a href="@GetRuquestUrl(pageModel.RequestUrl, 2)">2</a></li>
+            if (start > 3)
+            {
+                <li><a href="javascript:void();">…</a></li>
+            }
+
+        }
+        for (int i = start; i <= end; i++)
+        {
+
+
+            if (i == pageModel.PageIndex)
+            {
+                <li class="active"><a href="@GetRuquestUrl(pageModel.RequestUrl, i)">@i</a></li>
+
+            }
+            else
+            {
+                <li><a href="@GetRuquestUrl(pageModel.RequestUrl, i)">@i</a></li>
+            }
+        }
+        if (end < pageModel.PageCount)
+        {
+            <li><a href="javascript:void();">…</a></li>
+        }
+}
+
+
+                <li><a href="@GetRuquestUrl(pageModel.RequestUrl, pageModel.PageCount)"><i class="icon-forward"></i></a></li>
+            </ul>
+            <div class="status l">
+                <span>@("共条" + pageModel.PageSum.ToString() + "，")</span>
+                <span>@("当前" + pageModel.PageIndex + "/" + pageModel.PageCount)</span>
+            </div>
+        </div>
+
+
+        @*<div class="pagination">
+                <input type="hidden" name="pageIndex" id="pageIndex" value="@pageModel.PageIndex" />
+                @if (pageModel.PageCount > 0)
+                {
+                    <ul class="clearfix l">
+                        <li><a href="javascript:SetPageIndex(1)"><i class="icon-backward"></i></a></li>
+                        @{
+                    int startIndex = 1;
+                    int endIndex = 2;
+                    List<int> pList = new List<int>();
+                    if (pageModel.PageCount > 0)
+                    {
+                        pList.Add(1);
+                    }
+                    if (pageModel.PageCount > 1)
+                    {
+                        pList.Add(2);
+                    }
+                    if (pageModel.PageCount > 2)
+                    {
+                        if (pageModel.PageCount > pageModel.ViewCount)
+                        {
+                            startIndex = pageModel.PageIndex - (pageModel.ViewCount - 2) / 2;
+                            endIndex = pageModel.PageIndex + (pageModel.ViewCount - 2) / 2;
+                            if (startIndex <= 3)
+                            {
+                                startIndex = 3;
+                            }
+                            if (endIndex > pageModel.PageCount)
+                            {
+                                endIndex = pageModel.PageCount;
+                            }
+                            else if (endIndex < pageModel.ViewCount)
+                            {
+                                if (pageModel.PageCount >= pageModel.ViewCount)
+                                {
+                                    endIndex = pageModel.ViewCount;
+                                }
+                                else
+                                {
+                                    endIndex = pageModel.PageCount;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            startIndex = 3;
+                            endIndex = pageModel.PageCount;
+                        }
+
+                        for (int i = startIndex; i <= endIndex; i++)
+                        {
+                            pList.Add(i);
+                        }
+                    }
+
+                    //开始显示分页
+                    for (int i = 0; i < pList.Count; i++)
+                    {
+                        int index = pList[i];
+                        if (index == pageModel.PageIndex)
+                        {
+                            <li class="active"><a href="@GetRuquestUrl(pageModel.RequestUrl, index)">@index</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@GetRuquestUrl(pageModel.RequestUrl, index)">@index</a></li>
+                        }
+                        if (i == 1 && pList.Count >= 3 && pList[i + 1] > 3)
+                        {
+                            <li><a href="javascript:void();">…</a></li>
+                        }
+
+                        if (i == (pList.Count - 1) && pageModel.PageCount > pList[i])
+                        {
+                            <li><a href="javascript:void();">…</a></li>
+                        }
+                    }
+                        }
+                        <li><a href="@GetRuquestUrl(pageModel.RequestUrl, pageModel .PageCount)"><i class="icon-forward"></i></a></li>
+                    </ul>
+                    <div class="status l">
+                        <span>@("共条" + pageModel.PageSum.ToString() + "，")</span>
+                        <span>@("共条" + pageModel.PageIndex.ToString() + "/" + pageModel.PageCount.ToString() + "页")当前8/10</span>
+                    </div>
+                }
+            </div>*@
+
+
+
+
+
+    }
+
+}
+
+
+
+@functions
+{
+
+    public static string GetRuquestUrl(string orginalUrl, int index)
+    {
+        if (orginalUrl.EndsWith("/"))
+        {
+            return orginalUrl + "?pageIndex=" + index;
+        }
+        return orginalUrl + "&pageIndex=" + index;
+    }
+
+
+}
+

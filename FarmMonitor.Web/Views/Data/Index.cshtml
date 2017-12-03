@@ -1,0 +1,177 @@
+﻿@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<CollectData> datas = ViewBag.datas;
+    List<Collector> collectors = ViewBag.collectors;
+    List<Sensor> sensors = ViewBag.sensors;
+}
+@using FarmMonitor.BLL
+@using FarmMonitor.Model
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../../Content/css/Base.css" rel="stylesheet" />
+    <link href="../../Content/css/Backstage.css" rel="stylesheet" />
+     
+    <!--双日历css-->
+    <link href="~/Scripts/daterangepicker/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Scripts/daterangepicker/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Scripts/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" />
+    <style>
+        .btn { width: 60px; }
+
+        .backtable1-writelist li span { display: block; float: left; }
+
+        .backtable1-writelist li span:first-child { width: 85px; text-align: right; }
+        .searchTitle { width: 70px; margin-right: 20px; }
+    </style>
+
+    <!--双日历css-->
+</head>
+
+<body>
+    <div class="c-bar clearfix">
+        <div class="Account-nav-text">
+            <a href="javascript:history.go(-1);" class="carte-nav-btn btn-back" title="返回"></a>
+        </div>
+        <div class="backtable1-head">客户统计报告</div>
+    </div>
+    <div class="c-view" style="overflow: auto">
+        @*<div class="msg-content" style="bottom: 0px;">*@
+        <div class="backtable1-content">
+            <div class="backtable1-writebox">
+                <ul class="backtable1-writelist">
+                    <li>
+                        <span class="backtable1-attribute"><label class="searchTitle">设备编号</label></span>
+                        <span>
+                            <select class="backtable1-select" name="searchCollectors" id="searchCollectors">
+                                <option value="0">请选择</option>
+                                @foreach (var c in collectors)
+                                {
+                                    <option value="@c.CollectorId">@c.CollectorId</option>
+                                }
+                            </select>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="backtable1-attribute"><label class="searchTitle">传感器</label></span>
+                        <span>
+                            <select class="backtable1-select" name="searchSensors" id="searchSensors">
+                                <option value="0">请选择</option>
+                                @foreach (var c in sensors)
+                                {
+                                    <option value="@c.SensorId">@c.Cname</option>
+                                }
+                            </select>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="back-attribute"><label class="searchTitle">数据提交时间</label></span>
+                        <span><input class="backtable1-text" type="text" id="createTime" name="createTime"> </span>
+                        <input type="hidden" id="timeStart" name="timeStart" value="" />
+                        <input type="hidden" id="timeEnd" name="timeEnd" value="" />
+
+                    </li>
+                  
+                    
+                </ul>
+                <div class="backtable1-btn">
+
+                    <input class="backtable1ch-btn" type="submit" onclick="return search()" value=" 搜索" />
+
+                    <a class="backtable1-link" onclick="downloadExcel();return false" href="">导出</a>
+
+                </div>
+            </div>
+            <div id="indexTable">
+
+            </div>
+        </div>
+    </div>
+    @*</div>*@
+</body>
+</html>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/MySelf/Custom.js"></script>
+<script src="~/Scripts/artDialog4/plugins/iframeTools.js"></script>
+<!--双日历js-->
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/daterangepicker/moment.js"></script>
+<script src="~/Scripts/daterangepicker/daterangepicker.js"></script>
+<!--双日历js-->
+
+<script>
+    //加载提交时间
+    $("#createTime").daterangepicker({
+        format: 'YYYY/MM/DD HH:mm'
+    }, function (start, end, lable, type) {
+        var s = start.toISOString().substr(0, start.toISOString().indexOf("Z"));
+        var e = end.toISOString().substr(0, end.toISOString().indexOf("Z"));
+        s = s.replace('T', ' ');
+        e = e.replace('T', ' ');
+
+        if (type == 'cancel') {
+            s = "";
+            e = "";
+        }
+        else {
+            s = s.substr(0, 16);
+            e = e.substr(0, 16);
+        }
+        $("#timeStart").val(s);
+        $("#timeEnd").val(e);
+    });
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        search();
+    })
+    //搜索-提交数据
+    function search() {
+        var collectorId=$("#searchCollectors").val();
+        var sensorId = $("#searchSensors").val();
+        var timeStart = $("#timeStart").val();
+        var timeEnd = $("#timeEnd").val();
+
+        $.post("/Data/LoadIndexTable", {
+                collectorId:collectorId,
+                sensorId:sensorId,
+                timeStart:timeStart,
+                timeEnd:timeEnd
+
+            },
+            function (data) {
+                $("#indexTable").empty();
+                $("#indexTable").append(data);
+            }, 'html');
+    };
+
+
+    //选择分页
+    function chosePage(href) {
+
+        $.post(href, {
+
+            },
+            function (data) {
+                $("#indexTable").empty();
+                $("#indexTable").append(data);
+            }, 'html');
+    }
+    //导出
+    function downloadExcel() {
+        var collectorId=$("#searchCollectors").val();
+        var sensorId = $("#searchSensors").val();
+        var timeStart = $("#timeStart").val();
+        var timeEnd = $("#timeEnd").val();
+        window.location.href = "/Data/DownloadTable?collectorId=" + collectorId + "&&sensorId=" + sensorId + "&&timeStart=" + timeStart + "&&timeEnd=" + timeEnd;
+
+    }
+</script>
+

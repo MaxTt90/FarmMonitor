@@ -1,0 +1,135 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Chart</title>
+    <script src="/Scripts/echarts.min.js"></script>
+</head>
+<body>
+<div>
+    <div id="main" style="width: 600px; height: 400px;"></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    function randomData() {
+        now = new Date(+now + oneDay);
+        value = value + Math.random() * 21 - 10;
+        return {
+            name: now.toString(),
+            value: [
+                [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+                Math.round(value)
+            ]
+        }
+    }
+
+    var data = [];
+    var data1 = [];
+    var data2 = [];
+    var data3 = [];
+    var data4 = [];
+    var data5 = [];
+    var data6 = [];
+
+
+    var option = {
+        title: {
+            text: '动态数据 + 时间坐标轴'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function(params) {
+                params = params[0];
+                var date = new Date(params.name);
+                return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: [
+            {
+                type: 'value',
+                scale: true,
+                name: '温度'
+            },
+            {
+                type: 'value',
+                scale: true,
+                name: '湿度'
+            }
+        ],
+        series: [
+            {
+                name: 'line1',
+                type: 'line',
+                stack: '总量',
+                data: data1
+            },
+            {
+                name: 'line2',
+                type: 'line',
+                stack: '总量',
+                data: data2
+            },
+            {
+                name: 'line3',
+                type: 'line',
+                stack: '总量',
+                data: data3
+            },
+            {
+                name: 'bar1',
+                type: 'line',
+                stack: '总量',
+                data: data4
+            },
+            {
+                name: 'bar2',
+                type: 'line',
+                stack: '总量',
+                data: data5
+            },
+            {
+                name: 'bar3',
+                type: 'line',
+                stack: '总量',
+                data: data6
+            }
+        ]
+    };
+
+ 
+    setInterval(function () {
+        axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
+
+        var data0 = option.series[0].data;
+        var data1 = option.series[1].data;
+        data0.shift();
+        data0.push(Math.round(Math.random() * 1000));
+        data1.shift();
+        data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
+
+
+        myChart.setOption(option);
+    }, 2100);
+
+    
+</script>

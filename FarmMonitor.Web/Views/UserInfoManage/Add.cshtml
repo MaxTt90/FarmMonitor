@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Scripts/MySelf/Custom.js"></script>
+<script>
+    //省市
+    $(function() {
+        $.getJSON("/LoadData/ProvinceLoad", {}, function(provList) {
+            $("#proSelect").append('<option value="">--请选择省份--</option>');
+            $("#citySelect").append('<option value="">--请选择城市--</option>');
+
+            for (var i = 0; i < provList.length; i++) {
+                $("#proSelect").append("<option value='" + provList[i].Id + "'>" + provList[i].Name + "</option>");
+            }
+        });
+
+        $("#proSelect").change(function() {
+            if ($("#proSelect").val() == "") {
+                $("#citySelect").empty();
+                $("#citySelect").append('<option value="">--请选择城市--</option>');
+            } else {
+                $.getJSON("/LoadData/CityLoad", { provId: $("#proSelect").val() }, function(cityList) {
+                    $("#citySelect").empty();
+
+                    for (var i = 0; i < cityList.length; i++) {
+                        $("#citySelect").append("<option value='" + cityList[i].Id + "'>" + cityList[i].Name + "</option>");
+                    }
+                });
+            }
+        });
+    });
+
+    function fSubmit() {
+        var name = $("#userinfoName").val();
+        if (name == "") {
+            MyAlertDialog("", "请输入名字");
+            return false;
+        }
+        var password = $("#userinfoPassword").val();
+        if (password == "") {
+            MyAlertDialog("", "请输入密码");
+            return false;
+        }
+        var tel = $("#userinfoTel").val();
+        var mobile = $("#userinfoMobile").val();
+        if (tel == "" && mobile == "") {
+            MyAlertDialog("", "电话和手机不能同时为空");
+            return false;
+        }
+
+        var provinceSelect = $("#proSelect").val();
+        var citySelect = $("#citySelect").val();
+        if (provinceSelect == "" || citySelect == "") {
+            MyAlertDialog("", "省市不能为空");
+            return false;
+        }
+    }
+</script>
+<div class="c-bar clearfix" style="margin-bottom: 20px;">
+    <div class="Account-nav-text">
+        <a href="javascript:history.go(-1);" class="carte-nav-btn btn-back"></a>
+    </div>
+    <div class="c-group">
+        增加用户
+    </div>
+</div>
+<form action="/UserInfoManage/Add/" method="post">
+    <div class="UIM-box">
+        <div class="UIM-content">
+            <div class="UIM-text">
+                <div class="UIM-tp1">姓名:</div>
+                <div class="UIM-tp"><input type="text" class="UIM-thp" name="Name" id="userinfoName" /></div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">密码:</div>
+                <div class="UIM-tp"><input type="password" class="UIM-thp" name="Password" id="userinfoPassword" /> </div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">生日:</div>
+                <div class="UIM-tp"><input class="UIM-thp" type="text" name="Birthday" onclick="WdatePicker({ readOnly: true, dateFmt: 'yyyy-MM-dd' })" onfocus="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})" /></div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">
+                    性别：
+                </div>
+                <div class="UIM-tp">
+                    <input type="radio" name="Sex" value="1" checked="checked" /><span style="color:#000;">男</span>
+                    <input type="radio" name="Sex" value="2" /><span style="color:#000">女</span>
+                </div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">电话:</div>
+                <div class="UIM-tp"><input class="UIM-thp" type="text" name="Tel" id="userinfoTel" /> </div>
+            </div>
+            
+            <div class="UIM-text">
+                <div class="UIM-tp1">手机:</div>
+                <div class="UIM-tp"><input class="UIM-thp" type="text" name="Mobile" id="userinfoMobile" maxlength="11" /></div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">邮箱:</div>
+                <div class="UIM-tp"><input class="UIM-thp" type="text" name="Email" id="userinfoEmail" /> </div>
+            </div>
+
+            <div class="UIM-text">
+                <div class="UIM-tp1">用户状态:</div>
+                <div class="UIM-tp">
+                    <select class="UIM-thp" id="userinfoUserState" name="UserState" style="width:127px;">
+                        <option value="1" selected="selected">在职</option>
+                        <option value="2">禁用</option>
+                        <option value="3">删除</option>
+                        <option value="4">离职</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="UIM-text">
+                <div class="UIM-tp1">省份:</div>
+                <div class="UIM-tp">
+                    <select class="UIM-thp" id="proSelect" name="Province" style="width:127px;"></select>
+                </div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">城市:</div>
+                <div class="UIM-tp">
+                    <select class="UIM-thp" id="citySelect" name="City" style="width:127px;"></select>
+                </div>
+            </div>
+
+            
+            <div class="UIM-text">
+                <div class="UIM-tp1">角色：</div>
+                <div class="UIM-tp">
+                    <select class="vin-right-pull vin-select1 UIM-tp" name="roleInfoName" style="width:127px;">
+                        @{
+                            var roleinfoList = ViewBag.RoleInfoList as List<FarmMonitor.Model.SysRoleInfo>;
+                            if (roleinfoList != null)
+                            {
+                                foreach (var item in roleinfoList)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="UIM-text">
+                <div class="UIM-tp1">备注:</div>
+                <div class="UIM-tp"><textarea class="UIM-thp" cols="10" rows="5" name="Remark" id="userinfoRemark"></textarea></div>
+            </div>
+
+
+            <div class="UIM-text1">
+                <input class="c-btn btn-blue" type="submit" value="增加" id="subAdd" onclick="return fSubmit()" />
+            </div>
+
+
+            <div style="clear:both;"></div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</form>
+
+

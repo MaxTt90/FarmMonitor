@@ -37,7 +37,8 @@ namespace FarmMonitor.Model
 		private string _tel = "";  
 		private DateTime? _birthday;  
 		private int _province = 0;  
-		private int _city = 0;  
+		private int _city = 0;
+        private int _zone = 0;
 		private int _supervisior = 0;  
 		private string _mobile = "";  
 		private string _email = "";  
@@ -54,9 +55,7 @@ namespace FarmMonitor.Model
 		private string _lastloginip = "";  
 		private int _loginfailures = 0;  
 		private int _validationtype = 0;
-        private int _accounttype = 0;
-        private string _platformopenid = "";
-        private string _openid = "";
+        private int _accounttype = 0;    
         private string _headimgurl = "";
 		/// <summary>
 		/// 自动编号
@@ -146,12 +145,22 @@ namespace FarmMonitor.Model
         {
             get{ return _city; }
             set{ _city = value; }
-        }    
-        
-		/// <summary>
-		/// 上级姓名
-		/// </summary>		
-		       
+        }
+
+        /// <summary>
+        /// 区
+        /// </summary>		
+
+        public int Zone
+        {
+            get { return _zone; }
+            set { _zone = value; }
+        }
+
+        /// <summary>
+        /// 上级姓名
+        /// </summary>		
+
         public int Supervisior
         {
             get{ return _supervisior; }
@@ -309,7 +318,7 @@ namespace FarmMonitor.Model
         }
 
         /// <summary>
-        /// 账号类型:1=后台账号,2=企业号账号,3=服务号账号
+        /// 账号类型:1=后台账号
         /// </summary>
         public int AccountType
         {
@@ -317,23 +326,7 @@ namespace FarmMonitor.Model
             set { _accounttype = value; }
         }
 
-        /// <summary>
-        /// 公众账号编号
-        /// </summary>
-        public string PlatformOpenId
-        {
-            get { return _platformopenid; }
-            set { _platformopenid = value; }
-        }
-        /// <summary>
-        /// 粉丝编号
-        /// </summary>
-        public string OpenId
-        {
-            get { return _openid; }
-            set { _openid = value; }
-        }
-
+        
         /// <summary>
         /// 用户头像
         /// </summary>

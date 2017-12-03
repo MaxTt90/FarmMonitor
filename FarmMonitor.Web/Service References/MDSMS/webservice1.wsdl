@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://entinfo.cn/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://entinfo.cn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://entinfo.cn/">
+      <s:element name="mdsmssend">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ext" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rrid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msgfmt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mdsmssendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mdsmssendResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mdgxsend">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ext" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rrid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msgfmt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mdgxsendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mdgxsendResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mdgetSninfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mdgetSninfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mdgetSninfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="mdsmssendSoapIn">
+    <wsdl:part name="parameters" element="tns:mdsmssend" />
+  </wsdl:message>
+  <wsdl:message name="mdsmssendSoapOut">
+    <wsdl:part name="parameters" element="tns:mdsmssendResponse" />
+  </wsdl:message>
+  <wsdl:message name="mdgxsendSoapIn">
+    <wsdl:part name="parameters" element="tns:mdgxsend" />
+  </wsdl:message>
+  <wsdl:message name="mdgxsendSoapOut">
+    <wsdl:part name="parameters" element="tns:mdgxsendResponse" />
+  </wsdl:message>
+  <wsdl:message name="mdgetSninfoSoapIn">
+    <wsdl:part name="parameters" element="tns:mdgetSninfo" />
+  </wsdl:message>
+  <wsdl:message name="mdgetSninfoSoapOut">
+    <wsdl:part name="parameters" element="tns:mdgetSninfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="mdsmssendHttpGetIn">
+    <wsdl:part name="sn" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="mobile" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="ext" type="s:string" />
+    <wsdl:part name="stime" type="s:string" />
+    <wsdl:part name="rrid" type="s:string" />
+    <wsdl:part name="msgfmt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="mdsmssendHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="mdgxsendHttpGetIn">
+    <wsdl:part name="sn" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="mobile" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="ext" type="s:string" />
+    <wsdl:part name="stime" type="s:string" />
+    <wsdl:part name="rrid" type="s:string" />
+    <wsdl:part name="msgfmt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="mdgxsendHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="mdgetSninfoHttpGetIn">
+    <wsdl:part name="sn" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="mdgetSninfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="mdsmssendHttpPostIn">
+    <wsdl:part name="sn" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="mobile" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="ext" type="s:string" />
+    <wsdl:part name="stime" type="s:string" />
+    <wsdl:part name="rrid" type="s:string" />
+    <wsdl:part name="msgfmt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="mdsmssendHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="mdgxsendHttpPostIn">
+    <wsdl:part name="sn" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="mobile" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="ext" type="s:string" />
+    <wsdl:part name="stime" type="s:string" />
+    <wsdl:part name="rrid" type="s:string" />
+    <wsdl:part name="msgfmt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="mdgxsendHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="mdgetSninfoHttpPostIn">
+    <wsdl:part name="sn" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="mdgetSninfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="mdsmssend">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送短信：sn软件序列号;pwd加密密码md5(sn+password);mobile手机号列表，以逗号,隔开;content发送内容,utf-8编码;ext扩展子号;stime定时时间,格式如2009-09-01 18:21:00;rrid唯一标识,全数字;msgfmt内容编码,0：ASCII串,3：短信写卡操作,4：二进制信息,8：UCS2编码,空或15：含GB汉字.返回:唯一标识</wsdl:documentation>
+      <wsdl:input message="tns:mdsmssendSoapIn" />
+      <wsdl:output message="tns:mdsmssendSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mdgxsend">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送个性短信：sn软件序列号;pwd加密密码md5(sn+password);mobile手机号列表，以逗号,隔开;content发送内容,utf-8编码，以逗号,隔开;ext扩展子号;stime定时时间,格式如2009-09-01 18:21:00;rrid唯一标识,全数字;msgfmt内容编码,0：ASCII串,3：短信写卡操作,4：二进制信息,8：UCS2编码,空或15：含GB汉字.返回:唯一标识</wsdl:documentation>
+      <wsdl:input message="tns:mdgxsendSoapIn" />
+      <wsdl:output message="tns:mdgxsendSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mdgetSninfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取信息：sn软件序列号;pwd加密密码md5(sn+password)</wsdl:documentation>
+      <wsdl:input message="tns:mdgetSninfoSoapIn" />
+      <wsdl:output message="tns:mdgetSninfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceHttpGet">
+    <wsdl:operation name="mdsmssend">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送短信：sn软件序列号;pwd加密密码md5(sn+password);mobile手机号列表，以逗号,隔开;content发送内容,utf-8编码;ext扩展子号;stime定时时间,格式如2009-09-01 18:21:00;rrid唯一标识,全数字;msgfmt内容编码,0：ASCII串,3：短信写卡操作,4：二进制信息,8：UCS2编码,空或15：含GB汉字.返回:唯一标识</wsdl:documentation>
+      <wsdl:input message="tns:mdsmssendHttpGetIn" />
+      <wsdl:output message="tns:mdsmssendHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mdgxsend">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送个性短信：sn软件序列号;pwd加密密码md5(sn+password);mobile手机号列表，以逗号,隔开;content发送内容,utf-8编码，以逗号,隔开;ext扩展子号;stime定时时间,格式如2009-09-01 18:21:00;rrid唯一标识,全数字;msgfmt内容编码,0：ASCII串,3：短信写卡操作,4：二进制信息,8：UCS2编码,空或15：含GB汉字.返回:唯一标识</wsdl:documentation>
+      <wsdl:input message="tns:mdgxsendHttpGetIn" />
+      <wsdl:output message="tns:mdgxsendHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mdgetSninfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取信息：sn软件序列号;pwd加密密码md5(sn+password)</wsdl:documentation>
+      <wsdl:input message="tns:mdgetSninfoHttpGetIn" />
+      <wsdl:output message="tns:mdgetSninfoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceHttpPost">
+    <wsdl:operation name="mdsmssend">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送短信：sn软件序列号;pwd加密密码md5(sn+password);mobile手机号列表，以逗号,隔开;content发送内容,utf-8编码;ext扩展子号;stime定时时间,格式如2009-09-01 18:21:00;rrid唯一标识,全数字;msgfmt内容编码,0：ASCII串,3：短信写卡操作,4：二进制信息,8：UCS2编码,空或15：含GB汉字.返回:唯一标识</wsdl:documentation>
+      <wsdl:input message="tns:mdsmssendHttpPostIn" />
+      <wsdl:output message="tns:mdsmssendHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mdgxsend">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送个性短信：sn软件序列号;pwd加密密码md5(sn+password);mobile手机号列表，以逗号,隔开;content发送内容,utf-8编码，以逗号,隔开;ext扩展子号;stime定时时间,格式如2009-09-01 18:21:00;rrid唯一标识,全数字;msgfmt内容编码,0：ASCII串,3：短信写卡操作,4：二进制信息,8：UCS2编码,空或15：含GB汉字.返回:唯一标识</wsdl:documentation>
+      <wsdl:input message="tns:mdgxsendHttpPostIn" />
+      <wsdl:output message="tns:mdgxsendHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mdgetSninfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取信息：sn软件序列号;pwd加密密码md5(sn+password)</wsdl:documentation>
+      <wsdl:input message="tns:mdgetSninfoHttpPostIn" />
+      <wsdl:output message="tns:mdgetSninfoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="mdsmssend">
+      <soap:operation soapAction="http://entinfo.cn/mdsmssend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mdgxsend">
+      <soap:operation soapAction="http://entinfo.cn/mdgxsend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mdgetSninfo">
+      <soap:operation soapAction="http://entinfo.cn/mdgetSninfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="mdsmssend">
+      <soap12:operation soapAction="http://entinfo.cn/mdsmssend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mdgxsend">
+      <soap12:operation soapAction="http://entinfo.cn/mdgxsend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mdgetSninfo">
+      <soap12:operation soapAction="http://entinfo.cn/mdgetSninfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceHttpGet" type="tns:WebServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="mdsmssend">
+      <http:operation location="/mdsmssend" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mdgxsend">
+      <http:operation location="/mdgxsend" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mdgetSninfo">
+      <http:operation location="/mdgetSninfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceHttpPost" type="tns:WebServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="mdsmssend">
+      <http:operation location="/mdsmssend" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mdgxsend">
+      <http:operation location="/mdgxsend" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mdgetSninfo">
+      <http:operation location="/mdgetSninfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://sdk2.entinfo.cn:8061/webservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://sdk2.entinfo.cn:8061/webservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceHttpGet" binding="tns:WebServiceHttpGet">
+      <http:address location="http://sdk2.entinfo.cn:8061/webservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceHttpPost" binding="tns:WebServiceHttpPost">
+      <http:address location="http://sdk2.entinfo.cn:8061/webservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

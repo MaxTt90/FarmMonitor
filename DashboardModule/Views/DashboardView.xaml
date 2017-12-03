@@ -68,5 +68,8 @@
             </controls:SplitButton>
         </StackPanel>
         <oxy:PlotView x:Name="PlotView" Grid.Column="2" Grid.Row="1" Model="{Binding SensorChartViewModel.PlotModel}" Foreground="Black" />
+        <GroupBox Grid.Column="2" Grid.Row="2" Header="Field Info. Summary">
+            
+        </GroupBox>
     </Grid>
 </UserControl>

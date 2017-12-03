@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="c-bar clearfix">
+    <span class="c-group">
+        公众账号
+    </span>
+</div>
+
+
+<script>
+    function add(type) {
+        if (type == "yingyong") {
+            location.href = '/wechat/agent/add';
+        } else {
+            location.href = '/wechat/agent/AddWxAcount/?type=' + type;
+        }
+    }
+
+    function edit(id,type) {
+        if (type=='yingyong') {
+            location.href = '/wechat/agent/EditAgent/' + id;
+        } else {
+            location.href = '/wechat/agent/EditWxAcount/' + id;
+        }
+    }
+</script>
+
+
+
+
+

@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Scripts/ztree3.0/css/metroStyle/metroStyle.css" rel="stylesheet"/>
+
+</head>
+<body>
+<ul id="tree" class="ztree" style="width: 560px; overflow: auto;"></ul>
+
+    <button class="btn btn-success btn-lg" onclick="chose()" >确定</button>
+</body>
+</html>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/ztree3.0/js/jquery.ztree.all-3.5.min.js"></script>
+<script src="~/Scripts/artDialog4/jquery.artDialog.js"></script>
+<script src="~/Scripts/artDialog4/plugins/iframeTools.js"></script>
+<script>
+    var zNodes = @Html.Raw(ViewBag.TreeData.ToString());
+    zNodes.push({"name":"顶级","Id":0,"ParentId":-1});
+    var setting = {
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "Id",
+                pIdKey: "ParentId",
+                rootPId: "0"
+            }
+        },view:{selectedMulti:false}
+    };
+
+    $(document).ready(function () {
+        var t = $("#tree");
+        t = $.fn.zTree.init(t, setting, eval(zNodes));
+
+        var zTree = $.fn.zTree.getZTreeObj("tree");
+        zTree.expandAll(true);
+
+    });
+
+    function chose() {
+        
+        var treeObj = $.fn.zTree.getZTreeObj("tree");
+        var nodes = treeObj.getSelectedNodes();
+     
+        if (nodes.length>0) {
+        art.dialog.data('pName', nodes[0].name);
+         art.dialog.data('pId', nodes[0].Id);
+        }
+    art.dialog.close();
+    }
+</script>

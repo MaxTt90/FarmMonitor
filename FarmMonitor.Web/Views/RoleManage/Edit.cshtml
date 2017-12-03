@@ -1,0 +1,84 @@
+﻿@using FarmMonitor.Model
+@{
+    ViewBag.Title = "Add";
+    Layout = null;
+}
+@model FarmMonitor .Model .SysRoleInfo
+<style>
+    .table th, .table td {
+        text-align: center;
+        height: 38px;
+    }
+</style>
+<form>
+    <link href="~/Scripts/artDialog4/skins/blue.css" rel="stylesheet" />
+    <link href="/Content/css/Backstage.css" rel="stylesheet" />
+    <link href="/Content/css/module.css" rel="stylesheet" />
+    <div class="layout">
+        <table class="layout-tab ">
+            <tbody>
+                <tr>
+                    <td class="layout-zd">权限名称</td>
+                    <td><input type="text" value="@Model.Name" class="input-text" name=" name" /></td>
+
+                </tr>
+                <tr>
+                    <td class="layout-zd">权限代码</td>
+                    <td><input type="text" class="input-text" value="@Model.Code" name="Code" /></td>
+
+                </tr>
+                <tr>
+                    <td class="layout-zd">缩写</td>
+                    <td><input type="text" class="input-text" value="@Model.Abbreviation" name="Abbr" /></td>
+
+                </tr>
+
+                <tr>
+                    <td class="layout-zd">描述</td>
+                    <td>
+                        <input type="text" class="input-text" value="@Model.Description" name="Desc" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="layout-zd"></td>
+                    <td>
+                        <span class="c-btn btn-blue" onclick="fSubmit()">确定</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</form>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/MySelf/Custom.js"></script>
+<script src="~/Scripts/artDialog4/artDialog.js"></script>
+<script src="~/Scripts/artDialog4/plugins/iframeTools.js"></script>
+<script>
+    function fSubmit() {
+        var name = $("input[name='Name']").val();
+        var code = $("input[name='Code']").val();
+        var abbr = $("input[name='Abbr']").val();
+        var desc = $("input[name='Desc']").val();
+
+
+        if (name == null || name == "") {
+            MyAlertDialog("","权限名不能为空");
+            return false;
+        } else if (code == null || code == "") {
+            MyAlertDialog("","权限代码不能为空");
+            return false;
+        } else {
+            $.post("/rolemanage/editrole/"+@Model.Id, { name: name, code: code, abbr: abbr, desc: desc }, function (data) {
+
+                //alert(data.msg);
+                if (data.code == "200") {
+                    window.parent.location.href = '/rolemanage/index';
+                }
+                art.dialog.close();
+            }, "json");
+        }
+
+    }
+</script>
