@@ -13,6 +13,13 @@ namespace DashboardModule.ViewModels
 
         private readonly SensorDataModel _sensorDataModel;
 
+        public SensorChartViewModel(Axis xAxis, Axis yAxis, Series lineSeries)
+        {
+            PlotModel.Axes.Add(xAxis);
+            PlotModel.Axes.Add(yAxis);
+            PlotModel.Series.Add(lineSeries);
+        }
+
         public SensorChartViewModel(SensorDataModel sensorDataModel)
         {
             _sensorDataModel = sensorDataModel;

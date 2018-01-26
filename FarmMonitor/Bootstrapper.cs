@@ -10,6 +10,7 @@ using FarmMonitor.Desktop.Views;
 using Prism.Modularity;
 using Microsoft.Practices.Unity;
 using FarmMonitor.Desktop.ViewModels;
+using FarmMonitor.Infrastructure;
 using PresentationModule.Services;
 
 namespace FarmMonitor.Desktop
@@ -41,6 +42,8 @@ namespace FarmMonitor.Desktop
         {
             base.ConfigureContainer();
             Container.RegisterType<ILoginService, LoginService>(new ContainerControlledLifetimeManager());
+
+            AppContext.Current.Initialize(Container);
         }
     }
 }
