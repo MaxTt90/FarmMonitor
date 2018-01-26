@@ -112,9 +112,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DashboardModule.cs" />
+    <Compile Include="Services\IChartProvider.cs" />
+    <Compile Include="Services\LineChartProvider.cs" />
     <Compile Include="Services\SensorPlotModelHandler.cs" />
     <Compile Include="Services\ISensorPlotModelHandler.cs" />
-    <Compile Include="Services\SensorDataProvider.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\IDashboardViewModel.cs" />
     <Compile Include="ViewModels\SensorChartViewModel.cs" />

@@ -15,7 +15,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <GroupBox Margin="2" Header="Navigation Panel">
         <StackPanel>
-            <!--<Image Source="/"/>-->
+            <!--<Image Source="/"/>--><!--
             <RichTextBox Margin="2"
                         Padding="5"
                         IsDocumentEnabled="True"
@@ -23,12 +23,12 @@
                 <FlowDocument>
                     <Paragraph>
                         <Hyperlink Name="Hyperlink1" NavigateUri="http://xinhuiedu.com/" RequestNavigate="Hyperlink_OnRequestNavigate">
-                            <Run Text="保定市心慧教育技术装备有限公司" />
+                            <Run Text="Elekta." />
                         </Hyperlink>
-                        <Run>, 中国物理学会、中国教育科学院、中国教育报刊社、人民教育出版社和教育科学出版社联合授权。</Run>
+                        <Run></Run>
                     </Paragraph>
                 </FlowDocument>
-            </RichTextBox>
+            </RichTextBox>-->
 
             <Button Margin="2" Content="Dashboard" Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type dashboardviews:DashboardView}" Background="AntiqueWhite"/>
             <Button Margin="2" Content="Map" Command="{x:Static inf:ApplicationCommands.NavigatieCommand}" CommandParameter="{x:Type mapviews:MapView}" Background="AntiqueWhite"/>

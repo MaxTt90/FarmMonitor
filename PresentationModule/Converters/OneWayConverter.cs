@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Data;
 
-namespace FarmMonitor.Infrastructure.Converters
+namespace PresentationModule.Converters
 {
     /// <summary>
     /// The base class for converters that only convert one way.
