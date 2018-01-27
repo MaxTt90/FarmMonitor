@@ -22,6 +22,7 @@ namespace DashboardModule
         {
             _container.RegisterType<IDashboardViewModel, DashboardViewModel>();
             _container.RegisterType<ISensorPlotModelHandler, SensorPlotModelHandler>();
+            _container.RegisterType<IChartProvider, LineChartProvider>();
         }
     }
 }

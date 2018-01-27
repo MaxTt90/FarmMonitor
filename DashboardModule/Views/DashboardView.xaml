@@ -46,23 +46,11 @@
                 <controls:SplitButton.DropDownMenu>
                     <ContextMenu>
                         <MenuItem Header="Year"
-                              Command="{Binding }"></MenuItem>
+                              Command="{Binding SwitchTimeGapCommand}" CommandParameter="Year"/>
                         <MenuItem Header="Month"
-                              Command="{Binding }"></MenuItem>
+                              Command="{Binding SwitchTimeGapCommand}" CommandParameter="Month"/>
                         <MenuItem Header="Day"
-                              Command="{Binding }"></MenuItem>
-                    </ContextMenu>
-                </controls:SplitButton.DropDownMenu>
-            </controls:SplitButton>
-
-            <controls:SplitButton Mode="Unified">
-                <Button Content="Chart Type" />
-                <controls:SplitButton.DropDownMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Line"
-                              Command="{Binding }"></MenuItem>
-                        <MenuItem Header="Bar"
-                              Command="{Binding }"></MenuItem>
+                              Command="{Binding SwitchTimeGapCommand}" CommandParameter="Day"/>
                     </ContextMenu>
                 </controls:SplitButton.DropDownMenu>
             </controls:SplitButton>

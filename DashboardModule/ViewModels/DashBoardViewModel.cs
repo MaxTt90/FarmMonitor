@@ -8,8 +8,11 @@ using Microsoft.Practices.Unity;
 using FarmMonitor.BLL;
 using FarmMonitor.Model;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using PresentationModule.Services;
 using DashboardModule.Services;
+using FarmMonitor.Infrastructure;
+using Prism.Commands;
 
 namespace DashboardModule.ViewModels
 {
@@ -25,15 +28,29 @@ namespace DashboardModule.ViewModels
 
         private SensorDataModel _selectedSensorDataModel;
 
+        private IChartProvider _chartProvider;
+
+        private ICommand _switchTimeGapCommand;
+
         public DashboardViewModel(ILoginService loginService, ISensorPlotModelHandler sensorPlotModelHandler)
         {
             _loginService = loginService;
             _sensorPlotModelHandler = sensorPlotModelHandler;
 
+            _switchTimeGapCommand = new DelegateCommand<string>(SwitchTimeGap);
+            _chartProvider = AppContext.Current.Container.Resolve<IChartProvider>();
+
             if (_loginService != null && _loginService.CurrentUser != null && _sensorPlotModelHandler != null)
             {
                 InitializeData();
             }
+        }
+
+        public IChartProvider ChartProvider
+        {
+            get { return _chartProvider; }
+
+            set { SetProperty(ref _chartProvider, value); }
         }
 
         public SensorDataModel SelectedSensorDataModel
@@ -43,7 +60,8 @@ namespace DashboardModule.ViewModels
             {
                 if (SetProperty(ref _selectedSensorDataModel, value))
                 {
-                    SensorChartViewModel = _sensorPlotModelHandler.GetChartViewModel(value);
+                    SensorChartViewModel = ChartProvider.GetChart(value);
+                    //SensorChartViewModel = _sensorPlotModelHandler.GetChartViewModel(value);
                 }
             }
         }
@@ -74,8 +92,24 @@ namespace DashboardModule.ViewModels
             if (sensorDataList != null)
             {
                 _sensorDataCollection = new ObservableCollection<SensorDataModel>(sensorDataList);
-                _sensorPlotModelHandler.GenerateSensorChartViewModelSet(sensorDataList);
+                //_sensorPlotModelHandler.GenerateSensorChartViewModelSet(sensorDataList);
                 SelectedSensorDataModel = _sensorDataCollection[0];
+            }
+        }
+
+        private void SwitchTimeGap(string timeGap)
+        {
+            switch (timeGap)
+            {
+                case "Year":
+
+                    break;
+                case "Month":
+
+                    break;
+                case "Day":
+
+                    break;
             }
         }
     }

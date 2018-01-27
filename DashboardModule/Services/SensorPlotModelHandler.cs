@@ -12,11 +12,6 @@ namespace DashboardModule.Services
     {
         private IEnumerable<SensorChartViewModel> _sensorChartViewModelSet;
 
-        public SensorPlotModelHandler()
-        {
-            
-        }
-
         public void GenerateSensorChartViewModelSet(IEnumerable<SensorDataModel> sensorDataModelSet)
         {
             _sensorChartViewModelSet = new List<SensorChartViewModel>();

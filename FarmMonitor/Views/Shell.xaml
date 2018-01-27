@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:prism="http://prismlibrary.com/"
         xmlns:inf="clr-namespace:FarmMonitor.Infrastructure;assembly=FarmMonitor.Infrastructure"
-        xmlns:converter="clr-namespace:FarmMonitor.Infrastructure.Converters;assembly=FarmMonitor.Infrastructure"
+        xmlns:converter="clr-namespace:PresentationModule.Converters;assembly=PresentationModule"
         xmlns:controls="clr-namespace:Elekta.Desktop.GuiComponents.Controls;assembly=Elekta.Desktop.GuiComponents"
         xmlns:views="clr-namespace:FarmMonitor.Desktop.Views"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -25,7 +25,7 @@
         prism:ViewModelLocator.AutoWireViewModel="True">
 
     <Window.Resources>
-        <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        
     </Window.Resources>
 
     <i:Interaction.Triggers>
@@ -36,42 +36,108 @@
                 </prism:PopupWindowAction.WindowContent>
             </prism:PopupWindowAction>
         </prism:InteractionRequestTrigger>
-     </i:Interaction.Triggers>
+    </i:Interaction.Triggers>
 
-        <DockPanel LastChildFill="True">
-        <Menu DockPanel.Dock="Top" Margin="5">
-            <MenuItem Header="Monitoring Center"/>
-            <MenuItem Header="View">
-                <MenuItem Header="Navigation" IsCheckable="True" IsChecked="{Binding IsNavigationChecked}"/>
-            </MenuItem>
-            <MenuItem Header="Options">
-                <MenuItem Header="Account" Click="OnAccountClicked"/>
-                <Separator />
-                <MenuItem Header="Sensor Configurations"/>
-                <MenuItem Header="DataBase Configurations"/>
-                <Separator />
-                <MenuItem Header="Help"></MenuItem>
-                <MenuItem Header="About" Command="{Binding ShowAboutFarmMonitorCommand}"></MenuItem>
-                <!--<MenuItem Click="ShowLoginDialogOnlyPassword" Header="ShowLoginDialogOnlyPassword"/>-->
-            </MenuItem>
-        </Menu>
-        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
-            <StatusBarItem>
-                <TextBlock>Ready</TextBlock>
-            </StatusBarItem>
-            <StatusBarItem>
-                <Separator />
-            </StatusBarItem>
-            <StatusBarItem x:Uid="StatusBarItem_2">
-                <!--  The ProgressBar should not have any margin here. To use the full height of the StatusBar  -->
-                <ProgressBar     Width="200" Height="15"
+    <Grid x:Uid="Grid_1">
+        <Grid x:Uid="Grid_2">
+            <controls:ApplicationMenu AutomationProperties.AutomationId="ApplicationMenu"
+                                      BackCommand="{Binding BackCommand}"
+                                      Visibility="{Binding IsApplicationMenuVisible, Converter={converter:ConfigurableBooleanToVisibilityConverter TrueValue=Visible, 
+                                                                                                                                                   FalseValue=Collapsed}}"
+                                      x:Uid="controls:ApplicationMenu_1">
+                <controls:ApplicationMenuTab AutomationProperties.AutomationId="ApplicationMenuAbout"
+                                             Header="About"
+                                             x:Uid="controls:ApplicationMenuTab_1">
+                    <ContentControl x:Uid="ContentControl_1">
+                        <!--<views:AboutPanelView DataContext="{Binding AboutPanel}" x:Uid="views:AboutPanelView_1" />-->
+                    </ContentControl>
+                </controls:ApplicationMenuTab>
+                <controls:ApplicationMenuTab AutomationProperties.AutomationId="ApplicationMenuItemB"
+                                             Header="Item _B"
+                                             x:Uid="controls:ApplicationMenuTab_2">
+                    <Label AutomationProperties.AutomationId="ApplicationMenuContentB"
+                           Content="Application Menu Item B"
+                           x:Uid="Label_1" />
+                </controls:ApplicationMenuTab>
+                <controls:ApplicationMenuTab AutomationProperties.AutomationId="ApplicationMenuDisabledItem"
+                                             Header="Disabled Item" IsEnabled="False"
+                                             x:Uid="controls:ApplicationMenuDisabledItem">
+                    <Label AutomationProperties.AutomationId="ApplicationMenuDisabledContent"
+                           Content="Should not be displayed"
+                           x:Uid="ApplicationMenuDisabledContent" />
+                </controls:ApplicationMenuTab>
+                <!--<controls:ApplicationMenuTab Header="Designer Tools" x:Uid="controls:ApplicationMenuTab_3">
+                    <StackPanel MaxWidth="250" x:Uid="StackPanel_2">
+                        <Label AutomationProperties.AutomationId="ApplicationMenuContentB"
+                               Content="Designer Tools - Color Palette Loader"
+                               x:Uid="Label_3" />
+                        <Button x:Name="SaveColorPalette"
+                                Click="SaveColorPalette_OnClick" Content="Save Color Palette"
+                                x:Uid="SaveColorPalette" />
+                        <Button x:Name="LoadColorPalette"
+                                Click="LoadColorPalette_OnClick" Content="Load Color Palette"
+                                x:Uid="LoadColorPalette" />
+                    </StackPanel>
+                </controls:ApplicationMenuTab>-->
+                <!--<controls:ApplicationMenuSeparator x:Uid="controls:ApplicationMenuSeparator_1" />
+                <controls:ApplicationMenuButton AutomationProperties.AutomationId="ApplicationMenuItemC"
+                                                Command="{Binding RaiseItemCCommand}"
+                                                Header="Item _C"
+                                                x:Uid="controls:ApplicationMenuButton_1" />-->
+            </controls:ApplicationMenu>
+        </Grid>
+
+        <DockPanel LastChildFill="True" 
+                   Visibility="{Binding IsApplicationMenuVisible, Converter={converter:ConfigurableBooleanToVisibilityConverter TrueValue=Collapsed, FalseValue=Visible}}">
+            <Menu DockPanel.Dock="Top" Margin="5" >
+                <MenuItem Header="Monitoring Center"/>
+                <MenuItem Header="View">
+                    <MenuItem Header="Navigation" IsCheckable="True" IsChecked="{Binding IsNavigationChecked}"/>
+                </MenuItem>
+                <MenuItem Header="Options">
+                    <MenuItem Header="Account" Click="OnAccountClicked"/>
+                    <Separator />
+                    <MenuItem Header="Sensor Configurations"/>
+                    <MenuItem Header="DataBase Configurations"/>
+                    <Separator />
+                    <MenuItem Header="Help"></MenuItem>
+                    <MenuItem Header="About" Command="{Binding ShowAboutFarmMonitorCommand}"></MenuItem>
+                    <!--<MenuItem Click="ShowLoginDialogOnlyPassword" Header="ShowLoginDialogOnlyPassword"/>-->
+                </MenuItem>
+            </Menu>
+            <StackPanel Margin="2"
+                        DockPanel.Dock="Top" Orientation="Horizontal"
+                        x:Uid="StackPanel_1">
+                <controls:ButtonWithIcon AutomationProperties.AutomationId="ShowApplicationMenuButton"
+                                         Width="32" Height="32"
+                                         Margin="{DynamicResource DenseMargin}"
+                                         Command="{Binding ShowApplicationMenuCommand}"
+                                         Icon="{DynamicResource HamburgerIcon}"
+                                         Layout="IconOnly"
+                                         Style="{DynamicResource ElektaButtonWithIconTransparent}"
+                                         x:Uid="controls:ButtonWithIcon_1" />
+                <Label VerticalAlignment="Center"
+                       Content="Open Application Menu"
+                       x:Uid="Label_2" />
+            </StackPanel>
+            <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                <StatusBarItem>
+                    <TextBlock>Ready</TextBlock>
+                </StatusBarItem>
+                <StatusBarItem>
+                    <Separator />
+                </StatusBarItem>
+                <StatusBarItem x:Uid="StatusBarItem_2">
+                    <!--  The ProgressBar should not have any margin here. To use the full height of the StatusBar  -->
+                    <ProgressBar     Width="200" Height="15"
                                  Margin="0"
                                  IsIndeterminate="False" Maximum="100"
                                  Value="33" />
-            </StatusBarItem>
-        </StatusBar>
-            
-        <ContentControl DockPanel.Dock="Left" Width="250" Name="NavigationRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.NavigationRegion}" Visibility="{Binding IsNavigationChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <ContentControl DockPanel.Dock="Right" Name="WorkspaceRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.WorkspaceRegion}"/>
-    </DockPanel>
+                </StatusBarItem>
+            </StatusBar>
+
+            <ContentControl DockPanel.Dock="Left" Width="250" Name="NavigationRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.NavigationRegion}" Visibility="{Binding IsNavigationChecked, Converter={converter:ConfigurableBooleanToVisibilityConverter TrueValue=Visible, FalseValue=Collapsed}}"/>
+            <ContentControl DockPanel.Dock="Right" Name="WorkspaceRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.WorkspaceRegion}"/>
+        </DockPanel>
+    </Grid>
 </controls:ApplicationWindow>

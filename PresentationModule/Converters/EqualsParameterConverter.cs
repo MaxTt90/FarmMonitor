@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FarmMonitor.Infrastructure.Converters
+namespace PresentationModule.Converters
 {
     /// <summary>
     /// Performs value conversions from objects of one type to objects of another type based on the results of an equality 
