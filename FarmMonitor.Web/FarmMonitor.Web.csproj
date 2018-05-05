@@ -57,8 +57,8 @@
     <Reference Include="EPPlus">
       <HintPath>..\..\..\lib\EPPlus 4.1\DotNet4\EPPlus.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\..\lib\Log4Net\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data">
@@ -136,7 +136,7 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="WeDo.Log">
-      <HintPath>..\..\..\lib\Log4Net\WeDo.Log.dll</HintPath>
+      <HintPath>..\ThirdParty\WeDo.Log.DLL</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

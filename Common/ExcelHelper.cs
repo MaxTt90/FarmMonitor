@@ -28,8 +28,8 @@ namespace FarmMonitor.Common
 
             IRow headerrow = sheet.CreateRow(0);
             ICellStyle style = book.CreateCellStyle();
-            style.Alignment = HorizontalAlignment.CENTER;
-            style.VerticalAlignment = VerticalAlignment.CENTER;
+            style.Alignment = HorizontalAlignment.Center;
+            style.VerticalAlignment = VerticalAlignment.Center;
 
             for (int i = 0; i < dt.Columns.Count; i++)
             {
@@ -87,8 +87,8 @@ namespace FarmMonitor.Common
                 ISheet sheet = book.CreateSheet(name[i]);
                 IRow headerrow = sheet.CreateRow(0);
                 ICellStyle style = book.CreateCellStyle();
-                style.Alignment = HorizontalAlignment.CENTER;
-                style.VerticalAlignment = VerticalAlignment.CENTER;
+                style.Alignment = HorizontalAlignment.Center;
+                style.VerticalAlignment = VerticalAlignment.Center;
 
                 for (int j = 0; j < dtList[i].Columns.Count; j++)
                 {
